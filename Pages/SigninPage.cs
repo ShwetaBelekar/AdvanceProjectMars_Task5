@@ -26,8 +26,22 @@ namespace AdvanceProjectMars_Task5.Pages
             IWebElement passwordTextbox = driver.FindElement(By.XPath("//input[@placeholder='Password']"));
             passwordTextbox.SendKeys("Tonymoney@2025");
 
-            IWebElement
+            IWebElement loginButton = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
+            loginButton.Click();
+        }
 
+        public void VerifyUserInHomePage()
+        {
+            IWebElement hiTony = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/div[1]/div[2]/div/span"));
+
+            if (hiTony.Text == "Hi Tony")
+            {
+                Console.WriteLine("User has logged in Successfully. Test Passed!");
+            }
+            else
+            {
+                Console.WriteLine("User has not logged in. Test Failed!");
+            }
 
         }
     }
