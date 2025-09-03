@@ -19,16 +19,12 @@ namespace AdvanceProjectMars_Task5.Pages
 
         private IWebElement loginButton => driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
         public void ValidSigninActions(string emailAddress, string password)
-        {
-            driver = new ChromeDriver();
-            driver.Navigate().GoToUrl("http://localhost:5003/Home");
-            driver.Manage().Window.Maximize();
-
-            
+        {  
             signInButton.Click();
             emailAddressTextbox.SendKeys(emailAddress);
             passwordTextbox.SendKeys(password);
             loginButton.Click();
+            Thread.Sleep(3000);
         }
 
         public void VerifyUserInHomePage()

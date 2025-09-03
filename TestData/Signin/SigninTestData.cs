@@ -20,7 +20,7 @@ namespace AdvanceProjectMars_Task5.TestData.Signin
             public static Dictionary<string, List<SigninData>> ReadTestData()
             {
                 string projectRoot = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "..", "..", ".."));
-                string testDataPath = Path.Combine(projectRoot, "Configuration", "SigninData.json");
+                string testDataPath = Path.Combine(projectRoot, "Configuration", "Signin_TestCases", "signin_validcredentials.json");
                 string jsonData = File.ReadAllText(testDataPath);
                 var testData = JsonConvert.DeserializeObject<Dictionary<string, List<SigninData>>>(jsonData);
                 return testData;
