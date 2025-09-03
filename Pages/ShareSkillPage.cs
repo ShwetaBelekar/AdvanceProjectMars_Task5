@@ -247,7 +247,18 @@ namespace AdvanceProjectMars_Task5.Pages
 
         public void EditShareSkillRecord()
         {
+            IWebElement viewButton = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[1]/i"));
+            viewButton.Click();
 
+            IWebElement editButton = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[2]/i"));
+            editButton.Click();
+
+        }
+
+        public void DeleteShareSkillRecord()
+        {
+            IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[3]/i"));
+            deleteButton.Click();
         }
     }
 }

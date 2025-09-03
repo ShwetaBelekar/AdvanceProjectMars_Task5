@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdvanceProjectMars_Task5.NUnit_Tests
 {
-    internal class Signin_Tests
+    public class Signin_Tests
     {
     }
 }

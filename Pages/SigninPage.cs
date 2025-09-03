@@ -11,22 +11,23 @@ namespace AdvanceProjectMars_Task5.Pages
 {
     public class SigninPage : CommonDriver
     {
-        public void ValidSigninActions()
+        private IWebElement signInButton => driver.FindElement(By.XPath("//*[@id=\"home\"]/div/div/div[1]/div/a"));
+
+        private IWebElement emailAddressTextbox => driver.FindElement(By.XPath("//input[@placeholder='Email address']"));
+
+        private IWebElement passwordTextbox => driver.FindElement(By.XPath("//input[@placeholder='Password']"));
+
+        private IWebElement loginButton => driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
+        public void ValidSigninActions(string emailAddress, string password)
         {
             driver = new ChromeDriver();
             driver.Navigate().GoToUrl("http://localhost:5003/Home");
             driver.Manage().Window.Maximize();
 
-            IWebElement signInButton = driver.FindElement(By.XPath("//*[@id=\"home\"]/div/div/div[1]/div/a"));
+            
             signInButton.Click();
-
-            IWebElement emailAddressTextbox = driver.FindElement(By.XPath("//input[@placeholder='Email address']"));
-            emailAddressTextbox.SendKeys("moneytony@ymail.com");
-
-            IWebElement passwordTextbox = driver.FindElement(By.XPath("//input[@placeholder='Password']"));
-            passwordTextbox.SendKeys("Tonymoney@2025");
-
-            IWebElement loginButton = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
+            emailAddressTextbox.SendKeys(emailAddress);
+            passwordTextbox.SendKeys(password);
             loginButton.Click();
         }
 
