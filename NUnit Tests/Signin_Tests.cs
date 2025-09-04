@@ -22,9 +22,9 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             driver.Navigate().GoToUrl("http://localhost:5003/Home");
             driver.Manage().Window.Maximize();
         }
-        public static IEnumerable<TestCaseData> GetTestData(string testName)
+        public static IEnumerable<TestCaseData> GetTestData(string fileName,string testName)
         {
-            var testData = TestDataReader.ReadTestData();
+            var testData = TestDataReader.ReadTestData(fileName);
             foreach (var data in testData[testName])
             {
                 if (data.Emailaddress != null && data.Password != null)

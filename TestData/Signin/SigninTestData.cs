@@ -17,10 +17,10 @@ namespace AdvanceProjectMars_Task5.TestData.Signin
 
         public static class TestDataReader
         {
-            public static Dictionary<string, List<SigninData>> ReadTestData()
+            public static Dictionary<string, List<SigninData>> ReadTestData(string fileName)
             {
                 string projectRoot = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "..", "..", ".."));
-                string testDataPath = Path.Combine(projectRoot, "Configuration", "Signin_TestCases", "signin_validcredentials.json");
+                string testDataPath = Path.Combine(projectRoot, "Configuration", "Signin_TestCases", fileName);
                 string jsonData = File.ReadAllText(testDataPath);
                 var testData = JsonConvert.DeserializeObject<Dictionary<string, List<SigninData>>>(jsonData);
                 return testData;
