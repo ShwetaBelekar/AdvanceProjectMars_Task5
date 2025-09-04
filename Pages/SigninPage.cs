@@ -18,7 +18,7 @@ namespace AdvanceProjectMars_Task5.Pages
         private IWebElement passwordTextbox => driver.FindElement(By.XPath("//input[@placeholder='Password']"));
 
         private IWebElement loginButton => driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
-        public void ValidSigninActions(string emailAddress, string password)
+        public void SigninActions(string emailAddress, string password)
         {  
             signInButton.Click();
             emailAddressTextbox.SendKeys(emailAddress);
