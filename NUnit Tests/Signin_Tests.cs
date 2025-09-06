@@ -61,6 +61,63 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 Console.WriteLine("User can signin with the invalid credentials");
             }
         }
+        [Test, TestCaseSource(nameof(GetTestData), new object[] { "signin_blankemailaddress.json", "signinwithblankemailaddress" })]
+        public void signinwithblankemailaddress(string emailaddress, string password)
+        {
+            SigninPage signinPageObj = new SigninPage();
+            signinPageObj.SigninActions(emailaddress, password);
+            IWebElement redPrompt = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[1]/div"));
+            string promptText = redPrompt.Text;
+            Console.WriteLine("Alert text: " + promptText);
+            if (redPrompt.Text == "Please enter a valid email address")
+            {
+                Console.WriteLine("User can't signin with blank emailaddress");
+            }
+            else
+            {
+                Console.WriteLine("User can signin with blankemailaddress");
+            }
+        }
+
+        [Test, TestCaseSource(nameof(GetTestData), new object[] { "signin_blankpassword.json", "signinwithblankpassword" })]
+        public void signinwithblankpassword(string emailaddress, string password)
+        {
+            SigninPage signinPageObj = new SigninPage();
+            signinPageObj.SigninActions(emailaddress, password);
+            IWebElement redPrompt = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[2]/div"));
+            string promptText = redPrompt.Text;
+            Console.WriteLine("Alert text: " + promptText);
+            if (redPrompt.Text == "Password must be at least 6 characters")
+            {
+                Console.WriteLine("User can't signin with blank password");
+            }
+            else
+            {
+                Console.WriteLine("User can signin with blank password");
+            }
+        }
+
+        [Test, TestCaseSource(nameof(GetTestData), new object[] { "signin_blankemailandpassword.json", "signinwithblankemailandpassword" })]
+        public void signinwithblankemailandpassword(string emailaddress, string password)
+        {
+            SigninPage signinPageObj = new SigninPage();
+            signinPageObj.SigninActions(emailaddress, password);
+            IWebElement redPrompt1 = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[1]/div"));
+            IWebElement redPrompt2 = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[2]/div"));
+            string promptText1 = redPrompt1.Text;
+            string promptText2 = redPrompt2.Text;
+            Console.WriteLine($"Alert text: {promptText1} {promptText2}");
+            if (redPrompt1.Text == "Please enter a valid email address" && redPrompt2.Text == "Password must be at least 6 characters")
+            {
+                Console.WriteLine("User can't signin with blankemailandpassword");
+            }
+            else
+            {
+                Console.WriteLine("User can signin with blankemailandpassword");
+            }
+        }
+
+
 
 
 

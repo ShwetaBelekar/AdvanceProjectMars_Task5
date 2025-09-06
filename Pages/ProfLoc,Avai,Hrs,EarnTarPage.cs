@@ -10,12 +10,41 @@ namespace AdvanceProjectMars_Task5.Pages
 {
     public class ProfLoc_Avai_Hrs_EarnTarPage : CommonDriver
     {
-        public void ValidLocAvaHrsEarnTarAction()
+        private IWebElement profileTab => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[1]/div/a[2]"));
+
+        private IWebElement locationButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[1]/div"));
+
+        private IWebElement availabilityEditButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[2]/div/span/i"));
+
+        private IWebElement availabilityDropdownButton => driver.FindElement(By.XPath("//select[@name='availabiltyType']"));
+
+        private IWebElement availabilityTypeOption0 => driver.FindElement(By.XPath("//option[contains(text(), 'Part Time') and @value='0']"));
+
+        private IWebElement availabilityTypeOption1 => driver.FindElement(By.XPath("//option[contains(text(), 'Full Time') and @value='1']"));
+
+        private IWebElement hoursEditButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[3]/div/span/i"));
+
+        private IWebElement hoursDropdownButton => driver.FindElement(By.XPath("//select[@name='availabiltyHour']"));
+
+        private IWebElement hoursTypeOption0 => driver.FindElement(By.XPath("//option[contains(text(), 'Less than 30hours a week') and @value='0']"));
+
+        private IWebElement hoursTypeOption1 => driver.FindElement(By.XPath("//option[contains(text(), 'More than 30hours a week') and @value='1']"));
+
+        private IWebElement hoursTypeOption2 => driver.FindElement(By.XPath("//option[contains(text(), 'As needed') and @value='2']"));
+
+        private IWebElement earnTargetEditButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[4]/div/span/i"));
+        private IWebElement earnTargetDropdownButton => driver.FindElement(By.XPath("//select[@name='availabiltyTarget']"));
+        private IWebElement earnTargetTypeOption0 => driver.FindElement(By.XPath("//option[contains(text(), 'Less than $500 per month') and @value='0']"));
+        private IWebElement earnTargetTypeOption1 => driver.FindElement(By.XPath("//option[contains(text(), 'Between $500 and $1000 per month') and @value='1']"));
+
+        private IWebElement earnTargetTypeOption2 => driver.FindElement(By.XPath("//option[contains(text(), 'More than $1000 per month') and @value='2']"));
+
+        public void LocationAction()
         {
-            IWebElement profileTab = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[1]/div/a[2]"));
+
             profileTab.Click();
             Thread.Sleep(3000);
-            IWebElement locationButton = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[1]/div"));
+           
             if (locationButton.Enabled)
             {
                 Console.WriteLine("Location button is enabled, but it should not be.");
@@ -24,45 +53,40 @@ namespace AdvanceProjectMars_Task5.Pages
             {
                 Console.WriteLine("Location button is not enabled, as expected.");
             }
-
-            IWebElement availabilityEditButton = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[2]/div/span/i"));
+        }
+        public void AvailabilityAction(string AvailabilityType)
+        {
+            profileTab.Click();
             availabilityEditButton.Click();
-            Thread.Sleep(3000);
-            IWebElement availabilityDropdownButton = driver.FindElement(By.XPath("//select[@name='availabiltyType']"));
-            availabilityDropdownButton.Click();
-            Thread.Sleep(5000);
+            Thread.Sleep(2000);
+            
+            availabilityDropdownButton.SendKeys(AvailabilityType);
+            //Thread.Sleep(3000);
 
-            IWebElement availabilityTypeOption = driver.FindElement(By.XPath("//option[contains(text(), 'Part Time') and @value='0']"));
-            availabilityTypeOption.Click();
+            //availabilityTypeOption0.SendKeys(AvailabilityType);
 
-            //IWebElement availabilityTypeOption = driver.FindElement(By.XPath("//option[contains(text(), 'Full Time') and @value='1']"));
-            //availabilityTypeOption.Click();
+            //availabilityTypeOption1.Click();
 
-            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
-            if (popupAlert.Text == "Availability updated")
-            {
-                Console.WriteLine("Availability updated successfully");
-            }
-            else
-            {
-                Console.WriteLine("Availability updated unsuccessfull");
-            }
-
-            IWebElement hoursEditButton = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[3]/div/span/i"));
+            
+        }
+        public void HoursAction()
+        {
+            
             hoursEditButton.Click();
             Thread.Sleep(3000);
-            IWebElement hoursDropdownButton = driver.FindElement(By.XPath("//select[@name='availabiltyHour']"));
+           
             hoursDropdownButton.Click();
             Thread.Sleep(5000);
 
-            IWebElement hoursTypeOption = driver.FindElement(By.XPath("//option[contains(text(), 'Less than 30hours a week') and @value='0']"));
-            hoursTypeOption.Click();
+            
+            hoursTypeOption0.Click();
 
-            //IWebElement hoursTypeOption = driver.FindElement(By.XPath("//option[contains(text(), 'More than 30hours a week') and @value='1']"));
-            //hoursTypeOption.Click();
+           
+            hoursTypeOption1.Click();
 
-            //IWebElement hoursTypeOption = driver.FindElement(By.XPath("//option[contains(text(), 'As needed') and @value='2']"));
-            //hoursTypeOption.Click();
+            
+            hoursTypeOption2.Click();
+
             IWebElement poopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             if (poopupAlert.Text == "Availability updated")
             {
@@ -72,23 +96,27 @@ namespace AdvanceProjectMars_Task5.Pages
             {
                 Console.WriteLine("No Error in the system, popup alert is correct!");
             }
+        }
 
-            IWebElement earnTargetEditButton = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[4]/div/span/i"));
+        public void EarnTargetAction()
+        {
+            
             earnTargetEditButton.Click();
             Thread.Sleep(3000);
 
-            IWebElement earnTargetDropdownButton = driver.FindElement(By.XPath("//select[@name='availabiltyTarget']"));
+           
             earnTargetDropdownButton.Click();
             Thread.Sleep(8000);
 
-            IWebElement earnTargetTypeOption = driver.FindElement(By.XPath("//option[contains(text(), 'Less than $500 per month') and @value='0']"));
-            earnTargetTypeOption.Click();
+          
+            earnTargetTypeOption0.Click();
 
-            //IWebElement earnTargetTypeOption = driver.FindElement(By.XPath("//option[contains(text(), 'Between $500 and $1000 per month') and @value='1']"));
-            //earnTargetTypeOption.Click();
+            
+            earnTargetTypeOption1.Click();
 
-            //IWebElement earnTargetTypeOption = driver.FindElement(By.XPath("//option[contains(text(), 'More than $1000 per month') and @value='2']"));
-            //earnTargetTypeOption.Click();
+            
+            earnTargetTypeOption2.Click();
+
             IWebElement ppopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             if (ppopupAlert.Text == "Availability updated")
             {
@@ -98,10 +126,17 @@ namespace AdvanceProjectMars_Task5.Pages
             {
                 Console.WriteLine("No Error in the system, popup alert is correct!");
             }
-
-
         }
-
     }
 }
+
+        
+
+            
+
+
+        
+
+    
+
 
