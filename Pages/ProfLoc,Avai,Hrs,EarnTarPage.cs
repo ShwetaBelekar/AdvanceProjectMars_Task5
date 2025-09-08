@@ -1,4 +1,5 @@
 ﻿using AdvanceProjectMars_Task5.Utilities;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -54,20 +55,28 @@ namespace AdvanceProjectMars_Task5.Pages
                 Console.WriteLine("Location button is not enabled, as expected.");
             }
         }
-        public void AvailabilityAction(string AvailabilityType)
+        public void SelectAvailabilityAction(string AvailabilityType)
         {
             profileTab.Click();
             availabilityEditButton.Click();
             Thread.Sleep(2000);
             
+            
             availabilityDropdownButton.SendKeys(AvailabilityType);
+           
             //Thread.Sleep(3000);
 
             //availabilityTypeOption0.SendKeys(AvailabilityType);
 
             //availabilityTypeOption1.Click();
 
-            
+        }
+        public void ChangeAvailabilityAction(string AvailabilityType)
+        {
+            availabilityEditButton.Click();
+            Thread.Sleep(2000);
+
+            availabilityDropdownButton.SendKeys(AvailabilityType);
         }
         public void HoursAction()
         {

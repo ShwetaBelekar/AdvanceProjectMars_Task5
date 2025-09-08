@@ -54,11 +54,11 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']"));
             if (popupAlert.Text == "Confirm your email")
             {
-                Console.WriteLine("User can't signin with the invalid credentials");
+                Assert.Pass("User can't signin with the invalid credentials");
             }
             else
             {
-                Console.WriteLine("User can signin with the invalid credentials");
+                Assert.Fail("User can signin with the invalid credentials");
             }
         }
         [Test, TestCaseSource(nameof(GetTestData), new object[] { "signin_blankemailaddress.json", "signinwithblankemailaddress" })]
@@ -71,11 +71,11 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             Console.WriteLine("Alert text: " + promptText);
             if (redPrompt.Text == "Please enter a valid email address")
             {
-                Console.WriteLine("User can't signin with blank emailaddress");
+                Assert.Pass("User can't signin with blank emailaddress");
             }
             else
             {
-                Console.WriteLine("User can signin with blankemailaddress");
+                Assert.Fail("User can signin with blankemailaddress");
             }
         }
 
@@ -89,11 +89,11 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             Console.WriteLine("Alert text: " + promptText);
             if (redPrompt.Text == "Password must be at least 6 characters")
             {
-                Console.WriteLine("User can't signin with blank password");
+                Assert.Pass("User can't signin with blank password");
             }
             else
             {
-                Console.WriteLine("User can signin with blank password");
+                Assert.Fail("User can signin with blank password");
             }
         }
 
@@ -109,11 +109,11 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             Console.WriteLine($"Alert text: {promptText1} {promptText2}");
             if (redPrompt1.Text == "Please enter a valid email address" && redPrompt2.Text == "Password must be at least 6 characters")
             {
-                Console.WriteLine("User can't signin with blankemailandpassword");
+                Assert.Pass("User can't signin with blankemailandpassword");
             }
             else
             {
-                Console.WriteLine("User can signin with blankemailandpassword");
+                Assert.Fail("User can signin with blankemailandpassword");
             }
         }
 

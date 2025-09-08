@@ -14,7 +14,7 @@ namespace AdvanceProjectMars_Task5.TestData.ProfLoc_Ava_Hrs_ErnTar
             public string AvailabilityType { get; set; }
             
         }
-
+        
         public static class TestDataReader
         {
             public static Dictionary<string, List<ProfLoc_Ava_Hrs_ErnTar_Data>> ReadTestData(string fileName)

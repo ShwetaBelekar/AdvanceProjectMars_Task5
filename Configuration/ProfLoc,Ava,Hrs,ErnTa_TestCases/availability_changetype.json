@@ -1,9 +1,10 @@
 {
-  "signinwithblankemailaddress": [
+  "Availabilitychangetype": [
     {
-      "Emailaddress": "",
-      "Password": "Tonymoney@2025"
+      "AvailabilityType": "Full Time"
+    },
+    {
+      "AvailabilityType": "Part Time"
     }
-
   ]
 }
