@@ -1,0 +1,10 @@
+{
+  "Hoursselecttype": [
+    {
+      "HoursType": "Less than 30hours a week",
+      "EditHoursType": "More than 30hours a week",
+      "ChangeHoursType": "As needed"
+    }
+    
+  ]
+}

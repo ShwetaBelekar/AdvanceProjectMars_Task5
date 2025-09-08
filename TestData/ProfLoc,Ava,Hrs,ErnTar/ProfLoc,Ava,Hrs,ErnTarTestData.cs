@@ -13,7 +13,15 @@ namespace AdvanceProjectMars_Task5.TestData.ProfLoc_Ava_Hrs_ErnTar
         {
             public string AvailabilityType { get; set; }
             public string NewAvailabilityType { get; set; }
-            
+
+            public string HoursType { get; set; }
+            public string EditHoursType { get; set; }
+            public string ChangeHoursType { get; set; }
+            public string EarnTargetType { get; set; }
+
+            public string EditEarnTargetType { get; set; }
+
+            public string ChangeEarnTargetType { get; set; }
         }
         
         public static class TestDataReader

@@ -79,33 +79,41 @@ namespace AdvanceProjectMars_Task5.Pages
             availabilityDropdownButton.SendKeys(NewAvailabilityType);
         }
         
-        public void HoursAction()
+        public void SelectHoursAction(string HoursType)
         {
+            Thread.Sleep(5000);
+            profileTab.Click();
+            hoursEditButton.Click();
+            Thread.Sleep(2000);
+           
+            hoursDropdownButton.SendKeys(HoursType);
+            //Thread.Sleep(5000);
+
             
+            //hoursTypeOption0.Click();
+
+           
+            //hoursTypeOption1.Click();
+
+            
+            //hoursTypeOption2.Click();
+
+            
+        }
+        public void EditHoursAction(string EditHoursType, string ChangeHoursType)
+        {
+            Thread.Sleep(5000);
             hoursEditButton.Click();
             Thread.Sleep(3000);
-           
-            hoursDropdownButton.Click();
+
+            hoursDropdownButton.SendKeys(EditHoursType);
+
             Thread.Sleep(5000);
+            hoursEditButton.Click();
+            Thread.Sleep(3000);
 
-            
-            hoursTypeOption0.Click();
+            hoursDropdownButton.SendKeys(ChangeHoursType);
 
-           
-            hoursTypeOption1.Click();
-
-            
-            hoursTypeOption2.Click();
-
-            IWebElement poopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
-            if (poopupAlert.Text == "Availability updated")
-            {
-                Console.WriteLine("Error in the system, alert should be Hours updated but getting alert Availlability updated!");
-            }
-            else
-            {
-                Console.WriteLine("No Error in the system, popup alert is correct!");
-            }
         }
 
         public void EarnTargetAction()
