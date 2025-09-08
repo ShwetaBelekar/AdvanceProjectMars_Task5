@@ -1,10 +1,9 @@
 {
   "Availabilitychangetype": [
     {
-      "AvailabilityType": "Full Time"
-    },
-    {
-      "AvailabilityType": "Part Time"
+      "AvailabilityType": "Full Time",
+      "NewAvailabilityType": "Part Time"
     }
+    
   ]
 }

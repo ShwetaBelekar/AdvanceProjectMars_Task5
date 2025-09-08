@@ -61,9 +61,8 @@ namespace AdvanceProjectMars_Task5.Pages
             availabilityEditButton.Click();
             Thread.Sleep(2000);
             
-            
             availabilityDropdownButton.SendKeys(AvailabilityType);
-           
+
             //Thread.Sleep(3000);
 
             //availabilityTypeOption0.SendKeys(AvailabilityType);
@@ -71,13 +70,15 @@ namespace AdvanceProjectMars_Task5.Pages
             //availabilityTypeOption1.Click();
 
         }
-        public void ChangeAvailabilityAction(string AvailabilityType)
+        public void ChangeAvailabilityAction(string NewAvailabilityType)
         {
+            Thread.Sleep(5000);
             availabilityEditButton.Click();
             Thread.Sleep(2000);
 
-            availabilityDropdownButton.SendKeys(AvailabilityType);
+            availabilityDropdownButton.SendKeys(NewAvailabilityType);
         }
+        
         public void HoursAction()
         {
             

@@ -32,11 +32,14 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             var testData = TestDataReader.ReadTestData(fileName);
             foreach (var data in testData[testName])
             {
-                if (data.AvailabilityType != null)
+                if (data.AvailabilityType != null && data.NewAvailabilityType != null)
+                {
+                    yield return new TestCaseData(data.AvailabilityType, data.NewAvailabilityType);
+                }
+                else if (data.AvailabilityType != null)
                 {
                     yield return new TestCaseData(data.AvailabilityType);
                 }
-
             }
         }
 
@@ -73,7 +76,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
 
         }
         [Test, TestCaseSource(nameof(GetTestData), new object[] { "availability_changetype.json", "Availabilitychangetype" })]
-        public void Availabilitychangetype(string AvailabilityType)
+        public void Availabilitychangetype(string AvailabilityType, string NewAvailabilityType)
         {
             LoginPage loginPageObj = new LoginPage();
             loginPageObj.LoginActions();
@@ -81,6 +84,15 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
 
             ProfLoc_Avai_Hrs_EarnTarPage profLoc_Avai_Hrs_EarnTarPageObj = new ProfLoc_Avai_Hrs_EarnTarPage();
             profLoc_Avai_Hrs_EarnTarPageObj.SelectAvailabilityAction(AvailabilityType);
+            if (AvailabilityType == "Full Time")
+            {
+                Console.WriteLine("Full Time is selected");
+
+            }
+            else
+            {
+                Console.WriteLine($"Expected Full Time but got {AvailabilityType}");
+            }
 
             Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
             IWebElement selectpopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
@@ -95,7 +107,16 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 Console.WriteLine("Availability updated unsuccessfull");
             }
             
-           profLoc_Avai_Hrs_EarnTarPageObj.ChangeAvailabilityAction(AvailabilityType);
+           profLoc_Avai_Hrs_EarnTarPageObj.ChangeAvailabilityAction(NewAvailabilityType);
+            if (NewAvailabilityType == "Part Time")
+            {
+                Console.WriteLine("Part Time is selected");
+
+            }
+            else
+            {
+                Console.WriteLine($"Expected Part Time but got {NewAvailabilityType}");
+            }
             Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
             IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             string changepromptText = popupAlert.Text;

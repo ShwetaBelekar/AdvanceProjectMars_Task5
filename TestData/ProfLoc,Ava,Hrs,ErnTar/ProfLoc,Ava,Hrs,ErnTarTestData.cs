@@ -12,6 +12,7 @@ namespace AdvanceProjectMars_Task5.TestData.ProfLoc_Ava_Hrs_ErnTar
         public class ProfLoc_Ava_Hrs_ErnTar_Data
         {
             public string AvailabilityType { get; set; }
+            public string NewAvailabilityType { get; set; }
             
         }
         
