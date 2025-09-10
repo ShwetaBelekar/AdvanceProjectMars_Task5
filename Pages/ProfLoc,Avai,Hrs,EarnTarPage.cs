@@ -57,6 +57,7 @@ namespace AdvanceProjectMars_Task5.Pages
         }
         public void SelectAvailabilityAction(string AvailabilityType)
         {
+            Thread.Sleep(5000);
             profileTab.Click();
             availabilityEditButton.Click();
             Thread.Sleep(2000);
@@ -121,34 +122,43 @@ namespace AdvanceProjectMars_Task5.Pages
 
         
 
-        public void EarnTargetAction()
+        public void SelectEarnTargetAction(string EarnTargetType)
         {
-            
+            Thread.Sleep(5000);
+            profileTab.Click();
             earnTargetEditButton.Click();
             Thread.Sleep(3000);
 
            
-            earnTargetDropdownButton.Click();
-            Thread.Sleep(8000);
+            earnTargetDropdownButton.SendKeys(EarnTargetType);
+            //Thread.Sleep(8000);
 
           
-            earnTargetTypeOption0.Click();
+            //earnTargetTypeOption0.Click();
 
             
-            earnTargetTypeOption1.Click();
+            //earnTargetTypeOption1.Click();
 
             
-            earnTargetTypeOption2.Click();
+            //earnTargetTypeOption2.Click();
 
-            IWebElement ppopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
-            if (ppopupAlert.Text == "Availability updated")
-            {
-                Console.WriteLine("Error in the system, alert should be Earn Target updated but getting alert Availlability updated!");
-            }
-            else
-            {
-                Console.WriteLine("No Error in the system, popup alert is correct!");
-            }
+           
+        }
+        public void EditEarnTargetAction(string EditEarnTargetType)
+        {
+            Thread.Sleep(5000);
+            earnTargetEditButton.Click();
+            Thread.Sleep(4000);
+            earnTargetDropdownButton.SendKeys(EditEarnTargetType);
+        }
+        public void ChangeEarnTargetAction(string ChangeEarnTargetType)
+        {
+            Thread.Sleep(5000);
+            earnTargetEditButton.Click();
+            Thread.Sleep(3000);
+
+
+            earnTargetDropdownButton.SendKeys(ChangeEarnTargetType);
         }
     }
 }

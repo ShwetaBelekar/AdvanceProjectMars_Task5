@@ -51,6 +51,14 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 {
                     yield return new TestCaseData(data.HoursType);
                 }
+                else if (data.EarnTargetType != null && data.EditEarnTargetType != null && data.ChangeEarnTargetType != null)
+                {
+                    yield return new TestCaseData(data.EarnTargetType, data.EditEarnTargetType, data.ChangeEarnTargetType);
+                }
+                else if (data.EarnTargetType != null)
+                {
+                    yield return new TestCaseData(data.EarnTargetType);
+                }
             }
         }
 
@@ -63,16 +71,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             
             ProfLoc_Avai_Hrs_EarnTarPage profLoc_Avai_Hrs_EarnTarPageObj = new ProfLoc_Avai_Hrs_EarnTarPage();
             profLoc_Avai_Hrs_EarnTarPageObj.SelectAvailabilityAction(AvailabilityType);
-            if (AvailabilityType == "Part Time")
-            {
-                Console.WriteLine("Part Time is selected");
-
-            }
-            else
-            {
-                Console.WriteLine($"Expected Part Time but got {AvailabilityType}");
-            }
-
+            Console.WriteLine($"Selected {AvailabilityType}");
             Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
             IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
 
@@ -216,7 +215,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             {
                 Console.WriteLine("No Error in the system, popup alert is correct!");
             }
-            profLoc_Avai_Hrs_EarnTarPageObj.EditHoursAction(ChangeHoursType);
+            profLoc_Avai_Hrs_EarnTarPageObj.ChangeHoursAction(ChangeHoursType);
             Console.WriteLine($"Selected {ChangeHoursType}");
             Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
             IWebElement ppopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
@@ -232,9 +231,80 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 Assert.Fail("No Error in the system, popup alert is correct!");
             }
         }
+        [Test, TestCaseSource(nameof(GetTestData), new object[] { "earntarget_selecttype.json", "EarnTargetselecttype" })]
+        public void EarnTargetselecttype(string EarnTargetType)
+        {
+            ProfLoc_Avai_Hrs_EarnTarPage profLoc_Avai_Hrs_EarnTarPageObj = new ProfLoc_Avai_Hrs_EarnTarPage();
+            profLoc_Avai_Hrs_EarnTarPageObj.SelectEarnTargetAction(EarnTargetType);
+            Console.WriteLine($"Selected {EarnTargetType}");
+            
+            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement ppopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            string promptText = ppopupAlert.Text;
+            Console.WriteLine("Alert text: " + promptText);
+            if (ppopupAlert.Text == "Availability updated")
+            {
+                Console.WriteLine("Error in the system, alert should be Earn Target updated but getting alert Availlability updated!");
+            }
+            else
+            {
+                Console.WriteLine("No Error in the system, popup alert is correct!");
+            }
 
+        }
+        [Test, TestCaseSource(nameof(GetTestData), new object[] { "earntarget_changetype.json", "EarnTargetchangetype" })]
+        public void EarnTargetchangetype(string EarnTargetType, string EditEarnTargetType, string ChangeEarnTargetType)
+        {
+            ProfLoc_Avai_Hrs_EarnTarPage profLoc_Avai_Hrs_EarnTarPageObj = new ProfLoc_Avai_Hrs_EarnTarPage();
+            profLoc_Avai_Hrs_EarnTarPageObj.SelectEarnTargetAction(EarnTargetType);
+            Console.WriteLine($"Selected {EarnTargetType}");
+            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement poopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            string promptText = poopupAlert.Text;
+            Console.WriteLine("Alert text: " + promptText);
 
+            if (poopupAlert.Text == "Availability updated")
+            {
+                Console.WriteLine("Error in the system, alert should be EarnTarget updated but getting alert Availlability updated!");
+            }
+            else
+            {
+                Console.WriteLine("No Error in the system, popup alert is correct!");
+            }
+            profLoc_Avai_Hrs_EarnTarPageObj.EditEarnTargetAction(EditEarnTargetType);
+            Console.WriteLine($"Selected {EditEarnTargetType}");
+            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            string proomptText = popupAlert.Text;
+            Console.WriteLine("Alert text: " + proomptText);
+
+            if (popupAlert.Text == "Availability updated")
+            {
+                Console.WriteLine("Error in the system, alert should be EarnTarget updated but getting alert Availlability updated!");
+            }
+            else
+            {
+                Console.WriteLine("No Error in the system, popup alert is correct!");
+            }
+            profLoc_Avai_Hrs_EarnTarPageObj.ChangeEarnTargetAction(ChangeEarnTargetType);
+            Console.WriteLine($"Selected {ChangeEarnTargetType}");
+            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement ppopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            string prooomptText = ppopupAlert.Text;
+            Console.WriteLine("Alert text: " + prooomptText);
+
+            if (ppopupAlert.Text == "Availability updated")
+            {
+                Assert.Pass("Error in the system, alert should be EarnTarget updated but getting alert Availlability updated!");
+            }
+            else
+            {
+                Assert.Fail("No Error in the system, popup alert is correct!");
+            }
+        }
        
+
+
 
     }
 }
