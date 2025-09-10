@@ -100,7 +100,7 @@ namespace AdvanceProjectMars_Task5.Pages
 
             
         }
-        public void EditHoursAction(string EditHoursType, string ChangeHoursType)
+        public void EditHoursAction(string EditHoursType)
         {
             Thread.Sleep(5000);
             hoursEditButton.Click();
@@ -108,13 +108,18 @@ namespace AdvanceProjectMars_Task5.Pages
 
             hoursDropdownButton.SendKeys(EditHoursType);
 
+        }
+        public void ChangeHoursAction(string ChangeHoursType)
+        {
             Thread.Sleep(5000);
             hoursEditButton.Click();
             Thread.Sleep(3000);
 
             hoursDropdownButton.SendKeys(ChangeHoursType);
-
         }
+            
+
+        
 
         public void EarnTargetAction()
         {

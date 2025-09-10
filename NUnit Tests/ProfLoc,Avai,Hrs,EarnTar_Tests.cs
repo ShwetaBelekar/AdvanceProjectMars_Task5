@@ -182,7 +182,59 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             }
 
         }
+        [Test, TestCaseSource(nameof(GetTestData), new object[] { "hours_changetype.json", "Hourschangetype" })]
+        public void Hourschangetype(string HoursType, string EditHoursType, string ChangeHoursType)
+        {
+            ProfLoc_Avai_Hrs_EarnTarPage profLoc_Avai_Hrs_EarnTarPageObj = new ProfLoc_Avai_Hrs_EarnTarPage();
+            profLoc_Avai_Hrs_EarnTarPageObj.SelectHoursAction(HoursType);
+            Console.WriteLine($"Selected {HoursType}");
+            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement poopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            string promptText = poopupAlert.Text;
+            Console.WriteLine("Alert text: " + promptText);
 
+            if (poopupAlert.Text == "Availability updated")
+            {
+                Console.WriteLine("Error in the system, alert should be Hours updated but getting alert Availlability updated!");
+            }
+            else
+            {
+                Console.WriteLine("No Error in the system, popup alert is correct!");
+            }
+            profLoc_Avai_Hrs_EarnTarPageObj.EditHoursAction(EditHoursType);
+            Console.WriteLine($"Selected {EditHoursType}");
+            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            string proomptText = popupAlert.Text;
+            Console.WriteLine("Alert text: " + proomptText);
+
+            if (popupAlert.Text == "Availability updated")
+            {
+                Console.WriteLine("Error in the system, alert should be Hours updated but getting alert Availlability updated!");
+            }
+            else
+            {
+                Console.WriteLine("No Error in the system, popup alert is correct!");
+            }
+            profLoc_Avai_Hrs_EarnTarPageObj.EditHoursAction(ChangeHoursType);
+            Console.WriteLine($"Selected {ChangeHoursType}");
+            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement ppopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            string prooomptText = ppopupAlert.Text;
+            Console.WriteLine("Alert text: " + prooomptText);
+
+            if (ppopupAlert.Text == "Availability updated")
+            {
+                Assert.Pass("Error in the system, alert should be Hours updated but getting alert Availlability updated!");
+            }
+            else
+            {
+                Assert.Fail("No Error in the system, popup alert is correct!");
+            }
+        }
+
+
+       
 
     }
 }
