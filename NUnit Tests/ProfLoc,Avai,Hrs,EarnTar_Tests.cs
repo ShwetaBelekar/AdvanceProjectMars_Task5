@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -68,7 +69,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             //LoginPage loginPageObj = new LoginPage();
             //loginPageObj.LoginActions();
             //loginPageObj.VerifyUserInHomePage();
-            
+
             ProfLoc_Avai_Hrs_EarnTarPage profLoc_Avai_Hrs_EarnTarPageObj = new ProfLoc_Avai_Hrs_EarnTarPage();
             profLoc_Avai_Hrs_EarnTarPageObj.SelectAvailabilityAction(AvailabilityType);
             Console.WriteLine($"Selected {AvailabilityType}");
@@ -116,8 +117,8 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             {
                 Console.WriteLine("Availability updated unsuccessfull");
             }
-            
-           profLoc_Avai_Hrs_EarnTarPageObj.ChangeAvailabilityAction(NewAvailabilityType);
+
+            profLoc_Avai_Hrs_EarnTarPageObj.ChangeAvailabilityAction(NewAvailabilityType);
             if (NewAvailabilityType == "Part Time")
             {
                 Console.WriteLine("Part Time is selected");
@@ -170,7 +171,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             IWebElement poopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             string promptText = poopupAlert.Text;
             Console.WriteLine("Alert text: " + promptText);
-           
+
             if (poopupAlert.Text == "Availability updated")
             {
                 Console.WriteLine("Error in the system, alert should be Hours updated but getting alert Availlability updated!");
@@ -237,7 +238,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             ProfLoc_Avai_Hrs_EarnTarPage profLoc_Avai_Hrs_EarnTarPageObj = new ProfLoc_Avai_Hrs_EarnTarPage();
             profLoc_Avai_Hrs_EarnTarPageObj.SelectEarnTargetAction(EarnTargetType);
             Console.WriteLine($"Selected {EarnTargetType}");
-            
+
             Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
             IWebElement ppopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             string promptText = ppopupAlert.Text;
@@ -302,9 +303,31 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 Assert.Fail("No Error in the system, popup alert is correct!");
             }
         }
-       
+        [Test]
+        public void LocationFeature_IsNotInteractable()
+        {
+           
+            IWebElement location = driver.FindElement(By.CssSelector("#account-profile-section > div > section:nth-child(3) > div > div > div > div.four.wide.column > div > div > div > div > div > div.extra.content > div > div:nth-child(1) > span > strong"));
+
+            
+            Actions actions = new Actions(driver);
+            actions.DoubleClick(location).Perform();
+
+            var initialText = location.Text;
+            actions.DoubleClick(location).Perform();
+            Assert.That(location.Text, Is.EqualTo(initialText));
+            if(initialText == location.Text)
+            {
+                Assert.Pass("Upon double clicking the location button remains the same, hence user can't interact with this feature");
+            }
+            else
+            {
+                Assert.Fail("Upon double clicking the location button the feature opens allows user to interact with it");
+            }
 
 
 
+
+        }
     }
 }
