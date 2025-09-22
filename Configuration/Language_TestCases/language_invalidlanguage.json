@@ -1,10 +1,22 @@
 {
-  "exclude": [
-    "**/bin",
-    "**/bower_components",
-    "**/jspm_packages",
-    "**/node_modules",
-    "**/obj",
-    "**/platforms"
+  "Createinvalidlanguageandlevelrecord": [
+    {
+      "Language": "123@abc",
+      "Level": "Fluent"
+    },
+    {
+      "Language": "Englih",
+      "Level": "Basic"
+    },
+
+    {
+      "Language": "12345678",
+      "Level": "Conversational"
+    },
+    {
+      "Language": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "Level": "Fluent"
+    }
+
   ]
 }

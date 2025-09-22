@@ -75,5 +75,28 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 Assert.Fail("record creation unsuccessful");
             }
         }
+        [Test, TestCaseSource(nameof(GetTestData), new object[] { "language_invalidlanguage.json", "Createinvalidlanguageandlevelrecord" })]
+        public void Createinvalidlanguageandlevelrecord(string Language, string Level)
+        {
+            LanguagePage languagePageObj = new LanguagePage();
+            languagePageObj.CreateLanguageRecord(Language, Level);
+            Console.WriteLine($"Selected {Language} {Level}");
+            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            string promptText = popupAlert.Text;
+            Console.WriteLine("Alert text: " + promptText);
+            Thread.Sleep(6000);
+            IWebElement newLanguage = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
+            IWebElement newLevel = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
+
+            if (newLanguage.Text == Language && newLevel.Text == Level)
+            {
+                Assert.Pass("System is accepting invalid data, which is incorrect.");
+            }
+            else
+            {
+                Assert.Fail("System is not accepting invalid data, which is correct.");
+            }
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace AdvanceProjectMars_Task5.Pages
             Thread.Sleep(2000);
             profileTab.Click();
             languageOption.Click();
-            Thread.Sleep(2000);
+            
 
         }
     }
