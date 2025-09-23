@@ -93,7 +93,30 @@ namespace AdvanceProjectMars_Task5.Pages
             addButton.Click();
         }
 
+        public void CreateDuplicateLanguageRecord(string DuplicateLanguage, string DuplicateLevel)
+        {
+            Thread.Sleep(5000);
 
+            addNewButton.Click();
+            addLanguageTextbox.Click();
+            addLanguageTextbox.SendKeys(DuplicateLanguage);
+            chooseLanguageLevelDropdownButton.SendKeys(DuplicateLevel);
+
+            //IWebElement levelOption = driver.FindElement(By.XPath("//option[@value='Basic']"));
+            //levelOption.Click();
+
+            //IWebElement levelOption = driver.FindElement(By.XPath("//option[@value='Fluent']"));
+            //levelOption.Click();
+
+            //IWebElement levelOption = driver.FindElement(By.XPath("//option[@value='Conversational']"));
+            //levelOption.Click();
+
+            //IWebElement levelOption = driver.FindElement(By.XPath("//option[@value='Native/Bilingual']"));
+            //levelOption.Click();
+
+            addButton.Click();
+            //cancelButton.Click();
+        }
 
     }
 }

@@ -34,11 +34,14 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             var testData = TestDataReader.ReadTestData(fileName);
             foreach (var data in testData[testName])
             {
-                if (data.Language != null && data.Level != null)
+                if (data.Language != null && data.Level != null && data.DuplicateLanguage != null && data.DuplicateLevel != null)
+                {
+                    yield return new TestCaseData(data.Language, data.Level, data.DuplicateLanguage, data.DuplicateLevel);
+                }
+                else if (data.Language != null && data.Level != null)
                 {
                     yield return new TestCaseData(data.Language, data.Level);
                 }
-                
             }
         }
         //public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)
@@ -119,6 +122,84 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             else
             {
                 Assert.Fail("record creation unsuccessful");
+            }
+        }
+        [Test, TestCaseSource(nameof(GetTestData), new object[] { "language_blanklanguage.json", "Createblanklanguagerecord" })]
+        public void Createblanklanguagerecord(string Language, string Level)
+        {
+            LanguagePage languagePageObj = new LanguagePage();
+            languagePageObj.CreateLanguageRecord(Language, Level);
+            Console.WriteLine($"Selected {Language} {Level}");
+            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']", 2);
+            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']"));
+            string promptText = popupAlert.Text;
+            Console.WriteLine("Alert text: " + promptText);
+            
+            if (popupAlert.Text == "Please enter language and level")
+            {
+                Assert.Pass("Blank language record not accepted");
+            }
+            else
+            {
+                Assert.Fail("Blank language record accepted");
+            }
+        }
+        [Test, TestCaseSource(nameof(GetTestData), new object[] { "language_blanklevel.json", "Createblanklevelrecord" })]
+        public void Createblanklevelrecord(string Language, string Level)
+        {
+            LanguagePage languagePageObj = new LanguagePage();
+            languagePageObj.CreateLanguageRecord(Language, Level);
+            Console.WriteLine($"Selected {Language} {Level}");
+            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']", 2);
+            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']"));
+            string promptText = popupAlert.Text;
+            Console.WriteLine("Alert text: " + promptText);
+
+            if (popupAlert.Text == "Please enter language and level")
+            {
+                Assert.Pass("Blank level record not accepted");
+            }
+            else
+            {
+                Assert.Fail("Blank level record accepted");
+            }
+        }
+        [Test, TestCaseSource(nameof(GetTestData), new object[] { "language_duplicatelanguageandlevelrecord.json", "Createduplicatelanguageandlevelrecord" })]
+        public void Createduplicatelanguageandlevelrecord(string Language, string Level, string DuplicateLanguage, string DuplicateLevel)
+        {
+            LanguagePage languagePageObj = new LanguagePage();
+            languagePageObj.CreateLanguageRecord(Language, Level);
+            Console.WriteLine($"Selected {Language} {Level}");
+            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            string promptText = popupAlert.Text;
+            Console.WriteLine("Alert text: " + promptText);
+            Thread.Sleep(6000);
+            IWebElement newLanguage = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
+            IWebElement newLevel = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
+
+            if (newLanguage.Text == Language && newLevel.Text == Level)
+            {
+                Console.WriteLine("record created successfully");
+            }
+            else
+            {
+                Console.WriteLine("record creation unsuccessful");
+            }
+            
+            languagePageObj.CreateDuplicateLanguageRecord(DuplicateLanguage, DuplicateLevel);
+            Console.WriteLine($"Selected {DuplicateLanguage} {DuplicateLevel}");
+            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']", 2);
+            IWebElement ppopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']"));
+            string prromptText = ppopupAlert.Text;
+            Console.WriteLine("Alert text: " + prromptText);
+            if(ppopupAlert.Text == "This language is already exist in your language list.")
+            {
+                Assert.Pass("Duplicate record not accepted");
+            }
+            else
+            {
+                Assert.Fail("Duplicate record accepted");
             }
         }
     }
