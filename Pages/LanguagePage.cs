@@ -1,4 +1,5 @@
 ﻿using AdvanceProjectMars_Task5.Utilities;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace AdvanceProjectMars_Task5.Pages
         public void CreateLanguageRecord(string Language, string Level)
         {
             Thread.Sleep(5000);
+            
             addNewButton.Click();
             addLanguageTextbox.Click();
             addLanguageTextbox.SendKeys(Language);
@@ -59,7 +61,37 @@ namespace AdvanceProjectMars_Task5.Pages
           
             deleteButton.Click();
         }
+        public void Addmorethanfourlanguage(string Language, string Level)
+        {
+            Thread.Sleep(5000);
+            try
+            {
+                IWebElement addNewButton = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/thead/tr/th[3]/div"));
+                if (addNewButton.Displayed)
+                {
+                    addNewButton.Click();
+                    Thread.Sleep(2000);
+                }
+                else
+                {
+                    Assert.Pass("AddNew is not visible can't add language");
+                }
 
+            }
+            catch (NoSuchElementException)
+            {
+                Assert.Pass("AddNew button hasn't been found, likely already at maximum languages");
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"An unexpected error occurred: {ex.Message}");
+            }
+            //addNewButton.Click();
+            addLanguageTextbox.Click();
+            addLanguageTextbox.SendKeys(Language);
+            chooseLanguageLevelDropdownButton.SendKeys(Level);
+            addButton.Click();
+        }
 
 
 

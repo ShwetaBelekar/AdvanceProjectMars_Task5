@@ -1,10 +1,26 @@
 {
-  "exclude": [
-    "**/bin",
-    "**/bower_components",
-    "**/jspm_packages",
-    "**/node_modules",
-    "**/obj",
-    "**/platforms"
+  "Ifusercanaddmorethanfourlanguage": [
+    {
+      "Language": "Spanish",
+      "Level": "Conversational"
+    },
+    {
+      "Language": "Python",
+      "Level": "Basic"
+    },
+
+    {
+      "Language": "Marathi",
+      "Level": "Native/Bilingual"
+    },
+    {
+      "Language": "Hindi",
+      "Level": "Fluent"
+    },
+    {
+      "Language": "English",
+      "Level": "Basic"
+    }
+
   ]
 }
