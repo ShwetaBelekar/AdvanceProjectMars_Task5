@@ -1,10 +1,30 @@
 {
-  "exclude": [
-    "**/bin",
-    "**/bower_components",
-    "**/jspm_packages",
-    "**/node_modules",
-    "**/obj",
-    "**/platforms"
+  "Editexistinglanguageandlevelrecord": [
+    {
+      "Language": "German",
+      "Level": "Native/Bilingual",
+      "NewLanguage": "Java",
+      "NewLevel": "Basic"
+    },
+    {
+      "Language": "C#",
+      "Level": "Fluent",
+      "NewLanguage": "English",
+      "NewLevel": "Conversational"
+    },
+    {
+      "Language": "Spanish",
+      "Level": "Fluent",
+      "NewLanguage": "French",
+      "NewLevel": "Conversational"
+    },
+    {
+      "Language": "Marathi",
+      "Level": "Fluent",
+      "NewLanguage": "Hindi",
+      "NewLevel": "Conversational"
+    }
+    
+
   ]
 }

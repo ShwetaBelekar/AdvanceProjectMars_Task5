@@ -17,6 +17,8 @@ namespace AdvanceProjectMars_Task5.TestData.Language
             public string DuplicateLanguage { get; set; }
             public string DuplicateLevel { get; set; }
             public string EditLanguage {  get; set; }
+            public string NewLanguage { get; set; }
+            public string NewLevel { get; set; }
         }
 
         public static class TestDataReader

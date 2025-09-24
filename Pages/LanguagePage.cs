@@ -1,6 +1,7 @@
 ﻿using AdvanceProjectMars_Task5.Utilities;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.BiDi.Log;
 using RazorEngine;
 using System;
 using System.Collections.Generic;
@@ -18,10 +19,11 @@ namespace AdvanceProjectMars_Task5.Pages
 
         private IWebElement addButton => driver.FindElement(By.XPath("//input[@value='Add']"));
         private IWebElement cancelButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[3]/input[2]"));
-        private IWebElement editButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[3]/span[1]/i"));
+        private IWebElement editButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[3]/span[1]/i"));
+        
         private IWebElement updateButton => driver.FindElement(By.XPath("//input[@value='Update']"));
         private IWebElement editCancelButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td/div/span/input[2]"));
-        private IWebElement deleteButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[3]/span[2]"));
+        private IWebElement deleteButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[3]/span[2]"));
         public void CreateLanguageRecord(string Language, string Level)
         {
             Thread.Sleep(5000);
@@ -44,8 +46,22 @@ namespace AdvanceProjectMars_Task5.Pages
             //levelOption.Click();
 
             addButton.Click();
+            Thread.Sleep(2000);
             //cancelButton.Click();
         }
+        public void editExistingLanguageRecord(string NewLanguage, string NewLevel)
+        {
+            Thread.Sleep(5000);
+            editButton.Click();
+            Thread.Sleep(2000);
+            addLanguageTextbox.Clear();
+            addLanguageTextbox.SendKeys(NewLanguage);
+            chooseLanguageLevelDropdownButton.SendKeys(NewLevel);
+            Thread.Sleep(2000);
+            updateButton.Click();
+            Thread.Sleep(2000);
+        }
+        
         public void CancellingEditOperation(string EditLanguage)
         {
             Thread.Sleep(3000);
@@ -81,7 +97,7 @@ namespace AdvanceProjectMars_Task5.Pages
             }
         }
 
-        public void deleteLanguageRecord()
+        public void deleteExistingLanguageRecord()
         {
           
             deleteButton.Click();

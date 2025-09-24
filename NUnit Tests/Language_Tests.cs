@@ -38,6 +38,10 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 {
                     yield return new TestCaseData(data.Language, data.Level, data.DuplicateLanguage, data.DuplicateLevel);
                 }
+                else if (data.Language != null && data.Level != null && data.NewLanguage != null && data.NewLevel != null)
+                {
+                    yield return new TestCaseData(data.Language, data.Level, data.NewLanguage, data.NewLevel);
+                }
                 else if (data.Language != null && data.Level != null && data.EditLanguage != null)
                 {
                     yield return new TestCaseData(data.Language, data.Level, data.EditLanguage);
@@ -244,6 +248,97 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             {
                 Assert.Fail("Cancelling an edit operation should discard the data yes the system is doing this");
             }
+        }
+        [Test, TestCaseSource(nameof(GetTestData), new object[] { "language_editexistinglanguagerecord.json", "Editexistinglanguageandlevelrecord" })]
+        public void Editexistinglanguageandlevelrecord(string Language, string Level, string NewLanguage, string NewLevel)
+        {
+            LanguagePage languagePageObj = new LanguagePage();
+            languagePageObj.CreateLanguageRecord(Language, Level);
+            Console.WriteLine($"Selected {Language} {Level}");
+            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            string promptText = popupAlert.Text;
+            Console.WriteLine("Alert text: " + promptText);
+            IWebElement createLanguage = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
+            IWebElement createLevel = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
+
+            if (createLanguage.Text == Language && createLevel.Text == Level)
+            {
+                Console.WriteLine("record created successfully");
+            }
+            else
+            {
+                Console.WriteLine("record creation unsuccessful");
+            }
+            languagePageObj.editExistingLanguageRecord(NewLanguage, NewLevel);
+            Console.WriteLine($"Selected {NewLanguage} {NewLevel}");
+            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement poopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            string proomptText = poopupAlert.Text;
+            Console.WriteLine("Alert text: " + proomptText);
+            Wait.WaitToBeClickable(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]", 2);
+            IWebElement editLanguage = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
+            IWebElement editLevel = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
+
+            if (editLanguage.Text == NewLanguage && editLevel.Text == NewLevel)
+            {
+                Assert.Pass("edited language is updated successfully");
+            }
+            else
+            {
+                Assert.Fail("edited language is not updated");
+            }
+        }
+        [Test, TestCaseSource(nameof(GetTestData), new object[] { "language_deleteexistinglanguagerecord.json", "Deleteexistinglanguageandlevelrecord" })]
+        public void Deleteexistinglanguageandlevelrecord(string Language, string Level)
+        {
+            LanguagePage languagePageObj = new LanguagePage();
+            languagePageObj.CreateLanguageRecord(Language, Level);
+            Console.WriteLine($"Selected {Language} {Level}");
+            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            string promptText = popupAlert.Text;
+            Console.WriteLine("Alert text: " + promptText);
+            IWebElement createLanguage = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
+            IWebElement createLevel = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
+
+            if (createLanguage.Text == Language && createLevel.Text == Level)
+            {
+                Console.WriteLine("record created successfully");
+            }
+            else
+            {
+                Console.WriteLine("record creation unsuccessful");
+            }
+            languagePageObj.deleteExistingLanguageRecord();
+            Console.WriteLine($"Selected {Language} {Level}");
+            
+            bool testPassed = false;
+            try
+            {
+                Wait.WaitToBeVisible(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 4);
+                IWebElement poopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+                string proomptText = poopupAlert.Text;
+                Console.WriteLine("Alert text: " + proomptText);
+                testPassed = true;
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+
+            }
+            if (testPassed)
+            {
+                Assert.Pass("Test pass");
+            }
+            else
+            {
+                Assert.Fail("Test failed");
+            }
+
+
         }
     }
 }
