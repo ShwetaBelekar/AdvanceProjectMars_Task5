@@ -48,16 +48,37 @@ namespace AdvanceProjectMars_Task5.Pages
         }
         public void CancellingEditOperation(string EditLanguage)
         {
-            
+            Thread.Sleep(3000);
             editButton.Click();
+            Thread.Sleep(2000);
             addLanguageTextbox.Clear();
             addLanguageTextbox.SendKeys(EditLanguage);
-
+            Thread.Sleep(2000);
             editCancelButton.Click();
+
+            Thread.Sleep(2000);
+            IWebElement Language = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
+            if (Language.Text == "German")
+            {
+                Console.WriteLine("Edit operation is cancelled and original language German is visible");
+            }
+            else
+            {
+                Console.WriteLine("Edit operation is cancelled but original language German is not visible");
+            }
             editButton.Click();
+            Thread.Sleep(2000);
             updateButton.Click();
-
-
+            Thread.Sleep(2000);
+            IWebElement newLanguage = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
+            if (newLanguage.Text == "English")
+            {
+                Console.WriteLine("Edit operation was cancelled so the data should be discarded and original language German should be visible but no the system is saving unnecessary data at the back");
+            }
+            else
+            {
+                Console.WriteLine("German is correct system is not saving any unnecessary data");
+            }
         }
 
         public void deleteLanguageRecord()
