@@ -38,10 +38,15 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 {
                     yield return new TestCaseData(data.Language, data.Level, data.DuplicateLanguage, data.DuplicateLevel);
                 }
+                else if (data.Language != null && data.Level != null && data.EditLanguage != null)
+                {
+                    yield return new TestCaseData(data.Language, data.Level, data.EditLanguage);
+                }
                 else if (data.Language != null && data.Level != null)
                 {
                     yield return new TestCaseData(data.Language, data.Level);
                 }
+                
             }
         }
         //public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)
@@ -200,6 +205,44 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             else
             {
                 Assert.Fail("Duplicate record accepted");
+            }
+        }
+        [Test, TestCaseSource(nameof(GetTestData), new object[] { "language_Cancellinganeditoperationshouldnotkeeptheunnecessarydatainthesystem.json", "Cancelaneditoperationshouldcorrectlydiscardthedata" })]
+        public void Cancelaneditoperationshouldcorrectlydiscardthedata(string Language, string Level, string EditLanguage)
+        {
+            LanguagePage languagePageObj = new LanguagePage();
+            languagePageObj.CreateLanguageRecord(Language, Level);
+            Console.WriteLine($"Selected {Language} {Level}");
+            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            string promptText = popupAlert.Text;
+            Console.WriteLine("Alert text: " + promptText);
+            Thread.Sleep(6000);
+            IWebElement newLanguage = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
+            IWebElement newLevel = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
+
+            if (newLanguage.Text == Language && newLevel.Text == Level)
+            {
+                Console.WriteLine("record created successfully");
+            }
+            else
+            {
+                Console.WriteLine("record creation unsuccessful");
+            }
+
+            languagePageObj.CancellingEditOperation(EditLanguage);
+            Console.WriteLine($"Selected {EditLanguage}");
+            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement ppopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            string prromptText = ppopupAlert.Text;
+            Console.WriteLine("Alert text: " + prromptText);
+            if (ppopupAlert.Text == "English has been updated to your languages")
+            {
+                Assert.Pass("Cancelling an edit operation should discard the data but the system is not doing this language should be German but here it show English");
+            }
+            else
+            {
+                Assert.Fail("Cancelling an edit operation should discard the data yes the system is doing this");
             }
         }
     }

@@ -1,6 +1,7 @@
 ﻿using AdvanceProjectMars_Task5.Utilities;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using RazorEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,14 +46,17 @@ namespace AdvanceProjectMars_Task5.Pages
             addButton.Click();
             //cancelButton.Click();
         }
-        public void EditLanguageRecord()
+        public void CancellingEditOperation(string EditLanguage)
         {
             
             editButton.Click();
+            addLanguageTextbox.Clear();
+            addLanguageTextbox.SendKeys(EditLanguage);
 
-            updateButton.Click();
-            
             editCancelButton.Click();
+            editButton.Click();
+            updateButton.Click();
+
 
         }
 
