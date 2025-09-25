@@ -11,7 +11,12 @@ namespace AdvanceProjectMars_Task5.TestData.Skill
     {
         public class SkillData
         {
-            
+            public string Skill { get; set; }
+            public string Level { get; set; }
+            public string EditSkill { get; set; }
+            public string NewSkill { get; set; }
+            public string NewLevel { get; set; }
+
         }
 
         public static class TestDataReader

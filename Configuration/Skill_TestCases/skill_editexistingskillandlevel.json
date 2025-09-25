@@ -1,10 +1,23 @@
 {
-  "exclude": [
-    "**/bin",
-    "**/bower_components",
-    "**/jspm_packages",
-    "**/node_modules",
-    "**/obj",
-    "**/platforms"
+  "Editexistingskillandlevelrecord": [
+    {
+      "Skill": "Drawing",
+      "Level": "Beginner",
+      "NewSkill": "Dancing",
+      "NewLevel": "Intermediate"
+    },
+    {
+      "Skill": "Singing",
+      "Level": "Expert",
+      "NewSkill": "Acting",
+      "NewLevel": "Beginner"
+    },
+    {
+      "Skill": "Painting",
+      "Level": "Expert",
+      "NewSkill": "Cooking",
+      "NewLevel": "Intermediate"
+    }
+    
   ]
 }
