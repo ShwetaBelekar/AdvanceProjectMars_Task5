@@ -10,21 +10,59 @@ namespace AdvanceProjectMars_Task5.Pages
 {
     public class ShareSkillPage : CommonDriver
     {
+        private IWebElement ShareSkillButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[1]/div/div[2]/a"));
+
+        private IWebElement titleTextbox => driver.FindElement(By.XPath("//input[@name='title']"));
+
+        private IWebElement descriptionTextbox => driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[2]/div/div[2]/div[1]/textarea"));
+        private IWebElement categoryDropdownButton => driver.FindElement(By.XPath("//select[@name='categoryId']"));
+
+        private IWebElement categoryOptions => driver.FindElement(By.XPath("//option[contains(text(), 'Software Development') and @value='1']"));
+
+        private IWebElement subcategoryDropdownButton => driver.FindElement(By.XPath("//select[@name='subcategoryId']"));
+
+        private IWebElement subcategoryOptions => driver.FindElement(By.XPath("//option[contains(text(), 'Solution Architecture Design') and @value='1']"));
+
+        private IWebElement tagTextbox => driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[4]/div[2]/div/div/div/div/input"));
+
+        private IWebElement hourlyBasisServiceButton => driver.FindElement(By.XPath("//input[@name='serviceType' and @value='0']"));
+
+        private IWebElement oneoffServiceButton => driver.FindElement(By.XPath("//input[@name='serviceType' and @value='1']"));
+
+        private IWebElement onSiteLocationButton => driver.FindElement(By.XPath("//input[@name='locationType' and @value='0']"));
+
+        private IWebElement onlineLocationButton => driver.FindElement(By.XPath("//input[@name='locationType' and @value='1']"));
+
+        private IWebElement skillExchangeButton => driver.FindElement(By.XPath("//input[@name='skillTrades' and @value='true']"));
+
+        private IWebElement creditButton => driver.FindElement(By.XPath("//input[@name='skillTrades' and @value='false']"));
+
+        private IWebElement skillExchangeTagTextbox => driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[8]/div[4]/div/div/div/div/div/input"));
+        private IWebElement uploadWorkSmaplesButton => driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[9]/div/div[2]/section/div/label/div/span/i"));
+        private IWebElement activeRadioButton => driver.FindElement(By.XPath("//input[@name='isActive' and @value='true']"));
+
+        private IWebElement hiddenRadioButton => driver.FindElement(By.XPath("//input[@name='isActive' and @value='false']"));
+        private IWebElement saveButton => driver.FindElement(By.XPath("//input[@value='Save']"));
+        private IWebElement cancelButton => driver.FindElement(By.XPath("//input[@value='Cancel']"));
+
+        private IWebElement viewButton => driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[1]/i"));
+        private IWebElement editButton => driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[2]/i"));
+        private IWebElement deleteButton => driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[3]/i"));
         public void CreateShareSkillRecord()
         {
-            IWebElement shareSkillButton = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[1]/div/div[2]/a"));
-            shareSkillButton.Click();
+           
+            ShareSkillButton.Click();
 
-            IWebElement titleTextbox = driver.FindElement(By.XPath("//input[@name='title']"));
+            
             titleTextbox.Click();
 
-            IWebElement descriptionTextbox = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[2]/div/div[2]/div[1]/textarea"));
+            
             descriptionTextbox.Click();
 
-            IWebElement categoryDropdownButton = driver.FindElement(By.XPath("//select[@name='categoryId']"));
+            
             categoryDropdownButton.Click();
 
-            IWebElement categoryOptions = driver.FindElement(By.XPath("//option[contains(text(), 'Software Development') and @value='1']"));
+           
             categoryOptions.Click();
 
             //IWebElement categoryOptions = driver.FindElement(By.XPath("//option[contains(text(), 'Data Analysis & Business Intelligence') and @value='2']"));
@@ -51,10 +89,10 @@ namespace AdvanceProjectMars_Task5.Pages
             //IWebElement categoryOptions = driver.FindElement(By.XPath("//option[contains(text(), 'Recruitment') and @value='9']"));
             //categoryOptions.Click();
 
-            IWebElement subcategoryDropdownButton = driver.FindElement(By.XPath("//select[@name='subcategoryId']"));
+            
             subcategoryDropdownButton.Click();
 
-            IWebElement subcategoryOptions = driver.FindElement(By.XPath("//option[contains(text(), 'Solution Architecture Design') and @value='1']"));
+            
             subcategoryOptions.Click();
 
             //IWebElement subcategoryOptions = driver.FindElement(By.XPath("//option[contains(text(), 'Programming') and @value='2']"));
@@ -204,60 +242,60 @@ namespace AdvanceProjectMars_Task5.Pages
             //IWebElement subcategoryOptions = driver.FindElement(By.XPath("//option[contains(text(), 'Job Market Insight') and @value='4']"));
             //subcategoryOptions.Click();
 
-            IWebElement tagTextbox = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[4]/div[2]/div/div/div/div/input"));
+            
             tagTextbox.Click();
 
-            IWebElement hourlyBasisServiceButton = driver.FindElement(By.XPath("//input[@name='serviceType' and @value='0']"));
+           
             hourlyBasisServiceButton.Click();
 
-            IWebElement oneoffServiceButton = driver.FindElement(By.XPath("//input[@name='serviceType' and @value='1']"));
+            
             oneoffServiceButton.Click();
 
-            IWebElement onSiteLocationButton = driver.FindElement(By.XPath("//input[@name='locationType' and @value='0']"));
+            
             onSiteLocationButton.Click();
 
-            IWebElement onlineLocationButton = driver.FindElement(By.XPath("//input[@name='locationType' and @value='1']"));
+           
             onlineLocationButton.Click();
 
-            IWebElement skillExchangeButton = driver.FindElement(By.XPath("//input[@name='skillTrades' and @value='true']"));
+            
             skillExchangeButton.Click();
 
-            IWebElement creditButton = driver.FindElement(By.XPath("//input[@name='skillTrades' and @value='false']"));
+            
             creditButton.Click();
 
-            IWebElement skillExchangeTagTextbox = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[8]/div[4]/div/div/div/div/div/input"));
+            
             skillExchangeTagTextbox.Click();
 
-            IWebElement uploadWorkSmaplesButton = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[9]/div/div[2]/section/div/label/div/span/i"));
+           
             uploadWorkSmaplesButton.Click();
 
-            IWebElement activeRadioButton = driver.FindElement(By.XPath("//input[@name='isActive' and @value='true']"));
+            
             activeRadioButton.Click();
 
-            IWebElement hiddenRadioButton = driver.FindElement(By.XPath("//input[@name='isActive' and @value='false']"));
+            
             hiddenRadioButton.Click();
 
-            IWebElement saveButton = driver.FindElement(By.XPath("//input[@value='Save']"));
+           
             saveButton.Click();
 
-            IWebElement cancelButton = driver.FindElement(By.XPath("//input[@value='Cancel']"));
+            
             cancelButton.Click();
 
         }
 
         public void EditShareSkillRecord()
         {
-            IWebElement viewButton = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[1]/i"));
+            
             viewButton.Click();
 
-            IWebElement editButton = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[2]/i"));
+            
             editButton.Click();
 
         }
 
         public void DeleteShareSkillRecord()
         {
-            IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[3]/i"));
+            
             deleteButton.Click();
         }
     }
