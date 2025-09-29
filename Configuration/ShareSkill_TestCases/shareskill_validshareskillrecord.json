@@ -1,10 +1,25 @@
 {
-  "exclude": [
-    "**/bin",
-    "**/bower_components",
-    "**/jspm_packages",
-    "**/node_modules",
-    "**/obj",
-    "**/platforms"
+  "Createvalidshareskillrecord": [
+    {
+      "Title": "Selenium",
+      "Description": "Software Testing Automation Tool",
+      "Category": "Test Automation",
+      "SelectSubcategory": "Selenium",
+      "Tags": "Software"
+    },
+    {
+      "Language": "Java",
+      "Level": "Basic"
+    },
+
+    {
+      "Language": "C#",
+      "Level": "Fluent"
+    },
+    {
+      "Language": "English",
+      "Level": "Conversational"
+    }
+
   ]
 }
