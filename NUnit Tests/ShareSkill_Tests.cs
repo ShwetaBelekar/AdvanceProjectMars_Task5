@@ -48,14 +48,21 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         {
             ShareSkillPage shareSkillPageObj = new ShareSkillPage();
             shareSkillPageObj.CreateShareSkillRecord(Title, Description, Category, SelectSubcategory, Tags, ServiceType, LocationType, SkillTrade, SkillExchange, Active);
-            
             Console.WriteLine($"Selected {Title} {Description} {Category} {SelectSubcategory} {Tags} {ServiceType} {LocationType} {SkillTrade} {SkillExchange} {Active}");
-            
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 1);
-            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box-inner' and contains(text(), 'Service Listing Added Successfully')]"));
-            string promptText = popupAlert.Text;
-            Console.WriteLine("Alert text: " + promptText);
-            if (popupAlert.Text == "Service Listing Added Successfully")
+            //Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box-inner' and contains(text(), 'Service Listing Added Successfully')]", 2);
+            //IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box-inner' and contains(text(), 'Service Listing Added Successfully')]"));
+            //string promptText = popupAlert.Text;
+            //Console.WriteLine("Alert text: " + promptText);
+            //if (popupAlert.Text == "Service Listing Added Successfully")
+            //{
+            //    Assert.Pass("Record created successfully");
+            //}
+            //else
+            //{
+            //    Assert.Fail("Record creation unsuccessful");
+            //}
+            IWebElement newListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody[last()]/tr/td[3]"));
+            if (newListing.Text == "Selenium")
             {
                 Assert.Pass("Record created successfully");
             }

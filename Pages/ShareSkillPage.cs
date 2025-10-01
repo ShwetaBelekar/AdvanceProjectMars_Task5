@@ -1,5 +1,8 @@
 ﻿using AdvanceProjectMars_Task5.Utilities;
+using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -284,8 +287,11 @@ namespace AdvanceProjectMars_Task5.Pages
             
 
             saveButton.Click();
-
+            Thread.Sleep(5000);
+            IWebElement manageListingsTab = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/section[1]/div/a[3]"));
+            manageListingsTab.Click();
             
+           
             //cancelButton.Click();
 
         }
