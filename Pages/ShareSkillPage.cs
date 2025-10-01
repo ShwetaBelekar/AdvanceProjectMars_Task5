@@ -38,7 +38,7 @@ namespace AdvanceProjectMars_Task5.Pages
 
         private IWebElement skillExchangeButton => driver.FindElement(By.XPath("//input[@name='skillTrades' and @value='true']"));
 
-        private IWebElement creditButton => driver.FindElement(By.XPath("//input[@name='skillTrades' and @value='false']"));
+        
 
         private IWebElement skillExchangeTagTextbox => driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[8]/div[4]/div/div/div/div/div/input"));
         private IWebElement uploadWorkSmaplesButton => driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[9]/div/div[2]/section/div/label/div/span/i"));
@@ -46,6 +46,7 @@ namespace AdvanceProjectMars_Task5.Pages
 
         private IWebElement hiddenRadioButton => driver.FindElement(By.XPath("//input[@name='isActive' and @value='false']"));
         private IWebElement saveButton => driver.FindElement(By.XPath("//input[@value='Save']"));
+        private IWebElement manageListingsTab => driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/section[1]/div/a[3]"));
         private IWebElement cancelButton => driver.FindElement(By.XPath("//input[@value='Cancel']"));
 
         private IWebElement viewButton => driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[1]/i"));
@@ -288,14 +289,52 @@ namespace AdvanceProjectMars_Task5.Pages
 
             saveButton.Click();
             Thread.Sleep(5000);
-            IWebElement manageListingsTab = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/section[1]/div/a[3]"));
+            
             manageListingsTab.Click();
             
            
             //cancelButton.Click();
 
         }
+        public void CreateDietitianShareSkillRecord(string Title, string Description, string Category, string SelectSubcategory, string Tags, string ServiceType, string LocationType, string Credit)
+        {
+            Thread.Sleep(3000);
+            ShareSkillButton.Click();
 
+
+            titleTextbox.Click();
+            titleTextbox.SendKeys(Title);
+
+
+            descriptionTextbox.Click();
+            descriptionTextbox.SendKeys(Description);
+            Thread.Sleep(2000);
+
+            categoryDropdownButton.SendKeys(Category);
+            Thread.Sleep(2000);
+            selectsubcategoryDropdownButton.SendKeys(SelectSubcategory);
+            Thread.Sleep(3000);
+            tagTextbox.Click();
+            tagTextbox.SendKeys(Tags + Keys.Enter);
+            Thread.Sleep(2000);
+            hourlyBasisServiceButton.SendKeys(ServiceType);
+            
+            Thread.Sleep(3000);
+            onlineLocationButton.SendKeys(LocationType);
+
+            Thread.Sleep(5000);
+            IWebElement creditRadioButton = driver.FindElement(By.XPath("//input[@name='skillTrades' and @value='false']"));
+            creditRadioButton.Click();
+            Thread.Sleep(3000);
+            IWebElement CreditButton = driver.FindElement(By.XPath("//input[@name='charge']"));
+            CreditButton.SendKeys(Credit + Keys.Enter);
+            hiddenRadioButton.Click();
+            saveButton.Click();
+            Thread.Sleep(5000);
+
+            manageListingsTab.Click();
+
+        }
         public void EditShareSkillRecord()
         {
             

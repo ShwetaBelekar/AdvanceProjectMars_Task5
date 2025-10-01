@@ -20,6 +20,7 @@ namespace AdvanceProjectMars_Task5.TestData.Shareskill
             public string ServiceType { get; set; }
             public string LocationType { get; set; }
             public string SkillTrade { get; set; }
+            public string Credit { get; set; }
             public string SkillExchange { get; set; }
             public string Active { get; set; }
         }
