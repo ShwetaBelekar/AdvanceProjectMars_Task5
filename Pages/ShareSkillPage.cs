@@ -19,9 +19,9 @@ namespace AdvanceProjectMars_Task5.Pages
 
         private IWebElement categoryOptions => driver.FindElement(By.XPath("//option[contains(text(), 'Software Development') and @value='1']"));
 
-        private IWebElement subcategoryDropdownButton => driver.FindElement(By.XPath("//select[@name='subcategoryId']"));
+        private IWebElement selectsubcategoryDropdownButton => driver.FindElement(By.XPath("//select[@name='subcategoryId']"));
 
-        private IWebElement subcategoryOptions => driver.FindElement(By.XPath("//option[contains(text(), 'Solution Architecture Design') and @value='1']"));
+        private IWebElement selectsubcategoryOptions => driver.FindElement(By.XPath("//option[contains(text(), 'Solution Architecture Design') and @value='1']"));
 
         private IWebElement tagTextbox => driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[4]/div[2]/div/div/div/div/input"));
 
@@ -48,23 +48,27 @@ namespace AdvanceProjectMars_Task5.Pages
         private IWebElement viewButton => driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[1]/i"));
         private IWebElement editButton => driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[2]/i"));
         private IWebElement deleteButton => driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[3]/i"));
-        public void CreateShareSkillRecord()
+        public void CreateShareSkillRecord(string Title, string Description, string Category, string SelectSubcategory, string Tags, string ServiceType, string LocationType, string SkillTrade, string SkillExchange, string Active)
         {
-           
+            Thread.Sleep(3000);
             ShareSkillButton.Click();
 
             
             titleTextbox.Click();
+            titleTextbox.SendKeys(Title);
 
             
             descriptionTextbox.Click();
-
+            descriptionTextbox.SendKeys(Description);
+            Thread.Sleep(2000);
             
-            categoryDropdownButton.Click();
+            categoryDropdownButton.SendKeys(Category);
+            
 
            
-            categoryOptions.Click();
-
+            //categoryOptions.Click();
+            //categoryOptions.SendKeys(Category);
+            Thread.Sleep(2000);
             //IWebElement categoryOptions = driver.FindElement(By.XPath("//option[contains(text(), 'Data Analysis & Business Intelligence') and @value='2']"));
             //categoryOptions.Click();
 
@@ -90,11 +94,12 @@ namespace AdvanceProjectMars_Task5.Pages
             //categoryOptions.Click();
 
             
-            subcategoryDropdownButton.Click();
+            selectsubcategoryDropdownButton.SendKeys(SelectSubcategory);
 
             
-            subcategoryOptions.Click();
-
+            //selectsubcategoryOptions.Click();
+            //selectsubcategoryOptions.SendKeys(SelectSubcategory);
+            Thread.Sleep(3000);
             //IWebElement subcategoryOptions = driver.FindElement(By.XPath("//option[contains(text(), 'Programming') and @value='2']"));
             //subcategoryOptions.Click();
 
@@ -244,42 +249,44 @@ namespace AdvanceProjectMars_Task5.Pages
 
             
             tagTextbox.Click();
+            tagTextbox.SendKeys(Tags + Keys.Enter);
+            //tagTextbox.SendKeys(Tags);
 
-           
-            hourlyBasisServiceButton.Click();
-
+            //hourlyBasisServiceButton.Click();
+            Thread.Sleep(2000);
             
-            oneoffServiceButton.Click();
+            //oneoffServiceButton.Click();
+            oneoffServiceButton.SendKeys(ServiceType);
+            Thread.Sleep(3000);
+            onSiteLocationButton.SendKeys(LocationType);
+            Thread.Sleep(3000);
 
+            //onlineLocationButton.Click();
+
+
+            skillExchangeButton.SendKeys(SkillTrade);
+            Thread.Sleep(3000);
             
-            onSiteLocationButton.Click();
-
-           
-            onlineLocationButton.Click();
-
-            
-            skillExchangeButton.Click();
-
-            
-            creditButton.Click();
+            //creditButton.Click();
 
             
             skillExchangeTagTextbox.Click();
-
+            skillExchangeTagTextbox.SendKeys(SkillExchange + Keys.Enter);
+            Thread.Sleep(3000);
            
-            uploadWorkSmaplesButton.Click();
+            //uploadWorkSmaplesButton.Click();
 
             
-            activeRadioButton.Click();
+            activeRadioButton.SendKeys(Active);
+            Thread.Sleep(2000);
 
+            //hiddenRadioButton.Click();
             
-            hiddenRadioButton.Click();
 
-           
             saveButton.Click();
 
             
-            cancelButton.Click();
+            //cancelButton.Click();
 
         }
 

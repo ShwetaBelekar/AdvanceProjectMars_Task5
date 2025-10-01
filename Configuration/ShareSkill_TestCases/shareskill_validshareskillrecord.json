@@ -5,20 +5,13 @@
       "Description": "Software Testing Automation Tool",
       "Category": "Test Automation",
       "SelectSubcategory": "Selenium",
-      "Tags": "Software"
-    },
-    {
-      "Language": "Java",
-      "Level": "Basic"
-    },
-
-    {
-      "Language": "C#",
-      "Level": "Fluent"
-    },
-    {
-      "Language": "English",
-      "Level": "Conversational"
+      "Tags": "Software",
+      "ServiceType": "One-off service",
+      "LocationType": "On site",
+      "SkillTrade": "Skill-exchange",
+      "SkillExchange": "ManualTesting",
+      "Active": "Active"
+      
     }
 
   ]
