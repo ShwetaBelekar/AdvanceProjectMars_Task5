@@ -37,10 +37,9 @@ namespace AdvanceProjectMars_Task5.Pages
         private IWebElement onlineLocationButton => driver.FindElement(By.XPath("//input[@name='locationType' and @value='1']"));
 
         private IWebElement skillExchangeButton => driver.FindElement(By.XPath("//input[@name='skillTrades' and @value='true']"));
-
-        
-
+        private IWebElement creditRadioButton => driver.FindElement(By.XPath("//input[@name='skillTrades' and @value='false']"));
         private IWebElement skillExchangeTagTextbox => driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[8]/div[4]/div/div/div/div/div/input"));
+        private IWebElement CreditButton => driver.FindElement(By.XPath("//input[@name='charge']"));
         private IWebElement uploadWorkSmaplesButton => driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[9]/div/div[2]/section/div/label/div/span/i"));
         private IWebElement activeRadioButton => driver.FindElement(By.XPath("//input[@name='isActive' and @value='true']"));
 
@@ -52,27 +51,92 @@ namespace AdvanceProjectMars_Task5.Pages
         private IWebElement viewButton => driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[1]/i"));
         private IWebElement editButton => driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[2]/i"));
         private IWebElement deleteButton => driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[3]/i"));
-        public void CreateShareSkillRecord(string Title, string Description, string Category, string SelectSubcategory, string Tags, string ServiceType, string LocationType, string SkillTrade, string SkillExchange, string Active)
+        public void CreateShareSkillRecord(dynamic record)
         {
             Thread.Sleep(3000);
             ShareSkillButton.Click();
 
             
             titleTextbox.Click();
-            titleTextbox.SendKeys(Title);
-
+            titleTextbox.SendKeys(record.Title);
+            Thread.Sleep(2000);
             
             descriptionTextbox.Click();
-            descriptionTextbox.SendKeys(Description);
+            descriptionTextbox.SendKeys(record.Description);
             Thread.Sleep(2000);
             
-            categoryDropdownButton.SendKeys(Category);
+            categoryDropdownButton.SendKeys(record.Category);
+            Thread.Sleep(2000);
+            selectsubcategoryDropdownButton.SendKeys(record.SelectSubcategory);
+            Thread.Sleep(3000);
+            tagTextbox.Click();
+            tagTextbox.SendKeys(record.Tags + Keys.Enter);
+            //tagTextbox.SendKeys(Tags);
+
+            //hourlyBasisServiceButton.Click();
+            Thread.Sleep(2000);
+            if (record.ServiceType == "Hourly basis service")
+            {
+                hourlyBasisServiceButton.Click();
+            }
+            else if (record.ServiceType == "One-off service")
+            {
+                oneoffServiceButton.Click();
+            }
+
+                //oneoffServiceButton.Click();
+                
+            Thread.Sleep(3000);
+            if (record.LocationType == "On site")
+            {
+                onSiteLocationButton.Click();
+            }
+            else if (record.LocationType == "Online")
+            {
+                onlineLocationButton.Click();
+            }
+            
+            Thread.Sleep(3000);
+
             
 
-           
+            //onlineLocationButton.Click();
+
+            if (record.SkillTrade != null)
+            {
+                skillExchangeButton.Click();
+                skillExchangeTagTextbox.Click();
+                skillExchangeTagTextbox.SendKeys(record.SkillExchange + Keys.Enter);
+            }
+            else
+            {
+                creditRadioButton.Click();
+                CreditButton.SendKeys(record.Credit + Keys.Enter);
+            }
+                
+            Thread.Sleep(3000);
+
+            //uploadWorkSmaplesButton.Click();
+            if (record.Active == "Active")
+            {
+                activeRadioButton.Click();
+            }
+            else 
+            {
+                hiddenRadioButton.Click();
+            }
+            
+            Thread.Sleep(2000);
+            
+
+
+            saveButton.Click();
+            Thread.Sleep(5000);
+
+            manageListingsTab.Click();
             //categoryOptions.Click();
             //categoryOptions.SendKeys(Category);
-            Thread.Sleep(2000);
+
             //IWebElement categoryOptions = driver.FindElement(By.XPath("//option[contains(text(), 'Data Analysis & Business Intelligence') and @value='2']"));
             //categoryOptions.Click();
 
@@ -97,13 +161,9 @@ namespace AdvanceProjectMars_Task5.Pages
             //IWebElement categoryOptions = driver.FindElement(By.XPath("//option[contains(text(), 'Recruitment') and @value='9']"));
             //categoryOptions.Click();
 
-            
-            selectsubcategoryDropdownButton.SendKeys(SelectSubcategory);
-
-            
             //selectsubcategoryOptions.Click();
             //selectsubcategoryOptions.SendKeys(SelectSubcategory);
-            Thread.Sleep(3000);
+
             //IWebElement subcategoryOptions = driver.FindElement(By.XPath("//option[contains(text(), 'Programming') and @value='2']"));
             //subcategoryOptions.Click();
 
@@ -251,90 +311,48 @@ namespace AdvanceProjectMars_Task5.Pages
             //IWebElement subcategoryOptions = driver.FindElement(By.XPath("//option[contains(text(), 'Job Market Insight') and @value='4']"));
             //subcategoryOptions.Click();
 
-            
-            tagTextbox.Click();
-            tagTextbox.SendKeys(Tags + Keys.Enter);
-            //tagTextbox.SendKeys(Tags);
-
-            //hourlyBasisServiceButton.Click();
-            Thread.Sleep(2000);
-            
-            //oneoffServiceButton.Click();
-            oneoffServiceButton.SendKeys(ServiceType);
-            Thread.Sleep(3000);
-            onSiteLocationButton.SendKeys(LocationType);
-            Thread.Sleep(3000);
-
-            //onlineLocationButton.Click();
-
-
-            skillExchangeButton.SendKeys(SkillTrade);
-            Thread.Sleep(3000);
-            
-            //creditButton.Click();
-
-            
-            skillExchangeTagTextbox.Click();
-            skillExchangeTagTextbox.SendKeys(SkillExchange + Keys.Enter);
-            Thread.Sleep(3000);
-           
-            //uploadWorkSmaplesButton.Click();
-
-            
-            activeRadioButton.SendKeys(Active);
-            Thread.Sleep(2000);
-
-            //hiddenRadioButton.Click();
-            
-
-            saveButton.Click();
-            Thread.Sleep(5000);
-            
-            manageListingsTab.Click();
-            
-           
             //cancelButton.Click();
 
         }
-        public void CreateDietitianShareSkillRecord(string Title, string Description, string Category, string SelectSubcategory, string Tags, string ServiceType, string LocationType, string Credit)
-        {
-            Thread.Sleep(3000);
-            ShareSkillButton.Click();
+        //public void CreateDietitianShareSkillRecord(string Title, string Description, string Category, string SelectSubcategory, string Tags, string ServiceType, string LocationType, string Credit)
+        //{
+        //    Thread.Sleep(3000);
+        //    ShareSkillButton.Click();
 
 
-            titleTextbox.Click();
-            titleTextbox.SendKeys(Title);
+        //    titleTextbox.Click();
+        //    titleTextbox.SendKeys(Title);
 
 
-            descriptionTextbox.Click();
-            descriptionTextbox.SendKeys(Description);
-            Thread.Sleep(2000);
+        //    descriptionTextbox.Click();
+        //    descriptionTextbox.SendKeys(Description);
+        //    Thread.Sleep(2000);
 
-            categoryDropdownButton.SendKeys(Category);
-            Thread.Sleep(2000);
-            selectsubcategoryDropdownButton.SendKeys(SelectSubcategory);
-            Thread.Sleep(3000);
-            tagTextbox.Click();
-            tagTextbox.SendKeys(Tags + Keys.Enter);
-            Thread.Sleep(2000);
-            hourlyBasisServiceButton.SendKeys(ServiceType);
+        //    categoryDropdownButton.SendKeys(Category);
+        //    Thread.Sleep(2000);
+        //    selectsubcategoryDropdownButton.SendKeys(SelectSubcategory);
+        //    Thread.Sleep(3000);
+        //    tagTextbox.Click();
+        //    tagTextbox.SendKeys(Tags + Keys.Enter);
+        //    Thread.Sleep(2000);
+        //    hourlyBasisServiceButton.SendKeys(ServiceType);
             
-            Thread.Sleep(3000);
-            onlineLocationButton.SendKeys(LocationType);
+        //    Thread.Sleep(3000);
+        //    onlineLocationButton.SendKeys(LocationType);
 
-            Thread.Sleep(5000);
-            IWebElement creditRadioButton = driver.FindElement(By.XPath("//input[@name='skillTrades' and @value='false']"));
-            creditRadioButton.Click();
-            Thread.Sleep(3000);
-            IWebElement CreditButton = driver.FindElement(By.XPath("//input[@name='charge']"));
-            CreditButton.SendKeys(Credit + Keys.Enter);
-            hiddenRadioButton.Click();
-            saveButton.Click();
-            Thread.Sleep(5000);
+        //    Thread.Sleep(5000);
+        //    IWebElement creditRadioButton = driver.FindElement(By.XPath("//input[@name='skillTrades' and @value='false']"));
+        //    creditRadioButton.Click();
+        //    Thread.Sleep(3000);
+        //    IWebElement CreditButton = driver.FindElement(By.XPath("//input[@name='charge']"));
+        //    CreditButton.SendKeys(Credit + Keys.Enter);
+        //    hiddenRadioButton.Click();
+        //    saveButton.Click();
+        //    Thread.Sleep(5000);
 
-            manageListingsTab.Click();
+        //    manageListingsTab.Click();
 
-        }
+        //}
         public void EditShareSkillRecord()
         {
             
