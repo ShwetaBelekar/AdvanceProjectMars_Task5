@@ -1,10 +1,26 @@
 {
-  "exclude": [
-    "**/bin",
-    "**/bower_components",
-    "**/jspm_packages",
-    "**/node_modules",
-    "**/obj",
-    "**/platforms"
+  "Createinvalidshareskillrecord": [
+    {
+      "Title": "xyz",
+      "Description": "abcdefghijklmnop",
+      "Category": "Test Automation",
+      "SelectSubcategory": "Selenium",
+      "Tags": "Software",
+      "ServiceType": "One-off service",
+      "LocationType": "On site",
+      "SkillTrade": "Skill-exchange",
+      "SkillExchange": "ManualTesting",
+      "Active": "Active"
+    },
+    {
+      "Title": "sdgaddgaggag",
+      "Description": "wetreytuyuo",
+      "Category": "Fun & Lifestyle",
+      "SelectSubcategory": "Health, Nutrition & Fitness",
+      "Tags": "Lifestyle",
+      "ServiceType": "Hourly basis service",
+      "LocationType": "Online",
+      "Credit": "10"
+    }
   ]
 }

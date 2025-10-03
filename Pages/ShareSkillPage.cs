@@ -51,35 +51,37 @@ namespace AdvanceProjectMars_Task5.Pages
         private IWebElement viewButton => driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[1]/i"));
         private IWebElement editButton => driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[2]/i"));
         private IWebElement deleteButton => driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[3]/i"));
-        public void CreateShareSkillRecord(dynamic record)
+        public void CreateShareSkillRecord(string Title, string Description, string Category, string SelectSubcategory, string Tags, string ServiceType, string LocationType, string SkillTrade, string Credit, string SkillExchange, string Active)
+
+
         {
             Thread.Sleep(3000);
             ShareSkillButton.Click();
 
             
             titleTextbox.Click();
-            titleTextbox.SendKeys(record.Title);
+            titleTextbox.SendKeys(Title);
             Thread.Sleep(2000);
             
             descriptionTextbox.Click();
-            descriptionTextbox.SendKeys(record.Description);
+            descriptionTextbox.SendKeys(Description);
             Thread.Sleep(2000);
             
-            categoryDropdownButton.SendKeys(record.Category);
+            categoryDropdownButton.SendKeys(Category);
             Thread.Sleep(2000);
-            selectsubcategoryDropdownButton.SendKeys(record.SelectSubcategory);
+            selectsubcategoryDropdownButton.SendKeys(SelectSubcategory);
             Thread.Sleep(3000);
             tagTextbox.Click();
-            tagTextbox.SendKeys(record.Tags + Keys.Enter);
+            tagTextbox.SendKeys(Tags + Keys.Enter);
             //tagTextbox.SendKeys(Tags);
 
             //hourlyBasisServiceButton.Click();
             Thread.Sleep(2000);
-            if (record.ServiceType == "Hourly basis service")
+            if (ServiceType == "Hourly basis service")
             {
                 hourlyBasisServiceButton.Click();
             }
-            else if (record.ServiceType == "One-off service")
+            else if (ServiceType == "One-off service")
             {
                 oneoffServiceButton.Click();
             }
@@ -87,11 +89,11 @@ namespace AdvanceProjectMars_Task5.Pages
                 //oneoffServiceButton.Click();
                 
             Thread.Sleep(3000);
-            if (record.LocationType == "On site")
+            if (LocationType == "On site")
             {
                 onSiteLocationButton.Click();
             }
-            else if (record.LocationType == "Online")
+            else if (LocationType == "Online")
             {
                 onlineLocationButton.Click();
             }
@@ -102,22 +104,22 @@ namespace AdvanceProjectMars_Task5.Pages
 
             //onlineLocationButton.Click();
 
-            if (record.SkillTrade != null)
+            if (SkillTrade != null)
             {
                 skillExchangeButton.Click();
                 skillExchangeTagTextbox.Click();
-                skillExchangeTagTextbox.SendKeys(record.SkillExchange + Keys.Enter);
+                skillExchangeTagTextbox.SendKeys(SkillExchange + Keys.Enter);
             }
             else
             {
                 creditRadioButton.Click();
-                CreditButton.SendKeys(record.Credit + Keys.Enter);
+                CreditButton.SendKeys(Credit + Keys.Enter);
             }
                 
             Thread.Sleep(3000);
 
             //uploadWorkSmaplesButton.Click();
-            if (record.Active == "Active")
+            if (Active == "Active")
             {
                 activeRadioButton.Click();
             }

@@ -31,26 +31,70 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             loginPageObj.LoginActions();
             loginPageObj.VerifyUserInHomePage();
         }
-        public static IEnumerable<TestCaseData> GetTestData()
+
+        //public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)
+        //{
+        //    var testData = TestDataReader.ReadTestData(fileName);
+        //    foreach (var data in testData[testName])
+        //    {
+        //        if (data.Title != null && data.Description != null && data.Category != null && data.SelectSubcategory != null && data.Tags != null && data.ServiceType != null && data.LocationType != null && data.SkillTrade != null && data.Credit != null && data.SkillExchange != null && data.Active != null)
+        //        {
+        //            yield return new TestCaseData(data.Title, data.Description, data.Category, data.SelectSubcategory, data.Tags, data.ServiceType, data.LocationType, data.SkillTrade, data.SkillExchange, data.Active);
+        //        }
+
+        //    }
+        //}
+        public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)
         {
-            string fileName = "shareskill_validshareskillrecord.json";
-            string testName = "Createvalidshareskillrecord";
             var testData = TestDataReader.ReadTestData(fileName);
-            int testNumber = 1;
             foreach (var data in testData[testName])
             {
-                string testCaseName = $"{testName}_{testNumber}";
-                yield return new TestCaseData(data).SetName(testCaseName);
-                testNumber++;
+                if (data.SkillTrade != null && data.SkillExchange != null)
+                {
+                    // Handle skill trade records
+                    yield return new TestCaseData(data).SetName($"{testName}_SkillTrade");
+                }
+                else if (data.Credit != null)
+                {
+                    // Handle credit records
+                    yield return new TestCaseData(data).SetName($"{testName}_Credit");
+                }
+                else
+                {
+                    // Handle other types of records
+                    yield return new TestCaseData(data).SetName($"{testName}_Other");
+                }
             }
         }
-        [TestCaseSource(nameof(GetTestData))]
+        //public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)
+        //{
+        //    var testData = TestDataReader.ReadTestData(fileName);
+        //    int testNumber = 1;
+        //    foreach (var data in testData[testName])
+        //    {
+        //        string testCaseName = $"ShareSkillTest_{testNumber}";
+        //        yield return new TestCaseData(data).SetName(testCaseName);
+        //        testNumber++;
+        //    }
+        //}
+        [Test, TestCaseSource(nameof(GetTestData), new object[] { "shareskill_validshareskillrecord.json", "Createvalidshareskillrecord" })]
         public void Createvalidshareskillrecord(dynamic record)
-        {
+        { 
             Console.WriteLine($"Running test with data: Title = {record.Title}, Description = {record.Description}");
 
             ShareSkillPage shareSkillPageObj = new ShareSkillPage();
-            shareSkillPageObj.CreateShareSkillRecord(record);
+            shareSkillPageObj.CreateShareSkillRecord(record.Title,
+        record.Description,
+        record.Category,
+        record.SelectSubcategory,
+        record.Tags,
+        record.ServiceType,
+        record.LocationType,
+        record.SkillTrade,
+        record.Credit,
+        record.SkillExchange,
+        record.Active);
+            Console.WriteLine($"Selected {record.Title} {record.Description} {record.Category} {record.SelectSubcategory} {record.Tags} {record.ServiceType} {record.LocationType} {record.SkillTrade} {record.Credit} {record.SkillExchange} {record.Active}");
             IWebElement newListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody[last()]/tr/td[3]"));
             if (newListing.Text == record.Title)
             {
@@ -63,6 +107,25 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 Assert.Fail("Record creation unsuccessful");
             }
         }
-       
+        //[Test, TestCaseSource(nameof(GetTestData), new object[] { "shareskill_invalidshareskillrecord.json", "Createinvalidshareskillrecord" })]
+        //public void Createinvalidshareskillrecord(dynamic record)
+        //{
+        //    Console.WriteLine($"Running test with data: Title = {record.Title}, Description = {record.Description}");
+
+        //    ShareSkillPage shareSkillPageObj = new ShareSkillPage();
+        //    shareSkillPageObj.CreateShareSkillRecord(record);
+        //    IWebElement newListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody[last()]/tr/td[3]"));
+        //    if (newListing.Text == record.Title)
+        //    {
+        //        Console.WriteLine($"Test passed for data: Title = {record.Title}");
+        //        Assert.Pass("Record created successfully");
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine($"Test failed for data: Title = {record.Title}");
+        //        Assert.Fail("Record creation unsuccessful");
+        //    }
+        //}
+
     }
 }

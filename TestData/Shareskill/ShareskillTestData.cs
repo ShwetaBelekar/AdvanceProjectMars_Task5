@@ -23,6 +23,7 @@ namespace AdvanceProjectMars_Task5.TestData.Shareskill
             public string Credit { get; set; }
             public string SkillExchange { get; set; }
             public string Active { get; set; }
+            
         }
 
         public static class TestDataReader
@@ -30,7 +31,7 @@ namespace AdvanceProjectMars_Task5.TestData.Shareskill
             public static Dictionary<string, List<ShareskillData>> ReadTestData(string fileName)
             {
                 string projectRoot = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "..", "..", ".."));
-                string testDataPath = Path.Combine(projectRoot, "Configuration", "Shareskill_TestCases", fileName);
+                string testDataPath = Path.Combine(projectRoot, "Configuration", "ShareSkill_TestCases", fileName);
                 string jsonData = File.ReadAllText(testDataPath);
                 var testData = JsonConvert.DeserializeObject<Dictionary<string, List<ShareskillData>>>(jsonData);
                 return testData;
