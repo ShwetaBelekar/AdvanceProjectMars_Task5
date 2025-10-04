@@ -31,7 +31,66 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             loginPageObj.LoginActions();
             loginPageObj.VerifyUserInHomePage();
         }
-
+        public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)
+        {
+            var testData = TestDataReader.ReadTestData(fileName);
+            foreach (var data in testData[testName])
+            {
+                if (data.Credit == null)
+                {
+                    // Skill Trade record
+                    yield return new TestCaseData(new
+                    {
+                        Title = data.Title,
+                        Description = data.Description,
+                        Category = data.Category,
+                        SelectSubcategory = data.SelectSubcategory,
+                        Tags = data.Tags,
+                        ServiceType = data.ServiceType,
+                        LocationType = data.LocationType,
+                        SkillTrade = data.SkillTrade,
+                        SkillExchange = data.SkillExchange,
+                        Active = data.Active,
+                        Credit = (string)null
+                    });
+                }
+                else
+                {
+                    // Credit record
+                    yield return new TestCaseData(new
+                    {
+                        Title = data.Title,
+                        Description = data.Description,
+                        Category = data.Category,
+                        SelectSubcategory = data.SelectSubcategory,
+                        Tags = data.Tags,
+                        ServiceType = data.ServiceType,
+                        LocationType = data.LocationType,
+                        SkillTrade = data.SkillTrade,
+                        SkillExchange = (string)null,
+                        Active = data.Active,
+                        Credit = data.Credit
+                    });
+                }
+            }
+        }
+        //public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)
+        //{
+        //    var testData = TestDataReader.ReadTestData(fileName);
+        //    foreach (var data in testData[testName])
+        //    {
+        //        if (data.Credit == null)
+        //        {
+        //            // Skill Trade record
+        //            yield return new TestCaseData(data.Title, data.Description, data.Category, data.SelectSubcategory, data.Tags, data.ServiceType, data.LocationType, data.SkillTrade, data.SkillExchange, data.Active);
+        //        }
+        //        else
+        //        {
+        //            // Credit record
+        //            yield return new TestCaseData(data.Title, data.Description, data.Category, data.SelectSubcategory, data.Tags, data.ServiceType, data.LocationType, data.Credit);
+        //        }
+        //    }
+        //}
         //public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)
         //{
         //    var testData = TestDataReader.ReadTestData(fileName);
@@ -39,33 +98,33 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         //    {
         //        if (data.Title != null && data.Description != null && data.Category != null && data.SelectSubcategory != null && data.Tags != null && data.ServiceType != null && data.LocationType != null && data.SkillTrade != null && data.Credit != null && data.SkillExchange != null && data.Active != null)
         //        {
-        //            yield return new TestCaseData(data.Title, data.Description, data.Category, data.SelectSubcategory, data.Tags, data.ServiceType, data.LocationType, data.SkillTrade, data.SkillExchange, data.Active);
+        //            yield return new TestCaseData(data.Title, data.Description, data.Category, data.SelectSubcategory, data.Tags, data.ServiceType, data.LocationType, data.SkillTrade, data.Credit, data.SkillExchange, data.Active);
         //        }
 
         //    }
         //}
-        public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)
-        {
-            var testData = TestDataReader.ReadTestData(fileName);
-            foreach (var data in testData[testName])
-            {
-                if (data.SkillTrade != null && data.SkillExchange != null)
-                {
-                    // Handle skill trade records
-                    yield return new TestCaseData(data).SetName($"{testName}_SkillTrade");
-                }
-                else if (data.Credit != null)
-                {
-                    // Handle credit records
-                    yield return new TestCaseData(data).SetName($"{testName}_Credit");
-                }
-                else
-                {
-                    // Handle other types of records
-                    yield return new TestCaseData(data).SetName($"{testName}_Other");
-                }
-            }
-        }
+        //public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)
+        //{
+        //    var testData = TestDataReader.ReadTestData(fileName);
+        //    foreach (var data in testData[testName])
+        //    {
+        //        if (data.SkillTrade != null && data.SkillExchange != null)
+        //        {
+        //            // Handle skill trade records
+        //            yield return new TestCaseData(data).SetName($"{testName}_SkillTrade");
+        //        }
+        //        else if (data.Credit != null)
+        //        {
+        //            // Handle credit records
+        //            yield return new TestCaseData(data).SetName($"{testName}_Credit");
+        //        }
+        //        else
+        //        {
+        //            // Handle other types of records
+        //            yield return new TestCaseData(data).SetName($"{testName}_Other");
+        //        }
+        //    }
+        //}
         //public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)
         //{
         //    var testData = TestDataReader.ReadTestData(fileName);

@@ -104,13 +104,13 @@ namespace AdvanceProjectMars_Task5.Pages
 
             //onlineLocationButton.Click();
 
-            if (SkillTrade != null)
+            if (SkillTrade == "Skill-exchange")
             {
                 skillExchangeButton.Click();
                 skillExchangeTagTextbox.Click();
                 skillExchangeTagTextbox.SendKeys(SkillExchange + Keys.Enter);
             }
-            else
+            else if (SkillTrade == "Credit")
             {
                 creditRadioButton.Click();
                 CreditButton.SendKeys(Credit + Keys.Enter);
@@ -123,7 +123,7 @@ namespace AdvanceProjectMars_Task5.Pages
             {
                 activeRadioButton.Click();
             }
-            else 
+            else if (Active == "Hidden")
             {
                 hiddenRadioButton.Click();
             }

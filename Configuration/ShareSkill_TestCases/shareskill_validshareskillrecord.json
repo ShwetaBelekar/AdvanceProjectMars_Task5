@@ -21,10 +21,24 @@
       "Tags": "Lifestyle",
       "ServiceType": "Hourly basis service",
       "LocationType": "Online",
-      "SkillTrade": null,
+      "SkillTrade": "Credit",
+      "Credit": "10",
       "SkillExchange": null,
-      "Active": null,
-      "Credit": "10"
+      "Active": "Hidden"
+
+    },
+    {
+      "Title": "Yoga",
+      "Description": "Unwind, relax, and rejuvenate your body and mind",
+      "Category": "Fun & Lifestyle",
+      "SelectSubcategory": "Health, Nutrition & Fitness",
+      "Tags": "exercise",
+      "ServiceType": "Hourly basis service",
+      "LocationType": "On site",
+      "SkillTrade": "Credit",
+      "Credit": "10",
+      "SkillExchange": null,
+      "Active": "Active"
     }
-    ]
+   ]
   }
