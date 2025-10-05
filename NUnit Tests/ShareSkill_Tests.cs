@@ -74,68 +74,9 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 }
             }
         }
-        //public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)
-        //{
-        //    var testData = TestDataReader.ReadTestData(fileName);
-        //    foreach (var data in testData[testName])
-        //    {
-        //        if (data.Credit == null)
-        //        {
-        //            // Skill Trade record
-        //            yield return new TestCaseData(data.Title, data.Description, data.Category, data.SelectSubcategory, data.Tags, data.ServiceType, data.LocationType, data.SkillTrade, data.SkillExchange, data.Active);
-        //        }
-        //        else
-        //        {
-        //            // Credit record
-        //            yield return new TestCaseData(data.Title, data.Description, data.Category, data.SelectSubcategory, data.Tags, data.ServiceType, data.LocationType, data.Credit);
-        //        }
-        //    }
-        //}
-        //public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)
-        //{
-        //    var testData = TestDataReader.ReadTestData(fileName);
-        //    foreach (var data in testData[testName])
-        //    {
-        //        if (data.Title != null && data.Description != null && data.Category != null && data.SelectSubcategory != null && data.Tags != null && data.ServiceType != null && data.LocationType != null && data.SkillTrade != null && data.Credit != null && data.SkillExchange != null && data.Active != null)
-        //        {
-        //            yield return new TestCaseData(data.Title, data.Description, data.Category, data.SelectSubcategory, data.Tags, data.ServiceType, data.LocationType, data.SkillTrade, data.Credit, data.SkillExchange, data.Active);
-        //        }
-
-        //    }
-        //}
-        //public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)
-        //{
-        //    var testData = TestDataReader.ReadTestData(fileName);
-        //    foreach (var data in testData[testName])
-        //    {
-        //        if (data.SkillTrade != null && data.SkillExchange != null)
-        //        {
-        //            // Handle skill trade records
-        //            yield return new TestCaseData(data).SetName($"{testName}_SkillTrade");
-        //        }
-        //        else if (data.Credit != null)
-        //        {
-        //            // Handle credit records
-        //            yield return new TestCaseData(data).SetName($"{testName}_Credit");
-        //        }
-        //        else
-        //        {
-        //            // Handle other types of records
-        //            yield return new TestCaseData(data).SetName($"{testName}_Other");
-        //        }
-        //    }
-        //}
-        //public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)
-        //{
-        //    var testData = TestDataReader.ReadTestData(fileName);
-        //    int testNumber = 1;
-        //    foreach (var data in testData[testName])
-        //    {
-        //        string testCaseName = $"ShareSkillTest_{testNumber}";
-        //        yield return new TestCaseData(data).SetName(testCaseName);
-        //        testNumber++;
-        //    }
-        //}
+       
+        
+        
         [Test, TestCaseSource(nameof(GetTestData), new object[] { "shareskill_validshareskillrecord.json", "Createvalidshareskillrecord" })]
         public void Createvalidshareskillrecord(dynamic record)
         { 

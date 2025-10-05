@@ -1,6 +1,7 @@
 ﻿using AdvanceProjectMars_Task5.Utilities;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
@@ -8,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WindowsInput;
+using WindowsInput.Native;
 
 namespace AdvanceProjectMars_Task5.Pages
 {
@@ -40,19 +43,19 @@ namespace AdvanceProjectMars_Task5.Pages
         private IWebElement creditRadioButton => driver.FindElement(By.XPath("//input[@name='skillTrades' and @value='false']"));
         private IWebElement skillExchangeTagTextbox => driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[8]/div[4]/div/div/div/div/div/input"));
         private IWebElement CreditButton => driver.FindElement(By.XPath("//input[@name='charge']"));
-        private IWebElement uploadWorkSmaplesButton => driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[9]/div/div[2]/section/div/label/div/span/i"));
+        private IWebElement uploadWorkSamplesButton => driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[9]/div/div[2]/section/div/label/div/span/i"));
         private IWebElement activeRadioButton => driver.FindElement(By.XPath("//input[@name='isActive' and @value='true']"));
 
         private IWebElement hiddenRadioButton => driver.FindElement(By.XPath("//input[@name='isActive' and @value='false']"));
         private IWebElement saveButton => driver.FindElement(By.XPath("//input[@value='Save']"));
-        private IWebElement manageListingsTab => driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/section[1]/div/a[3]"));
+        
         private IWebElement cancelButton => driver.FindElement(By.XPath("//input[@value='Cancel']"));
-
+        private IWebElement manageListingsTab => driver.FindElement(By.XPath("//a[@href='/Home/ListingManagement']"));
+        
         private IWebElement viewButton => driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[1]/i"));
         private IWebElement editButton => driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[2]/i"));
         private IWebElement deleteButton => driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[3]/i"));
         public void CreateShareSkillRecord(string Title, string Description, string Category, string SelectSubcategory, string Tags, string ServiceType, string LocationType, string SkillTrade, string Credit, string SkillExchange, string Active)
-
 
         {
             Thread.Sleep(3000);
@@ -118,7 +121,17 @@ namespace AdvanceProjectMars_Task5.Pages
                 
             Thread.Sleep(3000);
 
-            //uploadWorkSmaplesButton.Click();
+            uploadWorkSamplesButton.Click();
+            Thread.Sleep(3000);
+            string filePath = @"C:\Users\ganve\OneDrive\Pictures\Screenshots\Screenshot 2025-08-28 083208.png";
+         
+            Thread.Sleep(3000);
+            
+            driver.FindElement(By.XPath("//input[@type='file']")).SendKeys(filePath);
+            var simulator = new InputSimulator();
+            simulator.Keyboard.KeyPress(VirtualKeyCode.ESCAPE);
+            //Actions actions = new Actions(driver);
+            //actions.SendKeys(Keys.Escape).Perform();
             if (Active == "Active")
             {
                 activeRadioButton.Click();
@@ -133,8 +146,9 @@ namespace AdvanceProjectMars_Task5.Pages
 
 
             saveButton.Click();
-            Thread.Sleep(5000);
-
+            Thread.Sleep(8000);
+            cancelButton.Click();
+            Thread.Sleep(8000);
             manageListingsTab.Click();
             //categoryOptions.Click();
             //categoryOptions.SendKeys(Category);
@@ -313,7 +327,7 @@ namespace AdvanceProjectMars_Task5.Pages
             //IWebElement subcategoryOptions = driver.FindElement(By.XPath("//option[contains(text(), 'Job Market Insight') and @value='4']"));
             //subcategoryOptions.Click();
 
-            //cancelButton.Click();
+            
 
         }
         //public void CreateDietitianShareSkillRecord(string Title, string Description, string Category, string SelectSubcategory, string Tags, string ServiceType, string LocationType, string Credit)
