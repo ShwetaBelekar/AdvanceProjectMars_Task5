@@ -16,8 +16,9 @@ namespace AdvanceProjectMars_Task5.Pages
 {
     public class ShareSkillPage : CommonDriver
     {
-        private IWebElement ShareSkillButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[1]/div/div[2]/a"));
-
+      
+        private IWebElement ShareSkillButton => driver.FindElement(By.XPath("//a[@href='/Home/ServiceListing']"));
+        
         private IWebElement titleTextbox => driver.FindElement(By.XPath("//input[@name='title']"));
 
         private IWebElement descriptionTextbox => driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[2]/div/div[2]/div[1]/textarea"));
@@ -58,7 +59,8 @@ namespace AdvanceProjectMars_Task5.Pages
         public void CreateShareSkillRecord(string Title, string Description, string Category, string SelectSubcategory, string Tags, string ServiceType, string LocationType, string SkillTrade, string Credit, string SkillExchange, string Active)
 
         {
-            Thread.Sleep(3000);
+
+            Thread.Sleep(5000);
             ShareSkillButton.Click();
 
             
@@ -145,16 +147,32 @@ namespace AdvanceProjectMars_Task5.Pages
 
 
             saveButton.Click();
-           
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+
+            Wait.WaitToBeVisible(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
             IWebElement recordcreatedpopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             string promptText = recordcreatedpopupAlert.Text;
             Console.WriteLine("Alert text: " + promptText);
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            if (recordcreatedpopupAlert.Text == "Service Listing Added successfully") 
+            {
+                Console.WriteLine("Record created successfully");
+            }
+            else
+            {
+                Console.WriteLine("Record creation unsuccessful");
+            }
+                
+            Wait.WaitToBeVisible(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']", 2);
             IWebElement worksamplepopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']"));
             string proomptText = worksamplepopupAlert.Text;
             Console.WriteLine("Alert text: " + proomptText);
-
+            if (worksamplepopupAlert.Text == "There is an error when updating Work Samples - undefined") 
+            {
+                Console.WriteLine("error in the system work sample upload feature is not correctly uploading the work files");
+            }
+            else
+            {
+                Console.WriteLine("no error in the system work sample upload feature works correctly");
+            }
             Thread.Sleep(8000);
             cancelButton.Click();
             Thread.Sleep(8000);
@@ -336,48 +354,100 @@ namespace AdvanceProjectMars_Task5.Pages
             //IWebElement subcategoryOptions = driver.FindElement(By.XPath("//option[contains(text(), 'Job Market Insight') and @value='4']"));
             //subcategoryOptions.Click();
 
-            
+        }
+        public void CreateblankShareSkillRecord(string Title, string Description, string Category, string SelectSubcategory, string Tags, string ServiceType, string LocationType, string SkillTrade, string Credit, string SkillExchange, string Active)
+
+        {
+            Thread.Sleep(3000);
+            ShareSkillButton.Click();
+
+
+            titleTextbox.Click();
+            titleTextbox.SendKeys(Title);
+            Thread.Sleep(2000);
+
+            descriptionTextbox.Click();
+            descriptionTextbox.SendKeys(Description);
+            Thread.Sleep(2000);
+
+            categoryDropdownButton.SendKeys(Category);
+            Thread.Sleep(2000);
+            //selectsubcategoryDropdownButton.SendKeys(SelectSubcategory);
+            //Thread.Sleep(3000);
+            tagTextbox.Click();
+            tagTextbox.SendKeys(Tags + Keys.Enter);
+            //tagTextbox.SendKeys(Tags);
+
+            //hourlyBasisServiceButton.Click();
+            Thread.Sleep(2000);
+            if (ServiceType == "Hourly basis service")
+            {
+                hourlyBasisServiceButton.Click();
+            }
+            else if (ServiceType == "One-off service")
+            {
+                oneoffServiceButton.Click();
+            }
+
+            //oneoffServiceButton.Click();
+
+            Thread.Sleep(3000);
+            if (LocationType == "On site")
+            {
+                onSiteLocationButton.Click();
+            }
+            else if (LocationType == "Online")
+            {
+                onlineLocationButton.Click();
+            }
+
+            Thread.Sleep(3000);
+
+
+
+            //onlineLocationButton.Click();
+
+            if (SkillTrade == "Skill-exchange")
+            {
+                skillExchangeButton.Click();
+                skillExchangeTagTextbox.Click();
+                skillExchangeTagTextbox.SendKeys(SkillExchange + Keys.Enter);
+            }
+            else if (SkillTrade == "Credit")
+            {
+                creditRadioButton.Click();
+                CreditButton.SendKeys(Credit + Keys.Enter);
+            }
+
+            Thread.Sleep(3000);
+
+            uploadWorkSamplesButton.Click();
+            Thread.Sleep(3000);
+            string filePath = @"C:\Users\ganve\OneDrive\Pictures\Screenshots\Screenshot 2025-08-28 083208.png";
+
+            Thread.Sleep(3000);
+
+            driver.FindElement(By.XPath("//input[@type='file']")).SendKeys(filePath);
+            var simulator = new InputSimulator();
+            simulator.Keyboard.KeyPress(VirtualKeyCode.ESCAPE);
+
+            if (Active == "Active")
+            {
+                activeRadioButton.Click();
+            }
+            else if (Active == "Hidden")
+            {
+                hiddenRadioButton.Click();
+            }
+
+            Thread.Sleep(2000);
+
+
+
+            saveButton.Click();
 
         }
-        //public void CreateDietitianShareSkillRecord(string Title, string Description, string Category, string SelectSubcategory, string Tags, string ServiceType, string LocationType, string Credit)
-        //{
-        //    Thread.Sleep(3000);
-        //    ShareSkillButton.Click();
-
-
-        //    titleTextbox.Click();
-        //    titleTextbox.SendKeys(Title);
-
-
-        //    descriptionTextbox.Click();
-        //    descriptionTextbox.SendKeys(Description);
-        //    Thread.Sleep(2000);
-
-        //    categoryDropdownButton.SendKeys(Category);
-        //    Thread.Sleep(2000);
-        //    selectsubcategoryDropdownButton.SendKeys(SelectSubcategory);
-        //    Thread.Sleep(3000);
-        //    tagTextbox.Click();
-        //    tagTextbox.SendKeys(Tags + Keys.Enter);
-        //    Thread.Sleep(2000);
-        //    hourlyBasisServiceButton.SendKeys(ServiceType);
-            
-        //    Thread.Sleep(3000);
-        //    onlineLocationButton.SendKeys(LocationType);
-
-        //    Thread.Sleep(5000);
-        //    IWebElement creditRadioButton = driver.FindElement(By.XPath("//input[@name='skillTrades' and @value='false']"));
-        //    creditRadioButton.Click();
-        //    Thread.Sleep(3000);
-        //    IWebElement CreditButton = driver.FindElement(By.XPath("//input[@name='charge']"));
-        //    CreditButton.SendKeys(Credit + Keys.Enter);
-        //    hiddenRadioButton.Click();
-        //    saveButton.Click();
-        //    Thread.Sleep(5000);
-
-        //    manageListingsTab.Click();
-
-        //}
+        
         public void EditShareSkillRecord()
         {
             
