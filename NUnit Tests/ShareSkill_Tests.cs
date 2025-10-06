@@ -107,25 +107,36 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 Assert.Fail("Record creation unsuccessful");
             }
         }
-        //[Test, TestCaseSource(nameof(GetTestData), new object[] { "shareskill_invalidshareskillrecord.json", "Createinvalidshareskillrecord" })]
-        //public void Createinvalidshareskillrecord(dynamic record)
-        //{
-        //    Console.WriteLine($"Running test with data: Title = {record.Title}, Description = {record.Description}");
+        [Test, TestCaseSource(nameof(GetTestData), new object[] { "shareskill_invalidshareskillrecord.json", "Createinvalidshareskillrecord" })]
+        public void Createinvalidshareskillrecord(dynamic record)
+        {
+            Console.WriteLine($"Running test with data: Title = {record.Title}, Description = {record.Description}");
 
-        //    ShareSkillPage shareSkillPageObj = new ShareSkillPage();
-        //    shareSkillPageObj.CreateShareSkillRecord(record);
-        //    IWebElement newListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody[last()]/tr/td[3]"));
-        //    if (newListing.Text == record.Title)
-        //    {
-        //        Console.WriteLine($"Test passed for data: Title = {record.Title}");
-        //        Assert.Pass("Record created successfully");
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine($"Test failed for data: Title = {record.Title}");
-        //        Assert.Fail("Record creation unsuccessful");
-        //    }
-        //}
+            ShareSkillPage shareSkillPageObj = new ShareSkillPage();
+            shareSkillPageObj.CreateShareSkillRecord(record.Title,
+        record.Description,
+        record.Category,
+        record.SelectSubcategory,
+        record.Tags,
+        record.ServiceType,
+        record.LocationType,
+        record.SkillTrade,
+        record.Credit,
+        record.SkillExchange,
+        record.Active);
+            Console.WriteLine($"Selected {record.Title} {record.Description} {record.Category} {record.SelectSubcategory} {record.Tags} {record.ServiceType} {record.LocationType} {record.SkillTrade} {record.Credit} {record.SkillExchange} {record.Active}");
+            IWebElement newListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody[last()]/tr/td[3]"));
+            if (newListing.Text == record.Title)
+            {
+                Console.WriteLine($"Test passed for data: Title = {record.Title}");
+                Assert.Pass("Record created successfully, system is accepting invalid data");
+            }
+            else
+            {
+                Console.WriteLine($"Test failed for data: Title = {record.Title}");
+                Assert.Fail("Record creation unsuccessful, system is not accepting invalid data");
+            }
+        }
 
     }
 }

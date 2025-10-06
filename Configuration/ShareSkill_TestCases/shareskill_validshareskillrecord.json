@@ -1,24 +1,24 @@
 {
    "Createvalidshareskillrecord": [
-      {
-        "Title": "Selenium",
-        "Description": "Software Testing Automation Tool",
-        "Category": "Test Automation",
-        "SelectSubcategory": "Selenium",
-        "Tags": "Software",
-        "ServiceType": "One-off service",
-        "LocationType": "On site",
-        "SkillTrade": "Skill-exchange",
-        "Credit": null,
-        "SkillExchange": "ManualTesting",
-        "Active": "Active"
-      },
+    {
+      "Title": "Selenium",
+      "Description": "Software Testing Automation Tool",
+      "Category": "Test Automation",
+      "SelectSubcategory": "Selenium",
+      "Tags": "Software",
+      "ServiceType": "One-off service",
+      "LocationType": "On site",
+      "SkillTrade": "Skill-exchange",
+      "Credit": null,
+      "SkillExchange": "ManualTesting, Software, Technology",
+      "Active": "Active"
+    },
     {
       "Title": "Dietitian",
       "Description": "Improving your eating habits",
       "Category": "Fun & Lifestyle",
       "SelectSubcategory": "Health, Nutrition & Fitness",
-      "Tags": "Lifestyle",
+      "Tags": "Lifestyle, Selfcare",
       "ServiceType": "Hourly basis service",
       "LocationType": "Online",
       "SkillTrade": "Credit",

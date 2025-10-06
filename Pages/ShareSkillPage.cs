@@ -130,8 +130,7 @@ namespace AdvanceProjectMars_Task5.Pages
             driver.FindElement(By.XPath("//input[@type='file']")).SendKeys(filePath);
             var simulator = new InputSimulator();
             simulator.Keyboard.KeyPress(VirtualKeyCode.ESCAPE);
-            //Actions actions = new Actions(driver);
-            //actions.SendKeys(Keys.Escape).Perform();
+           
             if (Active == "Active")
             {
                 activeRadioButton.Click();
@@ -146,6 +145,16 @@ namespace AdvanceProjectMars_Task5.Pages
 
 
             saveButton.Click();
+           
+            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement recordcreatedpopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            string promptText = recordcreatedpopupAlert.Text;
+            Console.WriteLine("Alert text: " + promptText);
+            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement worksamplepopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']"));
+            string proomptText = worksamplepopupAlert.Text;
+            Console.WriteLine("Alert text: " + proomptText);
+
             Thread.Sleep(8000);
             cancelButton.Click();
             Thread.Sleep(8000);
