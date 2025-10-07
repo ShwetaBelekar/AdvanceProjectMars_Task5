@@ -1,4 +1,5 @@
 ﻿using AdvanceProjectMars_Task5.Utilities;
+using AventStack.ExtentReports.Model;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
@@ -448,13 +449,128 @@ namespace AdvanceProjectMars_Task5.Pages
 
         }
         
-        public void EditShareSkillRecord()
+        public void EditExistingShareSkillRecord(string NewTitle, string NewDescription, string NewCategory, string NewSelectSubcategory, string NewTags, string NewServiceType, string NewLocationType, string NewSkillTrade, string NewCredit, string NewSkillExchange, string NewActive)
         {
-            
-            viewButton.Click();
 
-            
+            //viewButton.Click();
+
+            Thread.Sleep(5000);
             editButton.Click();
+            titleTextbox.Click();
+            titleTextbox.Clear();
+            titleTextbox.SendKeys(NewTitle);
+            Thread.Sleep(2000);
+
+            descriptionTextbox.Click();
+            descriptionTextbox.SendKeys(NewDescription);
+            Thread.Sleep(2000);
+
+            categoryDropdownButton.SendKeys(NewCategory);
+            Thread.Sleep(2000);
+            selectsubcategoryDropdownButton.SendKeys(NewSelectSubcategory);
+            Thread.Sleep(3000);
+            tagTextbox.Click();
+            tagTextbox.SendKeys(NewTags + Keys.Enter);
+            //tagTextbox.SendKeys(Tags);
+
+            //hourlyBasisServiceButton.Click();
+            Thread.Sleep(2000);
+            if (NewServiceType == "Hourly basis service")
+            {
+                hourlyBasisServiceButton.Click();
+            }
+            else if (NewServiceType == "One-off service")
+            {
+                oneoffServiceButton.Click();
+            }
+
+            //oneoffServiceButton.Click();
+
+            Thread.Sleep(3000);
+            if (NewLocationType == "On site")
+            {
+                onSiteLocationButton.Click();
+            }
+            else if (NewLocationType == "Online")
+            {
+                onlineLocationButton.Click();
+            }
+
+            Thread.Sleep(3000);
+
+
+
+            //onlineLocationButton.Click();
+
+            if (NewSkillTrade == "Skill-exchange")
+            {
+                skillExchangeButton.Click();
+                skillExchangeTagTextbox.Click();
+                skillExchangeTagTextbox.SendKeys(NewSkillExchange + Keys.Enter);
+            }
+            else if (NewSkillTrade == "Credit")
+            {
+                creditRadioButton.Click();
+                CreditButton.SendKeys(NewCredit + Keys.Enter);
+            }
+
+            Thread.Sleep(3000);
+
+            uploadWorkSamplesButton.Click();
+            Thread.Sleep(3000);
+            string filePath = @"C:\Users\ganve\OneDrive\Pictures\Screenshots\Screenshot 2025-08-28 083208.png";
+
+            Thread.Sleep(3000);
+
+            driver.FindElement(By.XPath("//input[@type='file']")).SendKeys(filePath);
+            var simulator = new InputSimulator();
+            simulator.Keyboard.KeyPress(VirtualKeyCode.ESCAPE);
+
+            if (NewActive == "Active")
+            {
+                activeRadioButton.Click();
+            }
+            else if (NewActive == "Hidden")
+            {
+                hiddenRadioButton.Click();
+            }
+
+            Thread.Sleep(2000);
+
+
+
+            saveButton.Click();
+
+            Wait.WaitToBeVisible(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement recordcreatedpopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            string promptText = recordcreatedpopupAlert.Text;
+            Console.WriteLine("Alert text: " + promptText);
+            if (recordcreatedpopupAlert.Text == "Service Listing Updated successfully")
+            {
+                Console.WriteLine("Record edited successfully");
+            }
+            else
+            {
+                Console.WriteLine("Record edited unsuccessful");
+            }
+
+            Wait.WaitToBeVisible(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']", 2);
+            IWebElement worksamplepopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']"));
+            string proomptText = worksamplepopupAlert.Text;
+            Console.WriteLine("Alert text: " + proomptText);
+            if (worksamplepopupAlert.Text == "There is an error when updating Work Samples - undefined")
+            {
+                Console.WriteLine("error in the system work sample upload feature is not correctly uploading the work files");
+            }
+            else
+            {
+                Console.WriteLine("no error in the system work sample upload feature works correctly");
+            }
+            Thread.Sleep(8000);
+            cancelButton.Click();
+            Thread.Sleep(8000);
+            manageListingsTab.Click();
+
 
         }
 

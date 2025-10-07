@@ -33,14 +33,113 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             loginPageObj.LoginActions();
             loginPageObj.VerifyUserInHomePage();
         }
+        //public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)
+        //{
+        //    var testData = TestDataReader.ReadTestData(fileName);
+        //    foreach (var data in testData[testName])
+        //    {
+        //        if (data.Credit == null)
+        //        {
+        //            // Skill Trade record
+        //            yield return new TestCaseData(new
+        //            {
+        //                Title = data.Title,
+        //                Description = data.Description,
+        //                Category = data.Category,
+        //                SelectSubcategory = data.SelectSubcategory,
+        //                Tags = data.Tags,
+        //                ServiceType = data.ServiceType,
+        //                LocationType = data.LocationType,
+        //                SkillTrade = data.SkillTrade,
+        //                SkillExchange = data.SkillExchange,
+        //                Active = data.Active,
+        //                Credit = (string)null
+        //            });
+        //        }
+        //        else
+        //        {
+        //            // Credit record
+        //            yield return new TestCaseData(new
+        //            {
+        //                Title = data.Title,
+        //                Description = data.Description,
+        //                Category = data.Category,
+        //                SelectSubcategory = data.SelectSubcategory,
+        //                Tags = data.Tags,
+        //                ServiceType = data.ServiceType,
+        //                LocationType = data.LocationType,
+        //                SkillTrade = data.SkillTrade,
+        //                SkillExchange = (string)null,
+        //                Active = data.Active,
+        //                Credit = data.Credit
+        //            });
+        //        }
+        //        if (data.NewCredit == null)
+        //        {
+        //            yield return new TestCaseData(new
+        //            {
+        //                Title = data.Title,
+        //                Description = data.Description,
+        //                Category = data.Category,
+        //                SelectSubcategory = data.SelectSubcategory,
+        //                Tags = data.Tags,
+        //                ServiceType = data.ServiceType,
+        //                LocationType = data.LocationType,
+        //                SkillTrade = data.SkillTrade,
+        //                SkillExchange = data.SkillExchange,
+        //                Active = data.Active,
+        //                Credit = (string)null,
+        //                NewTitle = data.NewTitle,
+        //                NewDescription = data.NewDescription,
+        //                NewCategory = data.NewCategory,
+        //                NewSelectSubcategory = data.NewSelectSubcategory,
+        //                NewTags = data.NewTags,
+        //                NewServiceType = data.NewServiceType,
+        //                NewLocationType = data.NewLocationType,
+        //                NewSkillTrade = data.NewSkillTrade,
+        //                NewSkillExchange = data.NewSkillExchange,
+        //                NewActive = data.NewActive,
+        //                NewCredit = (string)null
+        //            });
+        //        }
+        //        else
+        //        {
+        //            yield return new TestCaseData(new
+        //            {
+        //                Title = data.Title,
+        //                Description = data.Description,
+        //                Category = data.Category,
+        //                SelectSubcategory = data.SelectSubcategory,
+        //                Tags = data.Tags,
+        //                ServiceType = data.ServiceType,
+        //                LocationType = data.LocationType,
+        //                SkillTrade = data.SkillTrade,
+        //                SkillExchange = (string)null,
+        //                Active = data.Active,
+        //                Credit = data.Credit,
+        //                NewTitle = data.NewTitle,
+        //                NewDescription = data.NewDescription,
+        //                NewCategory = data.NewCategory,
+        //                NewSelectSubcategory = data.NewSelectSubcategory,
+        //                NewTags = data.NewTags,
+        //                NewServiceType = data.NewServiceType,
+        //                NewLocationType = data.NewLocationType,
+        //                NewSkillTrade = data.NewSkillTrade,
+        //                NewSkillExchange = (string)null,
+        //                NewActive = data.NewActive,
+        //                NewCredit = data.NewCredit
+        //            });
+        //        }
+
+        //    }
+        //}
         public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)
         {
             var testData = TestDataReader.ReadTestData(fileName);
             foreach (var data in testData[testName])
             {
-                if (data.Credit == null)
+                if (data.Credit == null && data.NewCredit == null)
                 {
-                    // Skill Trade record
                     yield return new TestCaseData(new
                     {
                         Title = data.Title,
@@ -53,12 +152,22 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                         SkillTrade = data.SkillTrade,
                         SkillExchange = data.SkillExchange,
                         Active = data.Active,
-                        Credit = (string)null
+                        Credit = (string)null,
+                        NewTitle = data.NewTitle,
+                        NewDescription = data.NewDescription,
+                        NewCategory = data.NewCategory,
+                        NewSelectSubcategory = data.NewSelectSubcategory,
+                        NewTags = data.NewTags,
+                        NewServiceType = data.NewServiceType,
+                        NewLocationType = data.NewLocationType,
+                        NewSkillTrade = data.NewSkillTrade,
+                        NewSkillExchange = data.NewSkillExchange,
+                        NewActive = data.NewActive,
+                        NewCredit = (string)null
                     });
                 }
-                else
+                else if (data.Credit != null && data.NewCredit != null)
                 {
-                    // Credit record
                     yield return new TestCaseData(new
                     {
                         Title = data.Title,
@@ -71,14 +180,80 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                         SkillTrade = data.SkillTrade,
                         SkillExchange = (string)null,
                         Active = data.Active,
-                        Credit = data.Credit
+                        Credit = data.Credit,
+                        NewTitle = data.NewTitle,
+                        NewDescription = data.NewDescription,
+                        NewCategory = data.NewCategory,
+                        NewSelectSubcategory = data.NewSelectSubcategory,
+                        NewTags = data.NewTags,
+                        NewServiceType = data.NewServiceType,
+                        NewLocationType = data.NewLocationType,
+                        NewSkillTrade = data.NewSkillTrade,
+                        NewSkillExchange = (string)null,
+                        NewActive = data.NewActive,
+                        NewCredit = data.NewCredit
+                    });
+                }
+                else if (data.Credit == null && data.NewCredit != null)
+                {
+                    yield return new TestCaseData(new
+                    {
+                        Title = data.Title,
+                        Description = data.Description,
+                        Category = data.Category,
+                        SelectSubcategory = data.SelectSubcategory,
+                        Tags = data.Tags,
+                        ServiceType = data.ServiceType,
+                        LocationType = data.LocationType,
+                        SkillTrade = data.SkillTrade,
+                        SkillExchange = data.SkillExchange,
+                        Active = data.Active,
+                        Credit = (string)null,
+                        NewTitle = data.NewTitle,
+                        NewDescription = data.NewDescription,
+                        NewCategory = data.NewCategory,
+                        NewSelectSubcategory = data.NewSelectSubcategory,
+                        NewTags = data.NewTags,
+                        NewServiceType = data.NewServiceType,
+                        NewLocationType = data.NewLocationType,
+                        NewSkillTrade = data.NewSkillTrade,
+                        NewSkillExchange = (string)null,
+                        NewActive = data.NewActive,
+                        NewCredit = data.NewCredit
+                    });
+                }
+                else
+                {
+                    yield return new TestCaseData(new
+                    {
+                        Title = data.Title,
+                        Description = data.Description,
+                        Category = data.Category,
+                        SelectSubcategory = data.SelectSubcategory,
+                        Tags = data.Tags,
+                        ServiceType = data.ServiceType,
+                        LocationType = data.LocationType,
+                        SkillTrade = data.SkillTrade,
+                        SkillExchange = (string)null,
+                        Active = data.Active,
+                        Credit = data.Credit,
+                        NewTitle = data.NewTitle,
+                        NewDescription = data.NewDescription,
+                        NewCategory = data.NewCategory,
+                        NewSelectSubcategory = data.NewSelectSubcategory,
+                        NewTags = data.NewTags,
+                        NewServiceType = data.NewServiceType,
+                        NewLocationType = data.NewLocationType,
+                        NewSkillTrade = data.NewSkillTrade,
+                        NewSkillExchange = data.NewSkillExchange,
+                        NewActive = data.NewActive,
+                        NewCredit = (string)null
                     });
                 }
             }
         }
-       
-        
-        
+
+
         [Test, TestCaseSource(nameof(GetTestData), new object[] { "shareskill_validshareskillrecord.json", "Createvalidshareskillrecord" })]
         public void Createvalidshareskillrecord(dynamic record)
         { 
@@ -128,7 +303,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         record.Active);
             Console.WriteLine($"Selected {record.Title} {record.Description} {record.Category} {record.SelectSubcategory} {record.Tags} {record.ServiceType} {record.LocationType} {record.SkillTrade} {record.Credit} {record.SkillExchange} {record.Active}");
             IWebElement newListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody[last()]/tr/td[3]"));
-            if (newListing.Text == record.Title)
+            if (newListing.Text == record.Title) //*[@id="listing-management-section"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]
             {
                 Console.WriteLine($"Test passed for data: Title = {record.Title}");
                 Assert.Pass("Record created successfully, system is accepting invalid data");
@@ -223,6 +398,61 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             {
                 Console.WriteLine($"Test failed for data: Title = {record.Title}");
                 Assert.Fail("Duplicate record not accepted");
+            }
+        }
+        [Test, TestCaseSource(nameof(GetTestData), new object[] { "shareskill_editexistingshareskillrecord.json", "Editexistingshareskillrecord" })]
+        public void Editexistingshareskillrecord(dynamic record)
+
+        {
+            Console.WriteLine($"Running test with data: Title = {record.Title}, Description = {record.Description}");
+
+            ShareSkillPage shareSkillPageObj = new ShareSkillPage();
+            shareSkillPageObj.CreateShareSkillRecord(record.Title,
+        record.Description,
+        record.Category,
+        record.SelectSubcategory,
+        record.Tags,
+        record.ServiceType,
+        record.LocationType,
+        record.SkillTrade,
+        record.Credit,
+        record.SkillExchange,
+        record.Active);
+            Console.WriteLine($"Selected {record.Title} {record.Description} {record.Category} {record.SelectSubcategory} {record.Tags} {record.ServiceType} {record.LocationType} {record.SkillTrade} {record.Credit} {record.SkillExchange} {record.Active}");
+            IWebElement newListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody[last()]/tr/td[3]"));
+            if (newListing.Text == record.Title)
+            {
+                Console.WriteLine($"Test passed for data: Title = {record.Title}");
+                Console.WriteLine("Record created successfully");
+            }
+            else
+            {
+                Console.WriteLine($"Test failed for data: Title = {record.Title}");
+                Console.WriteLine("Record creation unsuccessful");
+            }
+            Console.WriteLine($"Running test with data: Title = {record.NewTitle}, Description = {record.NewDescription}");
+            shareSkillPageObj.EditExistingShareSkillRecord(record.NewTitle,
+        record.NewDescription,
+        record.NewCategory,
+        record.NewSelectSubcategory,
+        record.NewTags,
+        record.NewServiceType,
+        record.NewLocationType,
+        record.NewSkillTrade,
+        record.NewCredit,
+        record.NewSkillExchange,
+        record.NewActive);
+            Console.WriteLine($"Selected {record.NewTitle} {record.NewDescription} {record.NewCategory} {record.NewSelectSubcategory} {record.NewTags} {record.NewServiceType} {record.NewLocationType} {record.NewSkillTrade} {record.NewCredit} {record.NewSkillExchange} {record.NewActive}");
+            IWebElement editedListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody[last()]/tr/td[3]"));
+            if (editedListing.Text == record.NewTitle)
+            {
+                Console.WriteLine($"Test passed for data: Title = {record.NewTitle}");
+                Assert.Pass("Record edited successfully");
+            }
+            else
+            {
+                Console.WriteLine($"Test failed for data: Title = {record.NewTitle}");
+                Assert.Fail("Record edited unsuccessful");
             }
         }
     }

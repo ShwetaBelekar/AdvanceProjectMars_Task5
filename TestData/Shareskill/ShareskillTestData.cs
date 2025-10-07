@@ -23,7 +23,19 @@ namespace AdvanceProjectMars_Task5.TestData.Shareskill
             public string Credit { get; set; }
             public string SkillExchange { get; set; }
             public string Active { get; set; }
-            
+            public string NewTitle { get; set; }
+
+            public string NewDescription { get; set; }
+            public string NewCategory { get; set; }
+            public string NewSelectSubcategory { get; set; }
+            public string NewTags { get; set; }
+            public string NewServiceType { get; set; }
+            public string NewLocationType { get; set; }
+            public string NewSkillTrade { get; set; }
+            public string NewCredit { get; set; }
+            public string NewSkillExchange { get; set; }
+            public string NewActive { get; set; }
+
         }
 
         public static class TestDataReader

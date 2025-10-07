@@ -1,10 +1,29 @@
 {
-  "exclude": [
-    "**/bin",
-    "**/bower_components",
-    "**/jspm_packages",
-    "**/node_modules",
-    "**/obj",
-    "**/platforms"
+  "Editexistingshareskillrecord": [
+    {
+      "Title": "Selenium",
+      "Description": "Software Testing Automation Tool",
+      "Category": "Test Automation",
+      "SelectSubcategory": "Selenium",
+      "Tags": "Software",
+      "ServiceType": "One-off service",
+      "LocationType": "On site",
+      "SkillTrade": "Skill-exchange",
+      "Credit": null,
+      "SkillExchange": "ManualTesting, Software, Technology",
+      "Active": "Active",
+      "NewTitle": "Playwright",
+      "NewDescription": "Software Testing Automation Tool",
+      "NewCategory": "Test Automation",
+      "NewSelectSubcategory": "Other",
+      "NewTags": "Software",
+      "NewServiceType": "One-off service",
+      "NewLocationType": "On site",
+      "NewSkillTrade": "Skill-exchange",
+      "NewCredit": null,
+      "NewSkillExchange": "ManualTesting, Software, Technology",
+      "NewActive": "Active"
+    }
+
   ]
 }
