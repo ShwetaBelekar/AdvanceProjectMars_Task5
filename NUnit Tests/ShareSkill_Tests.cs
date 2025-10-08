@@ -455,5 +455,92 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 Assert.Fail("Record edited unsuccessful");
             }
         }
+        [Test, TestCaseSource(nameof(GetTestData), new object[] { "shareskill_deleteexistingshareskillrecord.json", "Deleteexistingshareskillrecord" })]
+        public void Deleteexistingshareskillrecord(dynamic record)
+        {
+            Console.WriteLine($"Running test with data: Title = {record.Title}, Description = {record.Description}");
+
+            ShareSkillPage shareSkillPageObj = new ShareSkillPage();
+            shareSkillPageObj.CreateShareSkillRecord(record.Title,
+        record.Description,
+        record.Category,
+        record.SelectSubcategory,
+        record.Tags,
+        record.ServiceType,
+        record.LocationType,
+        record.SkillTrade,
+        record.Credit,
+        record.SkillExchange,
+        record.Active);
+            Console.WriteLine($"Selected {record.Title} {record.Description} {record.Category} {record.SelectSubcategory} {record.Tags} {record.ServiceType} {record.LocationType} {record.SkillTrade} {record.Credit} {record.SkillExchange} {record.Active}");
+            IWebElement newListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody[last()]/tr/td[3]"));
+            if (newListing.Text == record.Title)
+            {
+                Console.WriteLine($"Test passed for data: Title = {record.Title}");
+                Console.WriteLine("Record created successfully");
+            }
+            else
+            {
+                Console.WriteLine($"Test failed for data: Title = {record.Title}");
+                Console.WriteLine("Record creation unsuccessful");
+            }
+            shareSkillPageObj.DeleteShareSkillRecord();
+            Console.WriteLine($"Selected {record.Title} {record.Description} {record.Category} {record.SelectSubcategory} {record.Tags} {record.ServiceType} {record.LocationType} {record.SkillTrade} {record.Credit} {record.SkillExchange} {record.Active}");
+            bool testPassed = false;
+            try
+            {
+                Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+                IWebElement poppupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+                string promptText = poppupAlert.Text;
+                Console.WriteLine("Alert text: " + promptText);
+                testPassed = true;
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+
+            }
+            if (testPassed)
+            {
+                Assert.Pass("Test pass");
+            }
+            else
+            {
+                Assert.Fail("Test failed");
+            }
+            
+        }
+        [Test]
+        public void Description()
+        {
+            //IWebElement descriptionTooltip = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[2]/div/div[1]/div"));
+
+            //IWebElement descriptionFielderror = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[2]/div/div[2]/div[1]/textarea"));
+            // Get the tooltip text
+            IWebElement ShareSkillButton = driver.FindElement(By.XPath("//a[@href='/Home/ServiceListing']"));
+            ShareSkillButton.Click();
+            Thread.Sleep(3000);
+            string tooltipHtml = driver.FindElement(By.XPath("(//div[@class='tooltip'])[2]")).GetAttribute("innerHTML");
+            Console.WriteLine("Actual Tooltip HTML: " + tooltipHtml);
+
+            IWebElement descriptionField = driver.FindElement(By.Name("description"));
+            string placeholderText = descriptionField.GetAttribute("placeholder");
+
+            // Assert that the tooltip and placeholder text are consistent
+            if (tooltipHtml != placeholderText)
+            {
+                Console.WriteLine("Tooltip text: " + tooltipHtml);
+                Console.WriteLine("Placeholder text: " + placeholderText);
+                Assert.Pass("Tooltip text and placeholder text do not match. This can confuse user.");
+
+                
+            }
+            else
+            {
+                Assert.Fail("Tooltip text and placeholder text match.");
+
+            }
+        }
     }
 }

@@ -13,15 +13,15 @@
       "SkillExchange": "ManualTesting, Software, Technology",
       "Active": "Active",
       "NewTitle": "Playwright",
-      "NewDescription": "Software Testing Automation Tool",
+      "NewDescription": "Playwright provides the ability to automate browser tasks",
       "NewCategory": "Test Automation",
       "NewSelectSubcategory": "Other",
-      "NewTags": "Software",
-      "NewServiceType": "One-off service",
-      "NewLocationType": "On site",
-      "NewSkillTrade": "Skill-exchange",
-      "NewCredit": null,
-      "NewSkillExchange": "ManualTesting, Software, Technology",
+      "NewTags": "Automation, Testing",
+      "NewServiceType": "Hourly basis service",
+      "NewLocationType": "Online",
+      "NewSkillTrade": "Credit",
+      "NewCredit": "10",
+      "NewSkillExchange": null,
       "NewActive": "Active"
     }
 

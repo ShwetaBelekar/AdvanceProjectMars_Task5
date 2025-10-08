@@ -1,10 +1,17 @@
 {
-  "exclude": [
-    "**/bin",
-    "**/bower_components",
-    "**/jspm_packages",
-    "**/node_modules",
-    "**/obj",
-    "**/platforms"
+  "Deleteexistingshareskillrecord": [
+    {
+      "Title": "Yoga",
+      "Description": "Unwind, relax, and rejuvenate your body and mind",
+      "Category": "Fun & Lifestyle",
+      "SelectSubcategory": "Health, Nutrition & Fitness",
+      "Tags": "exercise, fitness, workout, gym",
+      "ServiceType": "Hourly basis service",
+      "LocationType": "On site",
+      "SkillTrade": "Credit",
+      "Credit": "10",
+      "SkillExchange": null,
+      "Active": "Active"
+    }
   ]
 }

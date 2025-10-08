@@ -462,6 +462,7 @@ namespace AdvanceProjectMars_Task5.Pages
             Thread.Sleep(2000);
 
             descriptionTextbox.Click();
+            descriptionTextbox.Clear();
             descriptionTextbox.SendKeys(NewDescription);
             Thread.Sleep(2000);
 
@@ -470,6 +471,7 @@ namespace AdvanceProjectMars_Task5.Pages
             selectsubcategoryDropdownButton.SendKeys(NewSelectSubcategory);
             Thread.Sleep(3000);
             tagTextbox.Click();
+            tagTextbox.Clear();
             tagTextbox.SendKeys(NewTags + Keys.Enter);
             //tagTextbox.SendKeys(Tags);
 
@@ -578,6 +580,21 @@ namespace AdvanceProjectMars_Task5.Pages
         {
             
             deleteButton.Click();
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(2));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(".ui.tiny.modal.transition.visible.active")));
+            IWebElement yesButton = driver.FindElement(By.XPath("//button[@class='ui icon positive right labeled button']"));
+            if (yesButton.Displayed && yesButton.Enabled)
+            {
+                yesButton.Click();
+            }
+            else
+            {
+                // Handle the case where the button is not visible or enabled
+            }
+            
+
+
+
         }
     }
 }
