@@ -86,5 +86,36 @@ namespace AdvanceProjectMars_Task5.Pages
         private IWebElement cvAdvicesSubcategory => driver.FindElement(By.XPath("//a[text()='CV Advices']"));
         private IWebElement recruitmentInterviewAdviceSubcategory => driver.FindElement(By.XPath("//a[text()='Interview Advice']"));
         private IWebElement jobMarketInsightSubcategory => driver.FindElement(By.XPath("//a[text()='Job Market Insight']"));
+        public void SearchSkillWithOnlineFilter(string Online)
+        {
+            searchSkillsSearchIcon.Click();
+            filterOnline.SendKeys(Online);
+            int totalOnlineListings = 0;
+            int totalPages = 3; // You know there are 3 pages
+
+            for (int i = 1; i <= totalPages; i++)
+            {
+                totalOnlineListings += driver.FindElements(By.XPath("//*[@id=\"service-search-section\"]/div[2]/div/section/div/div[1]/div[1]/div/a[1]/span")).Count;
+
+                if (i < totalPages)
+                {
+                    // Navigate to the next page
+                    driver.FindElement(By.XPath("//button[@class='ui button otherPage'][contains(text(), '" + (i + 1) + "')]")).Click();
+                    Thread.Sleep(2000); // You can use WebDriverWait instead of Thread.Sleep
+                }
+            }
+
+            Console.WriteLine("Total online listings: " + totalOnlineListings);
+
+            if (totalOnlineListings == 19)
+            {
+                Console.WriteLine("The total number of online listings is 19.");
+            }
+            else
+            {
+                Console.WriteLine("The total number of online listings is not 19.");
+            }
+        }
     }
+    
 }
