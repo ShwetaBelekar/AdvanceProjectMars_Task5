@@ -1,6 +1,8 @@
 ﻿using AdvanceProjectMars_Task5.Pages;
+using AdvanceProjectMars_Task5.TestData.Searchskills;
 using AdvanceProjectMars_Task5.Utilities;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using RazorEngine;
@@ -38,6 +40,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
 
             }
         }
+      
         [Test]
         public void CountTotalListings()
         {
@@ -80,6 +83,50 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
 
             //Assert.That(totalCount, Is.GreaterThan(0));
             //Console.WriteLine("Total listings: " + totalCount);
+        }
+        [Test]
+        public void CountTotaalListings()
+        {
+            IWebElement manageListingsTab = driver.FindElement(By.XPath("//a[@href='/Home/ListingManagement']"));
+            manageListingsTab.Click();
+            Thread.Sleep(3000);
+
+            int totaltableRow = 0;
+            int totalPages = 0;
+            bool hasNextPage = true;
+            int currentPage = 1;
+
+            while (hasNextPage)
+            {
+                var tableRow = driver.FindElements(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr"));
+                int tableRowOnPage = tableRow.Count;
+                Console.WriteLine($"Number of tableRow on page {currentPage}: {tableRowOnPage}");
+                totaltableRow += tableRowOnPage;
+
+                var pageButtons = driver.FindElements(By.XPath("//button[@class='ui button otherPage']"));
+                var nextPageButton = pageButtons.Where(b => b.Text == (currentPage + 1).ToString()).FirstOrDefault();
+
+                if (nextPageButton != null)
+                {
+                    nextPageButton.Click();
+                    Thread.Sleep(2000); // Wait for the page to load
+                    currentPage++;
+                }
+                else
+                {
+                    hasNextPage = false;
+                }
+            }
+
+            Console.WriteLine($"Total number of listings: {totaltableRow}");
+            if (totaltableRow > 0)
+            {
+                Assert.Pass("Listings found.");
+            }
+            else
+            {
+                Assert.Fail("No listings found.");
+            }
         }
         //[Test]
         //public void CountActiveAndHiddenListings()
@@ -142,12 +189,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         {
             SearchskillsPage searchskillsPageObj = new SearchskillsPage();
             searchskillsPageObj.SearchSkillWithOnlineFilter(Filter);
-            //IWebElement searchSkillsSearchIcon = driver.FindElement(By.XPath("(//i[@class='search link icon'])[1]"));
-            //searchSkillsSearchIcon.Click();
-            //Thread.Sleep(3000);
-            //IWebElement filterOnline = driver.FindElement(By.XPath("//button[text()='Online']"));
-            //filterOnline.Click();
-
+           
             int totalOnlineListings = 0;
             int totalPages = 3; // You know there are 3 pages
             Thread.Sleep(4000);
@@ -175,16 +217,22 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             }
 
             Console.WriteLine($"Total number of listings: {totalOnlineListings}");
+            if (totalOnlineListings == 19)
+            {
+                Assert.Pass("The total number of online listings is 19.");
+            }
+            else
+            {
+                Assert.Fail("The total number of online listings is not 19.");
+            }
         }
-        [Test]
-        public void SearchSkillWithOnsiteFilter()
+        [Test, TestCaseSource(nameof(GetTestData), new object[] { "Searchskills_withOnsiteFilter.json", "SearchskillsbyapplyingOnsiteFilter" })]
+        public void SearchskillsbyapplyingOnsiteFilter(string Filter)
         {
-            IWebElement searchSkillsSearchIcon = driver.FindElement(By.XPath("(//i[@class='search link icon'])[1]"));
-            searchSkillsSearchIcon.Click();
-            Thread.Sleep(3000);
-            IWebElement filterOnsite = driver.FindElement(By.XPath("//button[text()='Onsite']"));
-            filterOnsite.Click();
+            SearchskillsPage searchskillsPageObj = new SearchskillsPage();
+            searchskillsPageObj.SearchSkillWithOnsiteFilter(Filter);
 
+           
             int totalOnsiteListings = 0;
             int totalPages = 3; // You know there are 3 pages
             Thread.Sleep(4000);
@@ -212,15 +260,23 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             }
 
             Console.WriteLine($"Total number of listings: {totalOnsiteListings}");
+            var expectedListings = 26;
+            if (totalOnsiteListings == expectedListings)
+            {
+                Assert.Pass($"The total number of onsite listings is {expectedListings}.");
+            }
+            else
+            {
+                Assert.Fail($"The total number of onsite listings is not {expectedListings}. Expected {expectedListings} but got {totalOnsiteListings}.");
+            }
+            
         }
-        [Test]
-        public void SearchSkillWithShowAllFilter()
+        [Test, TestCaseSource(nameof(GetTestData), new object[] { "Searchskills_withShowAllFilter.json", "SearchskillsbyapplyingShowAllFilter" })]
+        public void SearchskillsbyapplyingShowAllFilter(string Filter)
         {
-            IWebElement searchSkillsSearchIcon = driver.FindElement(By.XPath("(//i[@class='search link icon'])[1]"));
-            searchSkillsSearchIcon.Click();
-            Thread.Sleep(3000);
-            IWebElement filterShowAll = driver.FindElement(By.XPath("//button[text()='ShowAll']"));
-            filterShowAll.Click();
+            SearchskillsPage searchskillsPageObj = new SearchskillsPage();
+            searchskillsPageObj.SearchSkillWithShowAllFilter(Filter);
+            
 
             int totalShowAllListings = 0;
             int totalPages = 5; // You know there are 3 pages
@@ -249,6 +305,14 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             }
 
             Console.WriteLine($"Total number of listings: {totalShowAllListings}");
+            if (totalShowAllListings == 45)
+            {
+                Assert.Pass("The total number of ShowAll listings is 45.");
+            }
+            else
+            {
+                Assert.Fail("The total number of ShowAll listings is not 45.");
+            }
         }
         [Test]
         public void ShowAllContent()
@@ -328,7 +392,21 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 Console.WriteLine($"{seller.Key} has {seller.Value} listings.");
             }
         }
-        
+        [Test]
+        public void TestCategoryMatching()
+        {
+            IWebElement searchSkillsSearchIcon = driver.FindElement(By.XPath("(//i[@class='search link icon'])[1]"));
+            searchSkillsSearchIcon.Click();
+            // Get the categories from the top
+            var topCategories = driver.FindElements(By.XPath("//div[@role='list']")).Select(e => e.Text).ToList();
+
+            // Get the categories from the footer
+            var footerCategories = driver.FindElements(By.XPath("//*[@id=\"service-search-section\"]/section[2]/div/div/div/div[1]/nav")).Select(e => e.Text).ToList();
+
+            // Compare the categories
+            CollectionAssert.AreEqual(topCategories, footerCategories, "The categories at the top and footer do not match.");
+        }
+
     }
 
 }

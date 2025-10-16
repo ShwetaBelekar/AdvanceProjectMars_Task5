@@ -13,7 +13,7 @@ namespace AdvanceProjectMars_Task5.Pages
         private IWebElement searchSkillsSearchIcon => driver.FindElement(By.XPath("(//i[@class='search link icon'])[1]"));
 
         private IWebElement filterOnline => driver.FindElement(By.XPath("//button[text()='Online']"));
-       
+      
         private IWebElement filterOnsite => driver.FindElement(By.XPath("//button[text()='Onsite']"));
         private IWebElement filterShowAll => driver.FindElement(By.XPath("//button[text()='ShowAll']"));
 
@@ -91,31 +91,21 @@ namespace AdvanceProjectMars_Task5.Pages
             searchSkillsSearchIcon.Click();
             Thread.Sleep(3000);
             filterOnline.Click();
-            //int totalOnlineListings = 0;
-            //int totalPages = 3; // You know there are 3 pages
+            
+        }
+        public void SearchSkillWithOnsiteFilter(string Filter)
+        {
+            searchSkillsSearchIcon.Click();
+            Thread.Sleep(3000);
+            filterOnsite.Click();
 
-            //for (int i = 1; i <= totalPages; i++)
-            //{
-            //    totalOnlineListings += driver.FindElements(By.XPath("//*[@id=\"service-search-section\"]/div[2]/div/section/div/div[1]/div[1]/div/a[1]/span")).Count;
+        }
+        public void SearchSkillWithShowAllFilter(string Filter)
+        {
+            searchSkillsSearchIcon.Click();
+            Thread.Sleep(3000);
+            filterShowAll.Click();
 
-            //    if (i < totalPages)
-            //    {
-            //        // Navigate to the next page
-            //        driver.FindElement(By.XPath("//button[@class='ui button otherPage'][contains(text(), '" + (i + 1) + "')]")).Click();
-            //        Thread.Sleep(2000); // You can use WebDriverWait instead of Thread.Sleep
-            //    }
-            //}
-
-            //Console.WriteLine("Total online listings: " + totalOnlineListings);
-
-            //if (totalOnlineListings == 19)
-            //{
-            //    Console.WriteLine("The total number of online listings is 19.");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("The total number of online listings is not 19.");
-            //}
         }
     }
     

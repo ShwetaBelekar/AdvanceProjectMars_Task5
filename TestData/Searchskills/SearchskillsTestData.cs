@@ -8,11 +8,14 @@ using static AdvanceProjectMars_Task5.TestData.Shareskill.ShareskillTestData;
 
 namespace AdvanceProjectMars_Task5.TestData.Searchskills
 {
+
+
     public class SearchskillsTestData
     {
         public class SearchskillsData
         {
             public string Filter { get; set; }
+
         }
         public static class TestDataReader
         {
