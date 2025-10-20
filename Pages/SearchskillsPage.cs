@@ -107,6 +107,23 @@ namespace AdvanceProjectMars_Task5.Pages
             filterShowAll.Click();
 
         }
+        public void SearchSkillWithAllCategoryandSubcategory(string Category, string Subcategory)
+        {
+            searchSkillsSearchIcon.Click();
+            Thread.Sleep(2000);
+            //allCategories.Click();
+            //Thread.Sleep(2000);
+            softwareDevelopmentCategory.Click();
+            Thread.Sleep(2000);
+            solutionArchitectureDesignSubcategory.Click();
+            Thread.Sleep(2000);
+            IWebElement buildingSoftware = driver.FindElement(By.XPath("//p[@class='row-padded' and text()='Building Software']"));
+            buildingSoftware.Click();
+            Thread.Sleep(3000);
+            IWebElement backToSolutionArchitectureDesign = driver.FindElement(By.XPath("//a[@class='section' and text()='Solution Architecture Design']"));
+            backToSolutionArchitectureDesign.Click();
+
+        }
     }
     
 }

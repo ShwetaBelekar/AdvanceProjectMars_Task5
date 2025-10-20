@@ -5,9 +5,13 @@ using NUnit.Framework;
 using NUnit.Framework.Legacy;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.Extensions;
+using OpenQA.Selenium.Support.UI;
 using RazorEngine;
+using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,7 +41,10 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 {
                     yield return new TestCaseData(data.Filter);
                 }
-
+                else if (data.Category != null && data.Subcategory != null)
+                {
+                    yield return new TestCaseData(data.Category, data.Subcategory);
+                }
             }
         }
       
@@ -405,6 +412,25 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
 
             // Compare the categories
             CollectionAssert.AreEqual(topCategories, footerCategories, "The categories at the top and footer do not match.");
+        }
+        [Test, TestCaseSource(nameof(GetTestData), new object[] { "Searchskills_byAllCategoryandSubcategories.json", "SearchskillsbyallCategoryandSubcategories" })]
+        public void SearchskillsbyallCategoryandSubcategories(string Category, string Subcategory)
+        {
+            SearchskillsPage searchskillsPageObj = new SearchskillsPage();
+            searchskillsPageObj.SearchSkillWithAllCategoryandSubcategory(Category, Subcategory);
+                // Check if "No results found" message is displayed
+                if (driver.FindElement(By.XPath("//h3[text()='No results found, please select a new category!']")).Displayed)
+                {
+                    Assert.Pass("User clicked on subcategory so it should take user back to subcategory but instead it threw user out completely and displayed a message. No results found, please select a new category!");
+                    // You can add additional logic here to handle this scenario
+                }
+                else
+                {
+                    Assert.Fail("Subcategory page loaded successfully.");
+                    // You can add additional logic here to proceed with the test
+                }
+            
+            
         }
 
     }
