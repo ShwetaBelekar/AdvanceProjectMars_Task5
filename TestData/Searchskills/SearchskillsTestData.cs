@@ -16,9 +16,8 @@ namespace AdvanceProjectMars_Task5.TestData.Searchskills
         {
             public string Filter { get; set; }
             public string Category { get; set; }
-
             public string Subcategory { get; set; }
-
+            public string Listings { get; set; }
         }
         public static class TestDataReader
         {

@@ -37,13 +37,13 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             var testData = TestDataReader.ReadTestData(fileName);
             foreach (var data in testData[testName])
             {
-                if (data.Filter != null)
+                if (data.Category != null && data.Subcategory != null && data.Listings != null)
                 {
-                    yield return new TestCaseData(data.Filter);
+                   yield return new TestCaseData(data.Category, data.Subcategory, data.Listings);
                 }
-                else if (data.Category != null && data.Subcategory != null)
+                else if (data.Filter != null)
                 {
-                    yield return new TestCaseData(data.Category, data.Subcategory);
+                   yield return new TestCaseData(data.Filter);
                 }
             }
         }
@@ -414,13 +414,16 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             CollectionAssert.AreEqual(topCategories, footerCategories, "The categories at the top and footer do not match.");
         }
         [Test, TestCaseSource(nameof(GetTestData), new object[] { "Searchskills_byAllCategoryandSubcategories.json", "SearchskillsbyallCategoryandSubcategories" })]
-        public void SearchskillsbyallCategoryandSubcategories(string Category, string Subcategory)
+        public void SearchskillsbyallCategoryandSubcategories(string Category, string Subcategory, string Listings)
         {
+            Console.WriteLine($"Running test with data: Category = {Category}, Subcategory = {Subcategory}, Listings = {Listings}");
             SearchskillsPage searchskillsPageObj = new SearchskillsPage();
-            searchskillsPageObj.SearchSkillWithAllCategoryandSubcategory(Category, Subcategory);
+            searchskillsPageObj.SearchSkillWithAllCategoryandSubcategory(Category, Subcategory, Listings);
+            Thread.Sleep(2000);
                 // Check if "No results found" message is displayed
                 if (driver.FindElement(By.XPath("//h3[text()='No results found, please select a new category!']")).Displayed)
                 {
+
                     Assert.Pass("User clicked on subcategory so it should take user back to subcategory but instead it threw user out completely and displayed a message. No results found, please select a new category!");
                     // You can add additional logic here to handle this scenario
                 }

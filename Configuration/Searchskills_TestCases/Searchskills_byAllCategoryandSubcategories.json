@@ -2,8 +2,43 @@
   "SearchskillsbyallCategoryandSubcategories": [
     {
       "Category": "Software Development",
-      "Subcategory": "Solution Architecture Design"
-
+      "Subcategory": "Solution Architecture Design",
+      "Listings": "Building Software"
+    },
+    {
+      "Category": "Software Development",
+      "Subcategory": "Solution Architecture Design",
+      "Listings": "123"
+    },
+    {
+      "Category": "Software Development",
+      "Subcategory": "Programming",
+      "Listings": "Human computer collaboration"
+    },
+    {
+      "Category": "Software Development",
+      "Subcategory": "Front End Development",
+      "Listings": "JavaScript"
+    },
+    {
+      "Category": "Software Development",
+      "Subcategory": "Back End Development",
+      "Listings": "Server Side Logic"
+    },
+    {
+      "Category": "Software Development",
+      "Subcategory": "Design Pattern",
+      "Listings": "Reusable solutions"
+    },
+    {
+      "Category": "Software Development",
+      "Subcategory": "DevOps CI/CD",
+      "Listings": "Continuous Integration and Continuous Delivery"
+    },
+    {
+      "Category": "Software Development",
+      "Subcategory": "Other",
+      "Listings": "Java"
     }
 
   ]

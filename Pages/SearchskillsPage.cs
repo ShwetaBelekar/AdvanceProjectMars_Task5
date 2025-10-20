@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,6 +21,9 @@ namespace AdvanceProjectMars_Task5.Pages
         private IWebElement searchSkills => driver.FindElement(By.XPath("(//input[@placeholder='Search skills'])[2]"));
         private IWebElement searchUser => driver.FindElement(By.XPath("//input[@placeholder='Search user']"));
         private IWebElement searchUserRefresh => driver.FindElement(By.XPath("//i[@class='repeat icon']"));
+        private IWebElement category => driver.FindElement(By.XPath("//a[@role='listitem' and @class='item category']"));
+        private IWebElement subcategories => driver.FindElement(By.XPath("//a[@role='listitem' and @class='item subcategory']"));
+        
         private IWebElement allCategories => driver.FindElement(By.XPath("//a[text()='All Categories']"));
         private IWebElement softwareDevelopmentCategory => driver.FindElement(By.XPath("//a[text()='Software Development']"));
         private IWebElement solutionArchitectureDesignSubcategory => driver.FindElement(By.XPath("//a[text()='Solution Architecture Design']"));
@@ -107,22 +111,36 @@ namespace AdvanceProjectMars_Task5.Pages
             filterShowAll.Click();
 
         }
-        public void SearchSkillWithAllCategoryandSubcategory(string Category, string Subcategory)
+        public void SearchSkillWithAllCategoryandSubcategory(string Category, string Subcategory, string Listings)
         {
+            Thread.Sleep(2000);
             searchSkillsSearchIcon.Click();
             Thread.Sleep(2000);
             //allCategories.Click();
             //Thread.Sleep(2000);
-            softwareDevelopmentCategory.Click();
+            //softwareDevelopmentCategory.Click();
+            //Thread.Sleep(2000);
+            //solutionArchitectureDesignSubcategory.Click();
+            //Thread.Sleep(2000);
+            category.Click();
+            Thread.Sleep(4000);
+            subcategories.Click();
             Thread.Sleep(2000);
-            solutionArchitectureDesignSubcategory.Click();
-            Thread.Sleep(2000);
-            IWebElement buildingSoftware = driver.FindElement(By.XPath("//p[@class='row-padded' and text()='Building Software']"));
-            buildingSoftware.Click();
-            Thread.Sleep(3000);
-            IWebElement backToSolutionArchitectureDesign = driver.FindElement(By.XPath("//a[@class='section' and text()='Solution Architecture Design']"));
-            backToSolutionArchitectureDesign.Click();
-
+            var elements = driver.FindElements(By.XPath("//p[@class='row-padded']"));
+            foreach (var element in elements)
+            {
+                if (element.Text.Trim() == Listings)
+                {
+                    element.Click();
+                    break;
+                }
+            }
+            Thread.Sleep(4000);
+            IWebElement gobackToSubcategory = driver.FindElement(By.XPath("//a[contains(@href, '/Home/Search?cat=') and contains(@href, '&subcat=')]"));
+           
+            string subcategoryText = gobackToSubcategory.Text;
+            Console.WriteLine($"Selected Subcategory: {subcategoryText}");
+            gobackToSubcategory.Click();
         }
     }
     
