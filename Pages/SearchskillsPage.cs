@@ -122,10 +122,28 @@ namespace AdvanceProjectMars_Task5.Pages
             //Thread.Sleep(2000);
             //solutionArchitectureDesignSubcategory.Click();
             //Thread.Sleep(2000);
-            category.Click();
-            Thread.Sleep(4000);
-            subcategories.Click();
-            Thread.Sleep(2000);
+            //category.Click();
+            var categories = driver.FindElements(By.XPath("//a[@role='listitem' and @class='item category']"));
+            foreach (var category in categories)
+            {
+                if (category.Text == Category)
+                {
+                    category.Click();
+                    break;
+                }
+            }
+                Thread.Sleep(2000);
+            //subcategories.Click();
+            //Thread.Sleep(2000);
+            var subcategories = driver.FindElements(By.XPath("//a[@role='listitem' and @class='item subcategory']"));
+            foreach (var subcategory in subcategories)
+            {
+                if (subcategory.Text == Subcategory)
+                {
+                    subcategory.Click();
+                    break;
+                }
+            }
             var elements = driver.FindElements(By.XPath("//p[@class='row-padded']"));
             foreach (var element in elements)
             {
@@ -135,7 +153,7 @@ namespace AdvanceProjectMars_Task5.Pages
                     break;
                 }
             }
-            Thread.Sleep(4000);
+            Thread.Sleep(2000);
             IWebElement gobackToSubcategory = driver.FindElement(By.XPath("//a[contains(@href, '/Home/Search?cat=') and contains(@href, '&subcat=')]"));
            
             string subcategoryText = gobackToSubcategory.Text;
