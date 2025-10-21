@@ -435,6 +435,11 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             
             
         }
+        [TearDown]
+        public void TearDown()
+        {
+            driver.Quit();
+        }
 
     }
 

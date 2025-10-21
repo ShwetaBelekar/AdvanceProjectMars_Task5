@@ -1,5 +1,7 @@
 ﻿using AdvanceProjectMars_Task5.Utilities;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -113,28 +115,25 @@ namespace AdvanceProjectMars_Task5.Pages
         }
         public void SearchSkillWithAllCategoryandSubcategory(string Category, string Subcategory, string Listings)
         {
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
             searchSkillsSearchIcon.Click();
-            Thread.Sleep(2000);
-            //allCategories.Click();
-            //Thread.Sleep(2000);
-            //softwareDevelopmentCategory.Click();
-            //Thread.Sleep(2000);
-            //solutionArchitectureDesignSubcategory.Click();
-            //Thread.Sleep(2000);
-            //category.Click();
-            var categories = driver.FindElements(By.XPath("//a[@role='listitem' and @class='item category']"));
-            foreach (var category in categories)
+            Thread.Sleep(4000);
+            if (category == "Software Development")
             {
-                if (category.Text == Category)
-                {
-                    category.Click();
-                    break;
-                }
+
             }
-                Thread.Sleep(2000);
-            //subcategories.Click();
-            //Thread.Sleep(2000);
+            //var categories = driver.FindElements(By.XPath("//a[@role='listitem' and @class='item category']"));
+            //foreach (var category in categories)
+            //{
+
+            //    if (category.Text == Category)
+            //    {
+            //        category.Click();
+            //        break;
+            //    }
+            //}
+            Thread.Sleep(4000);
+
             var subcategories = driver.FindElements(By.XPath("//a[@role='listitem' and @class='item subcategory']"));
             foreach (var subcategory in subcategories)
             {
@@ -144,6 +143,7 @@ namespace AdvanceProjectMars_Task5.Pages
                     break;
                 }
             }
+            Thread.Sleep(2000);
             var elements = driver.FindElements(By.XPath("//p[@class='row-padded']"));
             foreach (var element in elements)
             {
@@ -154,12 +154,13 @@ namespace AdvanceProjectMars_Task5.Pages
                 }
             }
             Thread.Sleep(2000);
+
             IWebElement gobackToSubcategory = driver.FindElement(By.XPath("//a[contains(@href, '/Home/Search?cat=') and contains(@href, '&subcat=')]"));
-           
             string subcategoryText = gobackToSubcategory.Text;
             Console.WriteLine($"Selected Subcategory: {subcategoryText}");
             gobackToSubcategory.Click();
         }
+
     }
     
 }
