@@ -115,34 +115,249 @@ namespace AdvanceProjectMars_Task5.Pages
         }
         public void SearchSkillWithAllCategoryandSubcategory(string Category, string Subcategory, string Listings)
         {
-            Thread.Sleep(3000);
+            Thread.Sleep(2000);
             searchSkillsSearchIcon.Click();
-            Thread.Sleep(4000);
-            if (category == "Software Development")
+            Thread.Sleep(2000);
+            if (Category == "Software Development")
             {
-
+                softwareDevelopmentCategory.Click();
             }
-            //var categories = driver.FindElements(By.XPath("//a[@role='listitem' and @class='item category']"));
-            //foreach (var category in categories)
-            //{
 
-            //    if (category.Text == Category)
-            //    {
-            //        category.Click();
-            //        break;
-            //    }
-            //}
-            Thread.Sleep(4000);
-
-            var subcategories = driver.FindElements(By.XPath("//a[@role='listitem' and @class='item subcategory']"));
-            foreach (var subcategory in subcategories)
+            else if (Category == "Data Analysis & Business Intelligence")
             {
-                if (subcategory.Text == Subcategory)
-                {
-                    subcategory.Click();
-                    break;
-                }
+                dataAnalysisAndBusinessIntelligenceCategory.Click();
             }
+            else if (Category == "Test Automation")
+            {
+                testAutomationCategory.Click();
+            }
+            else if (Category == "Data Science")
+            {
+                dataScienceCategory.Click();
+            }
+            else if (Category == "Machine Learning")
+            {
+                machineLearningCategory.Click();
+            }
+            else if (Category == "Game Development")
+            {
+                gameDevelopmentCategory.Click();
+            }
+            else if (Category == "Communication")
+            {
+                communicationCategory.Click();
+            }
+            else if (Category == "Fun & Lifestyle")
+            {
+                funAndLifestyleCategory.Click();
+            }
+            else if (Category == "Recruitment")
+            {
+                recruitmentCategory.Click();
+            }
+
+            Thread.Sleep(2000);
+            if (Subcategory == "Solution Architecture Design")
+            {
+                solutionArchitectureDesignSubcategory.Click();
+            }
+            else if (Subcategory == "Programming")
+            {
+                programmingSubcategory.Click();
+            }
+            else if (Subcategory == "Front End Development")
+            {
+                frontEndDevelopmentSubcategory.Click();
+            }
+            else if (Subcategory == "Back End Development")
+            {
+                backEndDevelopmentSubcategory.Click();
+            }
+            else if (Subcategory == "Design Pattern")
+            {
+                designPatternSubcategory.Click();
+            }
+            else if (Subcategory == "DevOps CI/CD")
+            {
+                devOpsCIandCDSubcategory.Click();
+            }
+            else if (Subcategory == "Other")
+            {
+                otherSubcategory.Click();
+            }
+            else if (Subcategory == "Data Cleaning and Standardisation")
+            {
+                datacleaningandstandardisationSubcategory.Click();
+            }
+            else if (Subcategory == "Data Warehousing")
+            {
+                dataWarehousingSubcategory.Click();
+            }
+            else if (Subcategory == "ETL Design")
+            {
+                eTLDesignSubcategory.Click();
+            }
+            else if (Subcategory == "Data Visualisation")
+            {
+                dataVisualisationSubcategory.Click();
+            }
+            else if (Subcategory == "PowerBI")
+            {
+                powerBISubcategory.Click();
+            }
+            else if (Subcategory == "Tableau")
+            {
+                tableauSubcategory.Click();
+            }
+            else if (Subcategory == "Wherescape RED")
+            {
+                wherescapeREDSubcategory.Click();
+            }
+            else if (Subcategory == "Other")
+            {
+                DataAnalysisAndBusinessIntelligenceOtherSubcategory.Click();
+            }
+            else if (Subcategory == "Selenium")
+            {
+                seleniumSubcategory.Click();
+            }
+            else if (Subcategory == "Cucumber/Specflow")
+            {
+                cucumberSpecflowSubcategory.Click();
+            }
+            else if (Subcategory == "API Testing")
+            {
+                APITestingSubcategory.Click();  
+            }
+            else if (Subcategory == "Performance Testing")
+            {
+                performanceTestingSubcategory.Click();
+            }
+            else if (Subcategory == "Other")
+            {
+                testAutomationOtherSubcategory.Click();
+            }
+            else if (Subcategory == "Python Programming")
+            {
+                pythonProgrammingSubcategory.Click();
+            }
+            else if (Subcategory == "R Studio Programming")
+            {
+                rStudioProgrammingSubcategory.Click();
+            }
+            else if (Subcategory == "Big Data")
+            {
+                bigDataSubcategory.Click();
+            }
+            else if (Subcategory == "Other")
+            {
+                dataScienceOtherSubcategory.Click();
+            }
+            else if (Subcategory == "Supervised Learning")
+            {
+                supervisedLearningSubcategory.Click();
+            }
+            else if (Subcategory == "Unsupervised Learning")
+            {
+                unsupervisedLearningSubcategory.Click();
+            }
+            else if (Subcategory == "Reinforcement Learning")
+            {
+                reinforcementLearningSubcategory.Click();
+            }
+            else if (Subcategory == "Other")
+            {
+                machineLearningOtherSubcategory.Click();
+            }
+            else if (Subcategory == "Unity")
+            {
+                unitySubcategory.Click();
+            }
+            else if (Subcategory == "Unreal")
+            {
+                unrealSubcategory.Click();
+            }
+            else if (Subcategory == "3D Modeling")
+            {
+                threeDModelingSubcategory.Click();
+            }
+            else if (Subcategory == "Game Design")
+            {
+                gameDesignSubcategory.Click();
+            }
+            else if (Subcategory == "HTML5")
+            {
+                HTMLfiveSubcategory.Click();
+            }
+            else if (Subcategory == "Other")
+            {
+                gameDevelopmentOtherSubcategory.Click();
+            }
+            else if (Subcategory == "Communication at Work")
+            {
+                communicationAtWorkSubcategory.Click();
+            }
+            else if (Subcategory == "Job Hunting Advice")
+            {
+                jobHuntingAdviceSubcategory.Click();
+            }
+            else if (Subcategory == "Job Market Advice")
+            {
+                jobMarketAdviceSubcategory.Click();
+            }
+            else if (Subcategory == "Interview Advice")
+            {
+                communicationInterviewAdviceSubcategory.Click();
+            }
+            else if (Subcategory == "Job Analysis Consulting")
+            {
+                jobAnalysisConsultingSubcategory.Click();
+            }
+            else if (Subcategory == "Other")
+            {
+                communicationOtherSubcategory.Click();
+            }
+            else if (Subcategory == "Online Lessons")
+            {
+                onlineLessonsSubcategory.Click();
+            }
+            else if (Subcategory == "Relationship Advice")
+            {
+                relationshipAdviceSubcategory.Click();
+            }
+            else if (Subcategory == "Astrology")
+            {
+                astrologySubcategory.Click();
+            }
+            else if (Subcategory == "Health, Nutrition & Fitness")
+            {
+                healthNutritionFitnessSubcategory.Click();
+            }
+            else if (Subcategory == "Gaming")
+            {
+                gamingSubcategory.Click();
+            }
+            else if (Subcategory == "Other")
+            {
+                funAndLifestyleOtherSubcategory.Click();
+            }
+            else if (Subcategory == "Employability")
+            {
+                employabilitySubcategory.Click();
+            }
+            else if (Subcategory == "CV Advices")
+            {
+                cvAdvicesSubcategory.Click();
+            }
+            else if (Subcategory == "Interview Advice")
+            {
+                recruitmentInterviewAdviceSubcategory.Click();
+            }
+            else if (Subcategory == "Job Market Insight")
+            {
+                jobMarketInsightSubcategory.Click();
+            }
+
             Thread.Sleep(2000);
             var elements = driver.FindElements(By.XPath("//p[@class='row-padded']"));
             foreach (var element in elements)
@@ -159,7 +374,52 @@ namespace AdvanceProjectMars_Task5.Pages
             string subcategoryText = gobackToSubcategory.Text;
             Console.WriteLine($"Selected Subcategory: {subcategoryText}");
             gobackToSubcategory.Click();
+
         }
+        //public void SearchSkillWithAllCategoryandSubcategory(string Category, string Subcategory, string Listings)
+        //{
+        //    Thread.Sleep(3000);
+        //    searchSkillsSearchIcon.Click();
+        //    Thread.Sleep(4000);
+
+        //    var categories = driver.FindElements(By.XPath("//a[@role='listitem' and @class='item category']"));
+        //    foreach (var category in categories)
+        //    {
+
+        //        if (category.Text == Category)
+        //        {
+        //            category.Click();
+        //            break;
+        //        }
+        //    }
+        //    Thread.Sleep(4000);
+
+        //    var subcategories = driver.FindElements(By.XPath("//a[@role='listitem' and @class='item subcategory']"));
+        //    foreach (var subcategory in subcategories)
+        //    {
+        //        if (subcategory.Text == Subcategory)
+        //        {
+        //            subcategory.Click();
+        //            break;
+        //        }
+        //    }
+        //    Thread.Sleep(2000);
+        //    var elements = driver.FindElements(By.XPath("//p[@class='row-padded']"));
+        //    foreach (var element in elements)
+        //    {
+        //        if (element.Text.Trim() == Listings)
+        //        {
+        //            element.Click();
+        //            break;
+        //        }
+        //    }
+        //    Thread.Sleep(2000);
+
+        //    IWebElement gobackToSubcategory = driver.FindElement(By.XPath("//a[contains(@href, '/Home/Search?cat=') and contains(@href, '&subcat=')]"));
+        //    string subcategoryText = gobackToSubcategory.Text;
+        //    Console.WriteLine($"Selected Subcategory: {subcategoryText}");
+        //    gobackToSubcategory.Click();
+    //}
 
     }
     
