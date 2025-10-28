@@ -476,7 +476,73 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             Thread.Sleep(7000);
         }
         [Test]
+        public void TestSearchSkills()
+        {
+            IWebElement searchSkillsSearchIcon = driver.FindElement(By.XPath("(//i[@class='search link icon'])[1]"));
+            searchSkillsSearchIcon.Click();
+            Thread.Sleep(3000);
+            IWebElement searchSkills = driver.FindElement(By.XPath("(//input[@placeholder='Search skills'])[2]"));
+            searchSkills.SendKeys("Testing" + Keys.Enter);
+            Thread.Sleep(3000);
+            var searchResults = driver.FindElements(By.XPath("//div[@class='ui card']")); // adjust the XPath according to your result elements
 
+            Console.WriteLine("Total listings: " + searchResults.Count);
+            Thread.Sleep(2000);
+            var categories = driver.FindElements(By.XPath("//a[@role='listitem' and @class='item category']"));
+            Thread.Sleep(4000);
+            foreach (var category in categories)
+            {
+                // Check if the category has a right floated content that is not zero
+                var rightFloatedContent = category.FindElement(By.XPath(".//span[@class='right-floated']"));
+                if (rightFloatedContent.Text != "0")
+                {
+                    Console.WriteLine("Category: " + category.Text);
+                    Console.WriteLine("Count: " + rightFloatedContent.Text);
+                    category.Click();
+                    Thread.Sleep(2000);
+                    // Get subcategories
+                    var subcategories = driver.FindElements(By.XPath("//a[@role='listitem' and @class='item subcategory']"));
+                    Thread.Sleep(4000);
+                    foreach (var subcategory in subcategories)
+                    {
+                        var subcategoryRightFloatedContent = subcategory.FindElement(By.XPath(".//span[@class='right-floated']"));
+                        if (subcategoryRightFloatedContent.Text != "0")
+                        {
+                            Console.WriteLine("  Subcategory: " + subcategory.Text);
+                            Console.WriteLine("  Listings: " + subcategoryRightFloatedContent.Text);
+                        }
+                    }
+                }
+            }
+            // Get all categories
+            //var categories = driver.FindElements(By.XPath("//a[@role='listitem' and @class='item category']"));
+            //Thread.Sleep(4000);
+            //foreach (var category in categories)
+            //{
+            //    // Check if the category has a right floated content that is not zero
+            //    var rightFloatedContent = category.FindElement(By.XPath(".//span[@class='right-floated']"));
+            //    if (rightFloatedContent.Text != "0")
+            //    {
+            //        Console.WriteLine("Category: " + category.Text);
+            //        Console.WriteLine("Count: " + rightFloatedContent.Text);
+
+            //        // Get subcategories
+            //        var subcategories = category.FindElements(By.XPath(".//following-sibling::a[@role='listitem' and @class='item subcategory']"));
+            //        Thread.Sleep(4000);
+            //        foreach (var subcategory in subcategories)
+            //        {
+            //            // Check if the subcategory has listings related to testing
+            //            var listingsCount = subcategory.FindElement(By.XPath(".//span[@class='right-floated']")).Text;
+            //            if (listingsCount != "0")
+            //            {
+            //                Console.WriteLine("  Subcategory: " + subcategory.Text);
+            //                Console.WriteLine("  Listings: " + listingsCount);
+            //            }
+            //        }
+            //    }
+            //}
+
+        }
         [TearDown]
         public void TearDown()
         {
