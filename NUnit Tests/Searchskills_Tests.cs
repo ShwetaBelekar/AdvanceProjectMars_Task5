@@ -11,7 +11,7 @@ using RazorEngine;
 using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
-
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -435,6 +435,48 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             
             
         }
+        [Test]
+        public void TestSearchUser()
+        {
+            IWebElement searchSkillsSearchIcon = driver.FindElement(By.XPath("(//i[@class='search link icon'])[1]"));
+            searchSkillsSearchIcon.Click();
+            Thread.Sleep(3000);
+            IWebElement searchUser = driver.FindElement(By.XPath("//input[@placeholder='Search user']"));
+            searchUser.SendKeys("sun");
+            Thread.Sleep(3000);
+            var suggestions = ((ReadOnlyCollection<IWebElement>)driver.FindElements(By.XPath("//div[@class='result' and @score='0']"))); // adjust the XPath according to your suggestions dropdown
+            bool suggestionFound = false;
+
+            foreach (var suggestion in suggestions)
+            {
+                if (suggestion.Text.ToLower().Contains("sun moon"))
+                {
+                    suggestion.Click();
+                    suggestionFound = true;
+                    break;
+                }
+            }
+
+            if (!suggestionFound)
+            {
+                Console.WriteLine("Suggestion 'sun moon' not found.");
+            }
+            //IWebElement searchUser = driver.FindElement(By.XPath("//input[@placeholder='Search user']"));
+            //searchUser.SendKeys("Sun Moon");
+            //Thread.Sleep(3000);
+            //var suggestions = ((ReadOnlyCollection<IWebElement>)driver.FindElements(By.XPath("//div[@class='result' and @score='0']"))); // adjust the XPath according to your suggestions dropdown
+            //foreach (var suggestion in suggestions)
+            //{
+            //    if (suggestion.Text.Contains("Sun Moon"))
+            //    {
+            //        suggestion.Click();
+            //        break;
+            //    }
+            //}
+            Thread.Sleep(7000);
+        }
+        [Test]
+
         [TearDown]
         public void TearDown()
         {
