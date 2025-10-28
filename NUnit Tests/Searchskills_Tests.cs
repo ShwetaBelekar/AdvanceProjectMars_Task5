@@ -543,6 +543,44 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             //}
 
         }
+        [Test]
+        public void SendSkillSwapRequest()
+        {
+            IWebElement searchSkills = driver.FindElement(By.XPath("(//input[@placeholder='Search skills'])[1]"));
+            searchSkills.SendKeys("Cooking" + Keys.Enter);
+            Thread.Sleep(2000);
+            IWebElement selectListing = driver.FindElement(By.XPath("//p[@class='row-padded']"));
+            selectListing.Click();
+            IWebElement messageToSeller = driver.FindElement(By.XPath("//*[@id=\"service-detail-section\"]/div[2]/div/div[2]/div[2]/div[2]/div/div[2]/div/div[1]/textarea"));
+            messageToSeller.SendKeys("I am interested in your Skill");
+            Thread.Sleep(3000);
+            IWebElement requestButton = driver.FindElement(By.XPath("//div[@class='ui teal  button']"));
+            requestButton.Click();
+            Thread.Sleep(2000);
+            IWebElement yesButton = driver.FindElement(By.XPath("//button[@class='ui button ui teal button' and text()='Yes']"));
+            yesButton.Click();
+            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            if (popupAlert.Text == "Request sent")
+            {
+                Console.WriteLine("SkillSwap request sent successfully");
+            }
+            else
+            {
+                Console.WriteLine("SkillSwap request not sent");
+            }
+            IWebElement manageRequest = driver.FindElement(By.XPath("//div[@class='ui dropdown link item' and @tabindex='0']"));
+            manageRequest.Click();
+            Thread.Sleep(2000);
+            IWebElement sentRequests = driver.FindElement(By.XPath("//a[@class='item' and @href='/Home/SentRequest']"));
+            sentRequests.Click();
+            Thread.Sleep(2000);
+            IWebElement skillswaprequestsent = driver.FindElement(By.XPath("//*[@id=\"sent-request-section\"]/div[2]/div[1]/table/tbody/tr[1]"));
+            skillswaprequestsent.Click();
+                
+
+
+        }
         [TearDown]
         public void TearDown()
         {
