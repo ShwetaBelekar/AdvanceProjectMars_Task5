@@ -581,6 +581,17 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
 
 
         }
+        [Test]
+        public void CheckNotificationAlerts()
+        {
+            Thread.Sleep(2000);
+            IWebElement notification = driver.FindElement(By.XPath("//div[@class='ui top left pointing dropdown item']"));
+            notification.Click();
+            Thread.Sleep(3000);
+            IWebElement seeAll = driver.FindElement(By.XPath("//a[@href='/Account/Dashboard' and contains(text(), 'See All...')]"));
+            seeAll.Click();
+            Thread.Sleep(3000);
+        }
         [TearDown]
         public void TearDown()
         {
