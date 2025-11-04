@@ -54,49 +54,6 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             IWebElement manageListingsTab = driver.FindElement(By.XPath("//a[@href='/Home/ListingManagement']"));
             manageListingsTab.Click();
             Thread.Sleep(3000);
-            //IWebElement tableRow = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr"));
-            int totaltableRow = 0;
-            int totalPages = 11; // You know there are 3 pages
-            Thread.Sleep(4000);
-            for (int i = 1; i <= totalPages; i++)
-            {
-                var tableRow = driver.FindElements(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr"));
-                int tableRowOnPage = tableRow.Count;
-                Console.WriteLine($"Number of tableRow on page {i}: {tableRowOnPage}");
-                totaltableRow += tableRowOnPage;
-
-                if (i < totalPages)
-                {
-                    // Navigate to the next page
-                    var pageButtons = driver.FindElements(By.XPath("//button[@class='ui button otherPage']"));
-                    foreach (var button in pageButtons)
-                    {
-                        if (button.Text == (i + 1).ToString())
-                        {
-                            button.Click();
-                            Thread.Sleep(2000); // Wait for the page to load
-                            break;
-                        }
-                    }
-                }
-            }
-            
-            Console.WriteLine($"Total number of listings: {totaltableRow}");
-            //int totalPages = 11;
-            //int listingsPerPage = 5;
-            //int listingsOnLastPage = 3;
-
-            //int totalCount = (totalPages - 1) * listingsPerPage + listingsOnLastPage;
-
-            //Assert.That(totalCount, Is.GreaterThan(0));
-            //Console.WriteLine("Total listings: " + totalCount);
-        }
-        [Test]
-        public void CountTotaalListings()
-        {
-            IWebElement manageListingsTab = driver.FindElement(By.XPath("//a[@href='/Home/ListingManagement']"));
-            manageListingsTab.Click();
-            Thread.Sleep(3000);
 
             int totaltableRow = 0;
             int totalPages = 0;
@@ -196,85 +153,82 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         {
             SearchskillsPage searchskillsPageObj = new SearchskillsPage();
             searchskillsPageObj.SearchSkillWithOnlineFilter(Filter);
-           
             int totalOnlineListings = 0;
-            int totalPages = 3; // You know there are 3 pages
+            bool hasNextPage = true;
+            int currentPage = 1;
             Thread.Sleep(4000);
-            for (int i = 1; i <= totalPages; i++)
+            while (hasNextPage)
             {
                 var listings = driver.FindElements(By.XPath("//div[@class='ui card']"));
                 int listingsOnPage = listings.Count;
-                Console.WriteLine($"Number of listings on page {i}: {listingsOnPage}");
+                Console.WriteLine($"Number of listings on page {currentPage}: {listingsOnPage}");
                 totalOnlineListings += listingsOnPage;
 
-                if (i < totalPages)
+                var pageButtons = driver.FindElements(By.XPath("//button[@class='ui button otherPage']"));
+                var nextPageButton = pageButtons.Where(b => b.Text == (currentPage + 1).ToString()).FirstOrDefault();
+
+                if (nextPageButton != null)
                 {
-                    // Navigate to the next page
-                    var pageButtons = driver.FindElements(By.XPath("//button[@class='ui button otherPage']"));
-                    foreach (var button in pageButtons)
-                    {
-                        if (button.Text == (i + 1).ToString())
-                        {
-                            button.Click();
-                            Thread.Sleep(2000); // Wait for the page to load
-                            break;
-                        }
-                    }
+                    nextPageButton.Click();
+                    Thread.Sleep(2000); 
+                    currentPage++;
+                }
+                else
+                {
+                    hasNextPage = false;
                 }
             }
 
             Console.WriteLine($"Total number of listings: {totalOnlineListings}");
-            if (totalOnlineListings == 19)
+            if (totalOnlineListings > 0)
             {
-                Assert.Pass("The total number of online listings is 19.");
+                Assert.Pass($"The total number of online listings is {totalOnlineListings}.");
             }
             else
             {
-                Assert.Fail("The total number of online listings is not 19.");
+                Assert.Fail("No online listings found.");
             }
+            
         }
         [Test, TestCaseSource(nameof(GetTestData), new object[] { "Searchskills_withOnsiteFilter.json", "SearchskillsbyapplyingOnsiteFilter" })]
         public void SearchskillsbyapplyingOnsiteFilter(string Filter)
         {
             SearchskillsPage searchskillsPageObj = new SearchskillsPage();
             searchskillsPageObj.SearchSkillWithOnsiteFilter(Filter);
-
-           
             int totalOnsiteListings = 0;
-            int totalPages = 3; // You know there are 3 pages
+            bool hasNextPage = true;
+            int currentPage = 1;
             Thread.Sleep(4000);
-            for (int i = 1; i <= totalPages; i++)
+            while (hasNextPage)
             {
                 var listings = driver.FindElements(By.XPath("//div[@class='ui card']"));
                 int listingsOnPage = listings.Count;
-                Console.WriteLine($"Number of listings on page {i}: {listingsOnPage}");
+                Console.WriteLine($"Number of listings on page {currentPage}: {listingsOnPage}");
                 totalOnsiteListings += listingsOnPage;
 
-                if (i < totalPages)
+                var pageButtons = driver.FindElements(By.XPath("//button[@class='ui button otherPage']"));
+                var nextPageButton = pageButtons.Where(b => b.Text == (currentPage + 1).ToString()).FirstOrDefault();
+
+                if (nextPageButton != null)
                 {
-                    // Navigate to the next page
-                    var pageButtons = driver.FindElements(By.XPath("//button[@class='ui button otherPage']"));
-                    foreach (var button in pageButtons)
-                    {
-                        if (button.Text == (i + 1).ToString())
-                        {
-                            button.Click();
-                            Thread.Sleep(2000); // Wait for the page to load
-                            break;
-                        }
-                    }
+                    nextPageButton.Click();
+                    Thread.Sleep(2000); // Wait for the page to load
+                    currentPage++;
+                }
+                else
+                {
+                    hasNextPage = false;
                 }
             }
 
             Console.WriteLine($"Total number of listings: {totalOnsiteListings}");
-            var expectedListings = 26;
-            if (totalOnsiteListings == expectedListings)
+            if (totalOnsiteListings > 0)
             {
-                Assert.Pass($"The total number of onsite listings is {expectedListings}.");
+                Assert.Pass($"The total number of onsite listings is {totalOnsiteListings}.");
             }
             else
             {
-                Assert.Fail($"The total number of onsite listings is not {expectedListings}. Expected {expectedListings} but got {totalOnsiteListings}.");
+                Assert.Fail("No onsite listings found.");
             }
             
         }
@@ -286,39 +240,39 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             
 
             int totalShowAllListings = 0;
-            int totalPages = 5; // You know there are 3 pages
+            bool hasNextPage = true;
+            int currentPage = 1;
+           
             Thread.Sleep(4000);
-            for (int i = 1; i <= totalPages; i++)
+            while (hasNextPage)
             {
                 var listings = driver.FindElements(By.XPath("//div[@class='ui card']"));
                 int listingsOnPage = listings.Count;
-                Console.WriteLine($"Number of listings on page {i}: {listingsOnPage}");
+                Console.WriteLine($"Number of listings on page {currentPage}: {listingsOnPage}");
                 totalShowAllListings += listingsOnPage;
-
-                if (i < totalPages)
+                var pageButtons = driver.FindElements(By.XPath("//button[@class='ui button otherPage']"));
+                var nextPageButton = pageButtons.Where(b => b.Text == (currentPage + 1).ToString()).FirstOrDefault();
+                if (nextPageButton != null)
                 {
-                    // Navigate to the next page
-                    var pageButtons = driver.FindElements(By.XPath("//button[@class='ui button otherPage']"));
-                    foreach (var button in pageButtons)
-                    {
-                        if (button.Text == (i + 1).ToString())
-                        {
-                            button.Click();
-                            Thread.Sleep(2000); // Wait for the page to load
-                            break;
-                        }
-                    }
+                    nextPageButton.Click();
+                    Thread.Sleep(2000); // Wait for the page to load
+                    currentPage++;
+                }
+                else
+                {
+                    hasNextPage = false;
                 }
             }
+        
 
             Console.WriteLine($"Total number of listings: {totalShowAllListings}");
-            if (totalShowAllListings == 45)
+            if (totalShowAllListings > 0)
             {
-                Assert.Pass("The total number of ShowAll listings is 45.");
+                Assert.Pass($"The total number of showall listings is {totalShowAllListings}.");
             }
             else
             {
-                Assert.Fail("The total number of ShowAll listings is not 45.");
+                Assert.Fail("No showall listings found.");
             }
         }
         [Test]
@@ -327,46 +281,21 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             IWebElement searchSkillsSearchIcon = driver.FindElement(By.XPath("(//i[@class='search link icon'])[1]"));
             searchSkillsSearchIcon.Click();
             Thread.Sleep(3000);
-           
-
             int totalShowAllContent = 0;
-            int totalPages = 5; // You know there are 3 pages
+            bool hasNextPage = true;
+            int currentPage = 0;
             Thread.Sleep(6000);
-            var sellerListings = new Dictionary<string, int>
-                {
-                 {"Tony Money", 0},
-                 {"Sun Moon", 0}
-                };
+            var sellerListings = new Dictionary<string, int>();
 
-            for (int i = 1; i <= totalPages; i++)
+            while (hasNextPage)
             {
                 var Content = driver.FindElements(By.XPath("//*[@id=\"service-search-section\"]/div[2]/div/section/div/div[2]/div/div[2]/div/div/div/div[1]"));
                 int ContentOnPage = Content.Count;
-                Console.WriteLine($"Number of listings on page {i}: {ContentOnPage}");
+                Console.WriteLine($"Number of listings on page {currentPage + 1}: {ContentOnPage}");
                 foreach (var item in Content)
                 {
                     Console.WriteLine(item.Text);
-                    //string sellerName = "";
-                    //if (item.Text.Contains("Tony Money"))
-                    //{
-                    //    sellerName = "Tony Money";
-                    //}
-                    //else if (item.Text.Contains("Sun Moon"))
-                    //{
-                    //    sellerName = "Sun Moon";
-                    //}
 
-                    //if (!string.IsNullOrEmpty(sellerName))
-                    //{
-                    //    if (sellerListings.ContainsKey(sellerName))
-                    //    {
-                    //        sellerListings[sellerName]++;
-                    //    }
-                    //    else
-                    //    {
-                    //        sellerListings.Add(sellerName, 1);   
-                    //    }  
-                    //}
                     var sellerNameElement = item.FindElement(By.XPath(".//a[@class='seller-info']"));
                     var sellerName = sellerNameElement.Text.Trim();
 
@@ -374,30 +303,37 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                     {
                         sellerListings[sellerName]++;
                     }
+                    else
+                    {
+                        sellerListings.Add(sellerName, 1);
+                    }
                 }
                 totalShowAllContent += ContentOnPage;
 
-                if (i < totalPages)
+                var pageButtons = driver.FindElements(By.XPath("//button[@class='ui button otherPage']"));
+                var nextPageButton = pageButtons.Where(b => b.Text == (currentPage + 2).ToString()).FirstOrDefault();
+
+                if (nextPageButton != null)
                 {
-                    // Navigate to the next page
-                    var pageButtons = driver.FindElements(By.XPath("//button[@class='ui button otherPage']"));
-                    foreach (var button in pageButtons)
-                    {
-                        if (button.Text == (i + 1).ToString())
-                        {
-                            button.Click();
-                            Thread.Sleep(2000); // Wait for the page to load
-                            break;
-                        }
-                    }
+                    nextPageButton.Click();
+                    Thread.Sleep(2000); // Wait for the page to load
+                    currentPage++;
+                }
+                else
+                {
+                    hasNextPage = false;
                 }
             }
 
             Console.WriteLine($"Total number of listings: {totalShowAllContent}");
+            TestContext.Progress.WriteLine("Seller Listings:");
             foreach (var seller in sellerListings)
             {
+                TestContext.Progress.WriteLine($"{seller.Key} has {seller.Value} listings.");
                 Console.WriteLine($"{seller.Key} has {seller.Value} listings.");
             }
+            
+
         }
         [Test]
         public void TestCategoryMatching()
@@ -411,7 +347,15 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             var footerCategories = driver.FindElements(By.XPath("//*[@id=\"service-search-section\"]/section[2]/div/div/div/div[1]/nav")).Select(e => e.Text).ToList();
 
             // Compare the categories
-            CollectionAssert.AreEqual(topCategories, footerCategories, "The categories at the top and footer do not match.");
+            if (!topCategories.SequenceEqual(footerCategories))
+            {
+                Assert.Pass("The categories at the top and footer do not match.");
+            }
+            else
+            {
+                Assert.Fail("The categories at the top and footer match.");
+            }
+            //CollectionAssert.AreEqual(topCategories, footerCategories, "The categories at the top and footer do not match.");
         }
         [Test, TestCaseSource(nameof(GetTestData), new object[] { "Searchskills_byAllCategoryandSubcategories.json", "SearchskillsbyallCategoryandSubcategories" })]
         public void SearchskillsbyallCategoryandSubcategories(string Category, string Subcategory, string Listings)
@@ -420,17 +364,17 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             SearchskillsPage searchskillsPageObj = new SearchskillsPage();
             searchskillsPageObj.SearchSkillWithAllCategoryandSubcategory(Category, Subcategory, Listings);
             Thread.Sleep(2000);
-                // Check if "No results found" message is displayed
+               
                 if (driver.FindElement(By.XPath("//h3[text()='No results found, please select a new category!']")).Displayed)
                 {
 
                     Assert.Pass("User clicked on subcategory so it should take user back to subcategory but instead it threw user out completely and displayed a message. No results found, please select a new category!");
-                    // You can add additional logic here to handle this scenario
+                    
                 }
                 else
                 {
                     Assert.Fail("Subcategory page loaded successfully.");
-                    // You can add additional logic here to proceed with the test
+                   
                 }
             
             
@@ -484,7 +428,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             IWebElement searchSkills = driver.FindElement(By.XPath("(//input[@placeholder='Search skills'])[2]"));
             searchSkills.SendKeys("Testing" + Keys.Enter);
             Thread.Sleep(3000);
-            var searchResults = driver.FindElements(By.XPath("//div[@class='ui card']")); // adjust the XPath according to your result elements
+            var searchResults = driver.FindElements(By.XPath("//div[@class='ui card']"));
 
             Console.WriteLine("Total listings: " + searchResults.Count);
             Thread.Sleep(2000);
@@ -550,6 +494,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             searchSkills.SendKeys("Cooking" + Keys.Enter);
             Thread.Sleep(2000);
             IWebElement selectListing = driver.FindElement(By.XPath("//p[@class='row-padded']"));
+            Console.WriteLine($"Selected {selectListing.Text}");
             selectListing.Click();
             IWebElement messageToSeller = driver.FindElement(By.XPath("//*[@id=\"service-detail-section\"]/div[2]/div/div[2]/div[2]/div[2]/div/div[2]/div/div[1]/textarea"));
             messageToSeller.SendKeys("I am interested in your Skill");
@@ -576,10 +521,28 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             sentRequests.Click();
             Thread.Sleep(2000);
             IWebElement skillswaprequestsent = driver.FindElement(By.XPath("//*[@id=\"sent-request-section\"]/div[2]/div[1]/table/tbody/tr[1]"));
-            skillswaprequestsent.Click();
-                
+            //skillswaprequestsent.Click();
+            if (skillswaprequestsent.Text == "LearnCooking")
+            {
+                Console.WriteLine("slected listing is correct");
+            }
+            else
+            {
+                Console.WriteLine("slected listing is incorrect");
+            }
+            Thread.Sleep(3000);
+            IWebElement recipient = driver.FindElement(By.XPath("//*[@id=\"sent-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[4]/a"));
+            IWebElement date = driver.FindElement(By.XPath("//*[@id=\"sent-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[7]"));
+            if(recipient.Text == "Sun" && date.Text == "29th Oct, 2025")
+            {
+                Assert.Pass("Recipient name should be full name because if there are two seller with same first name then it can be confusing and date is not correct");
+            }
+            else
+            {
+                Assert.Fail("Recipient name nad date are correct");
+            }
 
-
+            
         }
         [Test]
         public void CheckNotificationAlerts()

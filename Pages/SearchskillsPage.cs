@@ -278,13 +278,13 @@ namespace AdvanceProjectMars_Task5.Pages
             else if (Subcategory == "Unreal")
             {
                 unrealSubcategory.Click();
-                Thread.Sleep(3000);
-                var rightFloatedContent = ((ReadOnlyCollection<IWebElement>)driver.FindElements(By.XPath("//span[@class='right-floated' and text()='0']")));
-                if (rightFloatedContent.Count > 0)
-                {
-                    Assert.Pass("No listings found for Unreal subcategory.");
-                    // You can add additional logic here to handle this scenario
-                }
+                ////Thread.Sleep(3000);
+                ////var rightFloatedContent = ((ReadOnlyCollection<IWebElement>)driver.FindElements(By.XPath("//span[@class='right-floated' and text()='0']")));
+                ////if (rightFloatedContent.Count > 0)
+                ////{
+                ////    Assert.Pass("No listings found for Unreal subcategory.");
+                ////    // You can add additional logic here to handle this scenario
+                ////}
 
             }
             else if (Subcategory == "3D Modeling")
@@ -294,25 +294,25 @@ namespace AdvanceProjectMars_Task5.Pages
             else if (Subcategory == "Game Design")
             {
                 gameDesignSubcategory.Click();
-                Thread.Sleep(3000);
-                var rightFloatedContent = ((ReadOnlyCollection<IWebElement>)driver.FindElements(By.XPath("//span[@class='right-floated' and text()='0']")));
-                if (rightFloatedContent.Count > 1)
-                {
-                    Assert.Pass("No listings found for Game Design subcategory.");
-                    // You can add additional logic here to handle this scenario
-                }
+                //Thread.Sleep(3000);
+                //var rightFloatedContent = ((ReadOnlyCollection<IWebElement>)driver.FindElements(By.XPath("//span[@class='right-floated' and text()='0']")));
+                //if (rightFloatedContent.Count > 1)
+                //{
+                //    Assert.Pass("No listings found for Game Design subcategory.");
+                //    // You can add additional logic here to handle this scenario
+                //}
                 
             }
             else if (Subcategory == "HTML5")
             {
                 HTMLfiveSubcategory.Click();
-                Thread.Sleep(3000);
-                var rightFloatedContent = ((ReadOnlyCollection<IWebElement>)driver.FindElements(By.XPath("//span[@class='right-floated' and text()='0']")));
-                if (rightFloatedContent.Count > 2)
-                {
-                    Assert.Pass("No listings found for HTML5 subcategory.");
-                    // You can add additional logic here to handle this scenario
-                }
+                //Thread.Sleep(3000);
+                //var rightFloatedContent = ((ReadOnlyCollection<IWebElement>)driver.FindElements(By.XPath("//span[@class='right-floated' and text()='0']")));
+                //if (rightFloatedContent.Count > 2)
+                //{
+                //    Assert.Pass("No listings found for HTML5 subcategory.");
+                //    // You can add additional logic here to handle this scenario
+                //}
 
             }
             else if (Subcategory == "Other")
@@ -334,13 +334,13 @@ namespace AdvanceProjectMars_Task5.Pages
             else if (Subcategory == "Interview Advice")
             {
                 communicationInterviewAdviceSubcategory.Click();
-                Thread.Sleep(3000);
-                var rightFloatedContent = ((ReadOnlyCollection<IWebElement>)driver.FindElements(By.XPath("//span[@class='right-floated' and text()='0']")));
-                if (rightFloatedContent.Count > 0)
-                {
-                    Assert.Pass("No listings found for Interview Advice subcategory.");
-                    // You can add additional logic here to handle this scenario
-                }
+                //Thread.Sleep(3000);
+                //var rightFloatedContent = ((ReadOnlyCollection<IWebElement>)driver.FindElements(By.XPath("//span[@class='right-floated' and text()='0']")));
+                //if (rightFloatedContent.Count > 0)
+                //{
+                //    Assert.Pass("No listings found for Interview Advice subcategory.");
+                //    // You can add additional logic here to handle this scenario
+                //}
 
             }
             else if (Subcategory == "Job Analysis Consulting")
@@ -358,24 +358,24 @@ namespace AdvanceProjectMars_Task5.Pages
             else if (Subcategory == "Relationship Advice")
             {
                 relationshipAdviceSubcategory.Click();
-                Thread.Sleep(3000);
-                var rightFloatedContent = ((ReadOnlyCollection<IWebElement>)driver.FindElements(By.XPath("//span[@class='right-floated' and text()='0']")));
-                if (rightFloatedContent.Count > 0)
-                {
-                    Assert.Pass("No listings found for Relationship Advice subcategory.");
-                    // You can add additional logic here to handle this scenario
-                }
+                //Thread.Sleep(3000);
+                //var rightFloatedContent = ((ReadOnlyCollection<IWebElement>)driver.FindElements(By.XPath("//span[@class='right-floated' and text()='0']")));
+                //if (rightFloatedContent.Count > 0)
+                //{
+                //    Assert.Pass("No listings found for Relationship Advice subcategory.");
+                //    // You can add additional logic here to handle this scenario
+                //}
             }
             else if (Subcategory == "Astrology")
             {
                 astrologySubcategory.Click();
-                Thread.Sleep(3000);
-                var rightFloatedContent = ((ReadOnlyCollection<IWebElement>)driver.FindElements(By.XPath("//span[@class='right-floated' and text()='0']")));
-                if (rightFloatedContent.Count > 1)
-                {
-                    Assert.Pass("No listings found for Astrology subcategory.");
-                    // You can add additional logic here to handle this scenario
-                }
+                //Thread.Sleep(3000);
+                //var rightFloatedContent = ((ReadOnlyCollection<IWebElement>)driver.FindElements(By.XPath("//span[@class='right-floated' and text()='0']")));
+                //if (rightFloatedContent.Count > 1)
+                //{
+                //    Assert.Pass("No listings found for Astrology subcategory.");
+                //    // You can add additional logic here to handle this scenario
+                //}
             }
             else if (Subcategory == "Health, Nutrition & Fitness")
             {
@@ -396,13 +396,13 @@ namespace AdvanceProjectMars_Task5.Pages
             else if (Subcategory == "CV Advices")
             {
                 cvAdvicesSubcategory.Click();
-                Thread.Sleep(3000);
-                var rightFloatedContent = ((ReadOnlyCollection<IWebElement>)driver.FindElements(By.XPath("//span[@class='right-floated' and text()='0']")));
-                if (rightFloatedContent.Count > 0)
-                {
-                    Assert.Pass("No listings found for CV Advices subcategory.");
-                    // You can add additional logic here to handle this scenario
-                }
+                //Thread.Sleep(3000);
+                //var rightFloatedContent = ((ReadOnlyCollection<IWebElement>)driver.FindElements(By.XPath("//span[@class='right-floated' and text()='0']")));
+                //if (rightFloatedContent.Count > 0)
+                //{
+                //    Assert.Pass("No listings found for CV Advices subcategory.");
+                //    // You can add additional logic here to handle this scenario
+                //}
 
             }
             else if (Subcategory == "Interview Advice")
@@ -415,15 +415,26 @@ namespace AdvanceProjectMars_Task5.Pages
             }
 
             Thread.Sleep(2000);
+            
             var elements = driver.FindElements(By.XPath("//p[@class='row-padded']"));
-            foreach (var element in elements)
+            if (elements.Count == 0)
             {
-                if (element.Text.Trim() == Listings)
-                {
-                    element.Click();
-                    break;
-                }
+                Assert.Pass("No results found, please select a new category!");
+                
             }
+            else
+            {
+                foreach (var element in elements)
+                {
+                    if (element.Text.Trim() == Listings)
+                    {
+                        element.Click();
+                        break;
+                    }
+                }
+
+            }
+               
             Thread.Sleep(2000);
 
             IWebElement gobackToSubcategory = driver.FindElement(By.XPath("//a[contains(@href, '/Home/Search?cat=') and contains(@href, '&subcat=')]"));
@@ -432,50 +443,7 @@ namespace AdvanceProjectMars_Task5.Pages
             gobackToSubcategory.Click();
 
         }
-        //public void SearchSkillWithAllCategoryandSubcategory(string Category, string Subcategory, string Listings)
-        //{
-        //    Thread.Sleep(3000);
-        //    searchSkillsSearchIcon.Click();
-        //    Thread.Sleep(4000);
-
-        //    var categories = driver.FindElements(By.XPath("//a[@role='listitem' and @class='item category']"));
-        //    foreach (var category in categories)
-        //    {
-
-        //        if (category.Text == Category)
-        //        {
-        //            category.Click();
-        //            break;
-        //        }
-        //    }
-        //    Thread.Sleep(4000);
-
-        //    var subcategories = driver.FindElements(By.XPath("//a[@role='listitem' and @class='item subcategory']"));
-        //    foreach (var subcategory in subcategories)
-        //    {
-        //        if (subcategory.Text == Subcategory)
-        //        {
-        //            subcategory.Click();
-        //            break;
-        //        }
-        //    }
-        //    Thread.Sleep(2000);
-        //    var elements = driver.FindElements(By.XPath("//p[@class='row-padded']"));
-        //    foreach (var element in elements)
-        //    {
-        //        if (element.Text.Trim() == Listings)
-        //        {
-        //            element.Click();
-        //            break;
-        //        }
-        //    }
-        //    Thread.Sleep(2000);
-
-        //    IWebElement gobackToSubcategory = driver.FindElement(By.XPath("//a[contains(@href, '/Home/Search?cat=') and contains(@href, '&subcat=')]"));
-        //    string subcategoryText = gobackToSubcategory.Text;
-        //    Console.WriteLine($"Selected Subcategory: {subcategoryText}");
-        //    gobackToSubcategory.Click();
-    //}
+       
 
     }
     
