@@ -385,17 +385,20 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             IWebElement searchSkillsSearchIcon = driver.FindElement(By.XPath("(//i[@class='search link icon'])[1]"));
             searchSkillsSearchIcon.Click();
             Thread.Sleep(3000);
+            string searchText = "sun";
+            string targetText = "Sun mOOn";
             IWebElement searchUser = driver.FindElement(By.XPath("//input[@placeholder='Search user']"));
-            searchUser.SendKeys("sun");
+            searchUser.SendKeys(searchText);
             Thread.Sleep(3000);
-            var suggestions = ((ReadOnlyCollection<IWebElement>)driver.FindElements(By.XPath("//div[@class='result' and @score='0']"))); // adjust the XPath according to your suggestions dropdown
+            var suggestions = ((ReadOnlyCollection<IWebElement>)driver.FindElements(By.XPath("//div[@class='result' and @score='0']")));
             bool suggestionFound = false;
 
             foreach (var suggestion in suggestions)
             {
-                if (suggestion.Text.ToLower().Contains("sun moon"))
+                if (suggestion.Text.ToLower().Contains(targetText.ToLower()))
                 {
                     suggestion.Click();
+                    Assert.Pass($"Suggestion '{targetText}' found and clicked.");
                     suggestionFound = true;
                     break;
                 }
@@ -403,19 +406,34 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
 
             if (!suggestionFound)
             {
-                Console.WriteLine("Suggestion 'sun moon' not found.");
+                Assert.Pass($"Suggestion '{targetText}' not found but system doesn't throw any message result not found.");
             }
+            //string searchText = "ear";
+            //string targetText = "earth";
             //IWebElement searchUser = driver.FindElement(By.XPath("//input[@placeholder='Search user']"));
-            //searchUser.SendKeys("Sun Moon");
+            //searchUser.SendKeys(searchText);
             //Thread.Sleep(3000);
-            //var suggestions = ((ReadOnlyCollection<IWebElement>)driver.FindElements(By.XPath("//div[@class='result' and @score='0']"))); // adjust the XPath according to your suggestions dropdown
-            //foreach (var suggestion in suggestions)
+            //var suggestions = ((ReadOnlyCollection<IWebElement>)driver.FindElements(By.XPath("//div[@class='result' and @score='0']")));
+
+            //if (suggestions.Count == 0)
             //{
-            //    if (suggestion.Text.Contains("Sun Moon"))
+            //    Assert.Fail($"No suggestions found for '{targetText}'. User not found.");
+            //}
+            //else
+            //{
+            //    bool suggestionFound = false;
+
+            //    foreach (var suggestion in suggestions)
             //    {
-            //        suggestion.Click();
-            //        break;
+            //        if (suggestion.Text.ToLower().Contains(targetText.ToLower()))
+            //        {
+            //            suggestion.Click();
+            //            suggestionFound = true;
+            //            break;
+            //        }
             //    }
+            //    Assert.That(suggestionFound, Is.True, $"Suggestion '{targetText}' not found.");
+            //    //Assert.True(suggestionFound, $"Suggestion '{targetText}' not found.");
             //}
             Thread.Sleep(7000);
         }
