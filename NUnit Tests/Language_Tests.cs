@@ -1,4 +1,5 @@
-﻿using AdvanceProjectMars_Task5.Pages;
+﻿using AdvanceProjectMars_Task5.BaseClass;
+using AdvanceProjectMars_Task5.Pages;
 using AdvanceProjectMars_Task5.Utilities;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -15,16 +16,17 @@ using static AdvanceProjectMars_Task5.TestData.Language.LanguageTestData;
 namespace AdvanceProjectMars_Task5.NUnit_Tests
 {
     [TestFixture]
-    public class Language_Tests : CommonDriver
+    [Category("Language")]
+    public class Language_Tests : BaseTest
     {
         [SetUp]
         public void SetUpSteps()
         {
-            driver = new ChromeDriver();
-            driver.Navigate().GoToUrl("http://localhost:5003/Home");
-            driver.Manage().Window.Maximize();
+            //driver = new ChromeDriver();
+            //driver.Navigate().GoToUrl("http://localhost:5003/Home");
+            //driver.Manage().Window.Maximize();
             LoginPage loginPageObj = new LoginPage();
-            loginPageObj.LoginActions();
+            //loginPageObj.LoginActions();
             loginPageObj.VerifyUserInHomePage();
             HomeToLanguagePage homeToLanguagePageObj = new HomeToLanguagePage();
             homeToLanguagePageObj.NavigateToLanguage();

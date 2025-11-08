@@ -24,6 +24,7 @@ namespace AdvanceProjectMars_Task5.Pages
         private IWebElement updateButton => driver.FindElement(By.XPath("//input[@value='Update']"));
         private IWebElement editCancelButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td/div/span/input[2]"));
         private IWebElement deleteButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[3]/span[2]"));
+       
         public void CreateLanguageRecord(string Language, string Level)
         {
             Thread.Sleep(5000);
@@ -46,7 +47,7 @@ namespace AdvanceProjectMars_Task5.Pages
             //levelOption.Click();
 
             addButton.Click();
-            Thread.Sleep(2000);
+            Thread.Sleep(5000);
             //cancelButton.Click();
         }
         public void editExistingLanguageRecord(string NewLanguage, string NewLevel)
