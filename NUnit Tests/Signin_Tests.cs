@@ -1,4 +1,5 @@
-﻿using AdvanceProjectMars_Task5.Pages;
+﻿using AdvanceProjectMars_Task5.BaseClass;
+using AdvanceProjectMars_Task5.Pages;
 using AdvanceProjectMars_Task5.TestData.Signin;
 using AdvanceProjectMars_Task5.Utilities;
 using NUnit.Framework;
@@ -14,15 +15,16 @@ using static AdvanceProjectMars_Task5.TestData.Signin.SigninTestData;
 namespace AdvanceProjectMars_Task5.NUnit_Tests
 {
     [TestFixture]
-    public class Signin_Tests : CommonDriver
+    [Category("Signin")]
+    public class Signin_Tests : BaseTest
     {
         [SetUp]
 
         public void SetUpSteps()
         {
-            driver = new ChromeDriver();
-            driver.Navigate().GoToUrl("http://localhost:5003/Home");
-            driver.Manage().Window.Maximize();
+            //driver = new ChromeDriver();
+            //driver.Navigate().GoToUrl("http://localhost:5003/Home");
+            //driver.Manage().Window.Maximize();
         }
 
         public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)

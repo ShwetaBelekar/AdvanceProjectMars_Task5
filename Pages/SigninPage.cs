@@ -21,6 +21,7 @@ namespace AdvanceProjectMars_Task5.Pages
         public void SigninActions(string emailAddress, string password)
         {  
             signInButton.Click();
+            Thread.Sleep(2000);
             emailAddressTextbox.SendKeys(emailAddress);
             passwordTextbox.SendKeys(password);
             loginButton.Click();

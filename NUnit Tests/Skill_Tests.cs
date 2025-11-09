@@ -1,9 +1,10 @@
-﻿using AdvanceProjectMars_Task5.Pages;
+﻿using AdvanceProjectMars_Task5.BaseClass;
+using AdvanceProjectMars_Task5.Pages;
 using AdvanceProjectMars_Task5.Utilities;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using RazorEngine;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,16 +15,17 @@ using static AdvanceProjectMars_Task5.TestData.Skill.SkillTestData;
 namespace AdvanceProjectMars_Task5.NUnit_Tests
 {
     [TestFixture]
-    public class Skill_Tests :CommonDriver
+    [Category("Skill")]
+    public class Skill_Tests : BaseTest
     {
         [SetUp]
         public void SetUpSteps()
         {
-            driver = new ChromeDriver();
-            driver.Navigate().GoToUrl("http://localhost:5003/Home");
-            driver.Manage().Window.Maximize();
+            //driver = new ChromeDriver();
+            //driver.Navigate().GoToUrl("http://localhost:5003/Home");
+            //driver.Manage().Window.Maximize();
             LoginPage loginPageObj = new LoginPage();
-            loginPageObj.LoginActions();
+            //loginPageObj.LoginActions();
             loginPageObj.VerifyUserInHomePage();
             HomeToSkillPage homeToSkillPageObj = new HomeToSkillPage();
             homeToSkillPageObj.NavigateToSkill();

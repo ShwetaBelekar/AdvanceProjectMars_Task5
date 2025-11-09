@@ -19,9 +19,10 @@ namespace AdvanceProjectMars_Task5.Pages
         private IWebElement updateButton => driver.FindElement(By.XPath("//input[@value='Update']"));
         private IWebElement editCancelButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td/div/span/input[2]"));
         private IWebElement deleteButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[last()]/tr/td[3]/span[2]/i"));
+       
         public void CreateSkillRecord(string Skill, string Level)
         {
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
             addNewButton.Click();
 
             addSkillTextbox.Click();
@@ -37,7 +38,7 @@ namespace AdvanceProjectMars_Task5.Pages
             //IWebElement skillLevelOption = driver.FindElement(By.XPath("//option[@value='Expert']"));
             //skillLevelOption.Click();
             addButton.Click();
-            Thread.Sleep(2000);
+            Thread.Sleep(5000);
             //cancelButton.Click();  
 
         }
