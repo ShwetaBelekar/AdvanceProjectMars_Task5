@@ -14,6 +14,7 @@ using static AdvanceProjectMars_Task5.TestData.Skill.SkillTestData;
 
 namespace AdvanceProjectMars_Task5.NUnit_Tests
 {
+    [Parallelizable]
     [TestFixture]
     [Category("Skill")]
     public class Skill_Tests : BaseTest

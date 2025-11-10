@@ -15,9 +15,9 @@ namespace AdvanceProjectMars_Task5.Pages
         {
 
             //driver = new ChromeDriver();
-            //driver.Navigate().GoToUrl("http://localhost:5003/Home");
-            //driver.Manage().Window.Maximize();
-            //Thread.Sleep(3000);
+            driver.Navigate().GoToUrl("http://localhost:5003/Home");
+            driver.Manage().Window.Maximize();
+            Thread.Sleep(3000);
 
             IWebElement signinButton = driver.FindElement(By.XPath("//*[@id=\"home\"]/div/div/div[1]/div/a"));
             signinButton.Click();

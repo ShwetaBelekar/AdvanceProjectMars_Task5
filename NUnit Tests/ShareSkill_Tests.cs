@@ -1,4 +1,5 @@
-﻿using AdvanceProjectMars_Task5.Pages;
+﻿using AdvanceProjectMars_Task5.BaseClass;
+using AdvanceProjectMars_Task5.Pages;
 using AdvanceProjectMars_Task5.Utilities;
 
 using NUnit.Framework;
@@ -20,17 +21,19 @@ using static AdvanceProjectMars_Task5.TestData.Shareskill.ShareskillTestData;
 
 namespace AdvanceProjectMars_Task5.NUnit_Tests
 {
+    [Parallelizable]
     [TestFixture]
-    public class ShareSkill_Tests : CommonDriver
+    [Category("ShareSkill")]
+    public class ShareSkill_Tests : BaseTest
     {
         [SetUp]
         public void SetUpSteps()
         {
-            driver = new ChromeDriver();
-            driver.Navigate().GoToUrl("http://localhost:5003/Home");
-            driver.Manage().Window.Maximize();
+            //driver = new ChromeDriver();
+            //driver.Navigate().GoToUrl("http://localhost:5003/Home");
+            //driver.Manage().Window.Maximize();
             LoginPage loginPageObj = new LoginPage();
-            loginPageObj.LoginActions();
+            //loginPageObj.LoginActions();
             loginPageObj.VerifyUserInHomePage();
         }
         //public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)

@@ -15,6 +15,7 @@ using static AdvanceProjectMars_Task5.TestData.Language.LanguageTestData;
 
 namespace AdvanceProjectMars_Task5.NUnit_Tests
 {
+    [Parallelizable]
     [TestFixture]
     [Category("Language")]
     public class Language_Tests : BaseTest

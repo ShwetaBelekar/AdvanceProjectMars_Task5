@@ -17,6 +17,7 @@ using static AdvanceProjectMars_Task5.TestData.ProfLoc_Ava_Hrs_ErnTar.ProfLoc_Av
 
 namespace AdvanceProjectMars_Task5.NUnit_Tests
 {
+    [Parallelizable]
     [TestFixture]
     public class ProfLoc_Avai_Hrs_EarnTar_Tests : CommonDriver
     {
@@ -325,9 +326,12 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 Assert.Fail("Upon double clicking the location button the feature opens allows user to interact with it");
             }
 
-
-
-
         }
+        [TearDown]
+        public void TearDown()
+        {
+            driver.Quit();
+        }
+
     }
 }

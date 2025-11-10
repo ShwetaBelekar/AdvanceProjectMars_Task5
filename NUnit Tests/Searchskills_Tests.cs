@@ -19,6 +19,7 @@ using static AdvanceProjectMars_Task5.TestData.Searchskills.SearchskillsTestData
 
 namespace AdvanceProjectMars_Task5.NUnit_Tests
 {
+    [Parallelizable]
     [TestFixture]
     public class Searchskills_Tests : CommonDriver
     {

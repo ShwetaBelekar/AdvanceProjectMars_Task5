@@ -7,6 +7,8 @@ using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,13 +39,17 @@ namespace AdvanceProjectMars_Task5.BaseClass
             var spark = new ExtentSparkReporter(reportPath);
             extentReport.AttachReporter(spark);
 
-
-            driver = new ChromeDriver();
-            driver.Navigate().GoToUrl("http://localhost:5003/Home");
-            driver.Manage().Window.Maximize();
-            Thread.Sleep(3000);
-            LoginPage loginPageObj = new LoginPage();
-            loginPageObj.LoginActions();
+            if (TestContext.CurrentContext.Test.Properties["Category"].Contains("Signin"))
+            {
+                driver = new ChromeDriver();
+            }
+            else
+            {
+                driver = new ChromeDriver();
+                LoginPage loginPageObj = new LoginPage();
+                loginPageObj.LoginActions();
+            }
+            
         }
         [SetUp]
         public void SetUp()
@@ -127,6 +133,77 @@ namespace AdvanceProjectMars_Task5.BaseClass
             else if (TestContext.CurrentContext.Test.Properties["Category"].Contains("Signin"))
             {
                
+
+            }
+
+            else if (TestContext.CurrentContext.Test.Properties["Category"].Contains("ShareSkill"))
+            {
+                try
+                {
+                    IWebElement manageListingsTab = driver.FindElement(By.XPath("//a[@href='/Home/ListingManagement']"));
+                    manageListingsTab.Click();
+                    bool hasRecords = true;
+                    while (hasRecords)
+                    {
+                        var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[3]/i"));
+                        if (deleteButtons.Count == 0)
+                        {
+                            hasRecords = false;
+                        }
+                        else
+                        {
+                            for (int i = deleteButtons.Count - 1; i >= 0; i--)
+                            {
+                                deleteButtons[i].Click();
+
+
+                                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(2));
+                                wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(".ui.tiny.modal.transition.visible.active")));
+                                IWebElement yesButton = driver.FindElement(By.XPath("//button[@class='ui icon positive right labeled button']"));
+                                if (yesButton.Displayed && yesButton.Enabled)
+                                {
+                                    yesButton.Click();
+                                    Thread.Sleep(3000);
+                                }
+                                else
+                                {
+                                    // Handle the case where the button is not visible or enabled
+                                }
+
+                            }
+                            var nextPageButton = driver.FindElements(By.XPath("//button[@class='ui button otherPage']"));
+                            if (nextPageButton.Count > 0 && nextPageButton[nextPageButton.Count - 1].Text == "Next")
+                            {
+                                nextPageButton[nextPageButton.Count - 1].Click();
+                                // Wait for the page
+                                Thread.Sleep(2000);
+                            }
+                        }
+                    }
+
+
+                
+                try
+                {
+                    IWebElement messageElement = driver.FindElement(By.XPath("//*[contains(text(), 'You do not have any service listings!')]"));
+                    if (messageElement.Displayed)
+                    {
+                        Console.WriteLine("All records have been deleted successfully.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("An error occurred while deleting records.");
+                    }
+                }
+                catch (NoSuchElementException)
+                {
+                    Console.WriteLine("An error occurred while deleting records.");
+                }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error during cleanup: {ex.Message}");
+                }
 
             }
 

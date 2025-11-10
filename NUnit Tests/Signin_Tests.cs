@@ -14,6 +14,7 @@ using static AdvanceProjectMars_Task5.TestData.Signin.SigninTestData;
 
 namespace AdvanceProjectMars_Task5.NUnit_Tests
 {
+    [Parallelizable]
     [TestFixture]
     [Category("Signin")]
     public class Signin_Tests : BaseTest
@@ -23,8 +24,8 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         public void SetUpSteps()
         {
             //driver = new ChromeDriver();
-            //driver.Navigate().GoToUrl("http://localhost:5003/Home");
-            //driver.Manage().Window.Maximize();
+            driver.Navigate().GoToUrl("http://localhost:5003/Home");
+            driver.Manage().Window.Maximize();
         }
 
         public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)
