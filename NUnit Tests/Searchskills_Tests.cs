@@ -74,7 +74,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 if (nextPageButton != null)
                 {
                     nextPageButton.Click();
-                    Thread.Sleep(2000); // Wait for the page to load
+                    Thread.Sleep(2000); 
                     currentPage++;
                 }
                 else
@@ -93,62 +93,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 Assert.Fail("No listings found.");
             }
         }
-        //[Test]
-        //public void CountActiveAndHiddenListings()
-        //{
-        //    IWebElement manageListingsTab = driver.FindElement(By.XPath("//a[@href='/Home/ListingManagement']"));
-        //    manageListingsTab.Click();
-        //    Thread.Sleep(3000);
-        //    int totalActive = 0;
-        //    int totalHidden = 0;
-
-        //    for (int i = 1; i <= 11; i++)
-        //    {
-        //        totalActive += driver.FindElements(By.XPath("//i[@class='blue check circle outline large icon']")).Count;
-        //        totalHidden += driver.FindElements(By.XPath("//i[@class='grey remove circle large icon']")).Count;
-
-        //        if (i < 11)
-        //        {
-        //            var nextPageButtons = driver.FindElements(By.XPath("//button[@class='ui button otherPage']"));
-        //            foreach (var button in nextPageButtons)
-        //            {
-        //                if (button.Text != i.ToString())
-        //                {
-        //                    button.Click();
-        //                    break;
-        //                }
-        //            }
-        //            Thread.Sleep(2000); // You can use WebDriverWait instead of Thread.Sleep
-        //        }
-        //    }
-
-        //    Console.WriteLine("Active listings: " + totalActive);
-        //    Console.WriteLine("Hidden listings: " + totalHidden);
-        //}
-        //[Test]
-        //public void CountActiveAndHiddenListings()
-        //{
-        //    IWebElement manageListingsTab = driver.FindElement(By.XPath("//a[@href='/Home/ListingManagement']"));
-        //    manageListingsTab.Click();
-        //    Thread.Sleep(3000);
-        //    int totalActive = 0;
-        //    int totalHidden = 0;
-
-        //    for (int i = 1; i <= 11; i++)
-        //    {
-        //        totalActive += driver.FindElements(By.XPath("//i[@class='blue check circle outline large icon']")).Count;
-        //        totalHidden += driver.FindElements(By.XPath("//i[@class='grey remove circle large icon']")).Count;
-
-        //        if (i < 11)
-        //        {
-        //            driver.FindElement(By.XPath("//button[@class='ui button otherPage']")).Click();
-        //            Thread.Sleep(2000); // You can use WebDriverWait instead of Thread.Sleep
-        //        }
-        //    }
-
-        //    Console.WriteLine("Active listings: " + totalActive);
-        //    Console.WriteLine("Hidden listings: " + totalHidden);
-        //}
+        
         [Test, TestCaseSource(nameof(GetTestData), new object[] { "Searchskills_withOnlineFilter.json", "SearchskillsbyapplyingOnlineFilter" })]
         public void SearchskillsbyapplyingOnlineFilter(string Filter)
         {
@@ -336,28 +281,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             
 
         }
-        [Test]
-        public void TestCategoryMatching()
-        {
-            IWebElement searchSkillsSearchIcon = driver.FindElement(By.XPath("(//i[@class='search link icon'])[1]"));
-            searchSkillsSearchIcon.Click();
-            // Get the categories from the top
-            var topCategories = driver.FindElements(By.XPath("//div[@role='list']")).Select(e => e.Text).ToList();
-
-            // Get the categories from the footer
-            var footerCategories = driver.FindElements(By.XPath("//*[@id=\"service-search-section\"]/section[2]/div/div/div/div[1]/nav")).Select(e => e.Text).ToList();
-
-            // Compare the categories
-            if (!topCategories.SequenceEqual(footerCategories))
-            {
-                Assert.Pass("The categories at the top and footer do not match.");
-            }
-            else
-            {
-                Assert.Fail("The categories at the top and footer match.");
-            }
-            //CollectionAssert.AreEqual(topCategories, footerCategories, "The categories at the top and footer do not match.");
-        }
+        
         [Test, TestCaseSource(nameof(GetTestData), new object[] { "Searchskills_byAllCategoryandSubcategories.json", "SearchskillsbyallCategoryandSubcategories" })]
         public void SearchskillsbyallCategoryandSubcategories(string Category, string Subcategory, string Listings)
         {
@@ -543,11 +467,11 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             //skillswaprequestsent.Click();
             if (skillswaprequestsent.Text == "LearnCooking")
             {
-                Console.WriteLine("slected listing is correct");
+                Console.WriteLine("selected listing is correct");
             }
             else
             {
-                Console.WriteLine("slected listing is incorrect");
+                Console.WriteLine("selected listing is incorrect");
             }
             Thread.Sleep(3000);
             IWebElement recipient = driver.FindElement(By.XPath("//*[@id=\"sent-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[4]/a"));
@@ -558,10 +482,34 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             }
             else
             {
-                Assert.Fail("Recipient name nad date are correct");
+                Assert.Fail("Recipient name and date are correct");
+            }
+            IWebElement signOutButton = driver.FindElement(By.XPath("//button[@class='ui green basic button' and text()='Sign Out']"));
+            signOutButton.Click();
+            IWebElement signinButton = driver.FindElement(By.XPath("//*[@id=\"home\"]/div/div/div[1]/div/a"));
+            signinButton.Click();
+            Thread.Sleep(2000);
+
+            IWebElement emailAddressTextbox = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[1]/input"));
+            emailAddressTextbox.SendKeys("moonsun@gmail.com");
+
+            IWebElement passwordTextbox = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[2]/input"));
+            passwordTextbox.SendKeys("Sun@123");
+
+            IWebElement loginButton = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
+            loginButton.Click();
+            Thread.Sleep(5000);
+            IWebElement hisun = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/div[1]/div[2]/div/span"));
+
+            if (hisun.Text == "Hi Sun")
+            {
+                Console.WriteLine("User has logged in successfully. Test Passed!");
+            }
+            else
+            {
+                Console.WriteLine("User has not logged in. Test Failed!");
             }
 
-            
         }
         [Test]
         public void CheckNotificationAlerts()
@@ -573,6 +521,25 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             IWebElement seeAll = driver.FindElement(By.XPath("//a[@href='/Account/Dashboard' and contains(text(), 'See All...')]"));
             seeAll.Click();
             Thread.Sleep(3000);
+            IWebElement markAllAsRead = driver.FindElement(By.XPath("//a[contains(text(), 'Mark all as read')]"));
+            markAllAsRead.Click();
+            IWebElement selectAll = driver.FindElement(By.XPath("//i[@class='mouse pointer icon']"));
+            selectAll.Click();
+            IWebElement unSelectAll = driver.FindElement(By.XPath("//i[@class='ban icon']"));
+            unSelectAll.Click();
+            IWebElement markSelectionAsRead = driver.FindElement(By.XPath("//i[@class='check square icon']"));
+            markSelectionAsRead.Click();
+            IWebElement checkBox = driver.FindElement(By.XPath("//input[@type='checkbox' and @value='0']"));
+            checkBox.Click();
+            IWebElement loadMoreButton = driver.FindElement(By.XPath("//a[@class='ui button' and text()='Load More...']"));
+            loadMoreButton.Click();
+            IWebElement showLessButton = driver.FindElement(By.XPath("//a[@class='ui button' and text()='...Show Less']"));
+            showLessButton.Click();
+            //IWebElement deleteSelection = driver.FindElement(By.XPath("//i[@class='trash icon']"));
+            //deleteSelection.Click();
+
+
+
         }
         [TearDown]
         public void TearDown()

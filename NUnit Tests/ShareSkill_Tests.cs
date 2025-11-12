@@ -36,106 +36,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             //loginPageObj.LoginActions();
             loginPageObj.VerifyUserInHomePage();
         }
-        //public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)
-        //{
-        //    var testData = TestDataReader.ReadTestData(fileName);
-        //    foreach (var data in testData[testName])
-        //    {
-        //        if (data.Credit == null)
-        //        {
-        //            // Skill Trade record
-        //            yield return new TestCaseData(new
-        //            {
-        //                Title = data.Title,
-        //                Description = data.Description,
-        //                Category = data.Category,
-        //                SelectSubcategory = data.SelectSubcategory,
-        //                Tags = data.Tags,
-        //                ServiceType = data.ServiceType,
-        //                LocationType = data.LocationType,
-        //                SkillTrade = data.SkillTrade,
-        //                SkillExchange = data.SkillExchange,
-        //                Active = data.Active,
-        //                Credit = (string)null
-        //            });
-        //        }
-        //        else
-        //        {
-        //            // Credit record
-        //            yield return new TestCaseData(new
-        //            {
-        //                Title = data.Title,
-        //                Description = data.Description,
-        //                Category = data.Category,
-        //                SelectSubcategory = data.SelectSubcategory,
-        //                Tags = data.Tags,
-        //                ServiceType = data.ServiceType,
-        //                LocationType = data.LocationType,
-        //                SkillTrade = data.SkillTrade,
-        //                SkillExchange = (string)null,
-        //                Active = data.Active,
-        //                Credit = data.Credit
-        //            });
-        //        }
-        //        if (data.NewCredit == null)
-        //        {
-        //            yield return new TestCaseData(new
-        //            {
-        //                Title = data.Title,
-        //                Description = data.Description,
-        //                Category = data.Category,
-        //                SelectSubcategory = data.SelectSubcategory,
-        //                Tags = data.Tags,
-        //                ServiceType = data.ServiceType,
-        //                LocationType = data.LocationType,
-        //                SkillTrade = data.SkillTrade,
-        //                SkillExchange = data.SkillExchange,
-        //                Active = data.Active,
-        //                Credit = (string)null,
-        //                NewTitle = data.NewTitle,
-        //                NewDescription = data.NewDescription,
-        //                NewCategory = data.NewCategory,
-        //                NewSelectSubcategory = data.NewSelectSubcategory,
-        //                NewTags = data.NewTags,
-        //                NewServiceType = data.NewServiceType,
-        //                NewLocationType = data.NewLocationType,
-        //                NewSkillTrade = data.NewSkillTrade,
-        //                NewSkillExchange = data.NewSkillExchange,
-        //                NewActive = data.NewActive,
-        //                NewCredit = (string)null
-        //            });
-        //        }
-        //        else
-        //        {
-        //            yield return new TestCaseData(new
-        //            {
-        //                Title = data.Title,
-        //                Description = data.Description,
-        //                Category = data.Category,
-        //                SelectSubcategory = data.SelectSubcategory,
-        //                Tags = data.Tags,
-        //                ServiceType = data.ServiceType,
-        //                LocationType = data.LocationType,
-        //                SkillTrade = data.SkillTrade,
-        //                SkillExchange = (string)null,
-        //                Active = data.Active,
-        //                Credit = data.Credit,
-        //                NewTitle = data.NewTitle,
-        //                NewDescription = data.NewDescription,
-        //                NewCategory = data.NewCategory,
-        //                NewSelectSubcategory = data.NewSelectSubcategory,
-        //                NewTags = data.NewTags,
-        //                NewServiceType = data.NewServiceType,
-        //                NewLocationType = data.NewLocationType,
-        //                NewSkillTrade = data.NewSkillTrade,
-        //                NewSkillExchange = (string)null,
-        //                NewActive = data.NewActive,
-        //                NewCredit = data.NewCredit
-        //            });
-        //        }
-
-        //    }
-        //}
+        
         public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)
         {
             var testData = TestDataReader.ReadTestData(fileName);
@@ -544,6 +445,28 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 Assert.Fail("Tooltip text and placeholder text match.");
 
             }
+        }
+        [Test]
+        public void TestCategoryMatching()
+        {
+            IWebElement searchSkillsSearchIcon = driver.FindElement(By.XPath("(//i[@class='search link icon'])[1]"));
+            searchSkillsSearchIcon.Click();
+            // Get the categories from the top
+            var topCategories = driver.FindElements(By.XPath("//div[@role='list']")).Select(e => e.Text).ToList();
+
+            // Get the categories from the footer
+            var footerCategories = driver.FindElements(By.XPath("//*[@id=\"service-search-section\"]/section[2]/div/div/div/div[1]/nav")).Select(e => e.Text).ToList();
+
+            // Compare the categories
+            if (!topCategories.SequenceEqual(footerCategories))
+            {
+                Assert.Pass("The categories at the top and footer do not match.");
+            }
+            else
+            {
+                Assert.Fail("The categories at the top and footer match.");
+            }
+            //CollectionAssert.AreEqual(topCategories, footerCategories, "The categories at the top and footer do not match.");
         }
     }
 }

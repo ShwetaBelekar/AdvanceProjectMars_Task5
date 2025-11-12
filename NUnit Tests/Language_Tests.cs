@@ -5,7 +5,8 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.BiDi.Log;
 using OpenQA.Selenium.Chrome;
-
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,11 +69,13 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         //        .Where(data => data.Language != null && data.Level != null)
         //        .Select(data => new TestCaseData(data.Language, data.Level));
         //}
+        private List<string> languagesAdded = new List<string>();
         [Test, TestCaseSource(nameof(GetTestData), new object[] { "language_validlanguageandlevel.json", "Createvalidlanguageandlevelrecord" })]
         public void Createvalidlanguageandlevelrecord(string Language, string Level)
         {
             LanguagePage languagePageObj = new LanguagePage();
             languagePageObj.CreateLanguageRecord(Language, Level);
+            languagesAdded.Add(Language);
             Console.WriteLine($"Selected {Language} {Level}");
             Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
             IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
@@ -343,5 +346,56 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
 
 
         }
+
+        [TearDown]
+        public new void TearDown()
+        {
+            //try
+            //{
+            //    HomeToLanguagePage homeToLanguagePageObj = new HomeToLanguagePage();
+            //    homeToLanguagePageObj.NavigateToLanguage();
+            //    Thread.Sleep(2000);
+            //    var languageRecords = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]"));
+            //    foreach (var record in languageRecords)
+            //    {
+            //        var language = record.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]")).Text;
+            //        if (languagesAdded.Contains(language))
+            //        {
+            //            var deleteButton = record.FindElement(By.XPath("//i[@class='remove icon']"));
+            //            deleteButton.Click();
+            //            Thread.Sleep(2000);
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine($"Error during cleanup: {ex.Message}");
+            //}
+            //languagesAdded.Clear();
+            //base.TearDown();
+            try
+            {
+                HomeToLanguagePage homeToLanguagePageObj = new HomeToLanguagePage();
+                homeToLanguagePageObj.NavigateToLanguage();
+                Thread.Sleep(2000);
+                var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[3]/span[2]"));
+                for (int i = deleteButtons.Count - 1; i >= 0; i--)
+                {
+                    deleteButtons[i].Click();
+                    Thread.Sleep(2000);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error during cleanup: {ex.Message}");
+            }
+            base.TearDown();
+
+
+        }
+
+
+
+
     }
 }

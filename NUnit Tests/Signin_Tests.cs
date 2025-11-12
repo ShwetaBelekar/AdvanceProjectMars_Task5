@@ -16,14 +16,14 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
 {
     [Parallelizable]
     [TestFixture]
-    [Category("Signin")]
-    public class Signin_Tests : BaseTest
+    
+    public class Signin_Tests : CommonDriver
     {
         [SetUp]
 
         public void SetUpSteps()
         {
-            //driver = new ChromeDriver();
+            driver = new ChromeDriver();
             driver.Navigate().GoToUrl("http://localhost:5003/Home");
             driver.Manage().Window.Maximize();
         }

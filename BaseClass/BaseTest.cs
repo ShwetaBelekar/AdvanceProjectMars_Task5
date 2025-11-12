@@ -20,11 +20,13 @@ namespace AdvanceProjectMars_Task5.BaseClass
  
     public class BaseTest : CommonDriver
     {
+        
         protected LoginPage loginPageObj;
         protected HomeToLanguagePage homeToLanguagePageObj;
         protected HomeToSkillPage homeToSkillPageObj;
         protected static ExtentReports extentReport;
         protected ThreadLocal<ExtentTest> test = new ThreadLocal<ExtentTest>();
+        
         [OneTimeSetUp]
         public void Open()
         {
@@ -38,29 +40,64 @@ namespace AdvanceProjectMars_Task5.BaseClass
             extentReport = new ExtentReports();
             var spark = new ExtentSparkReporter(reportPath);
             extentReport.AttachReporter(spark);
-
-            if (TestContext.CurrentContext.Test.Properties["Category"].Contains("Signin"))
-            {
-                driver = new ChromeDriver();
-            }
-            else
-            {
-                driver = new ChromeDriver();
-                LoginPage loginPageObj = new LoginPage();
-                loginPageObj.LoginActions();
-            }
             
+            driver = new ChromeDriver();
+            LoginPage loginPageObj = new LoginPage();
+            loginPageObj.LoginActions();
         }
+        
         [SetUp]
         public void SetUp()
         {
+           
             string category = TestContext.CurrentContext.Test.Properties["Category"].ToString();
             string testName = $"{TestContext.CurrentContext.Test.Name} - {category}";
             test.Value = extentReport.CreateTest(testName);
+         
         }
         [TearDown]
         public void TearDown()
         {
+            //if (TestContext.CurrentContext.Test.Properties["Category"].Contains("Language"))
+            //{
+            //    try
+            //    {
+            //        Thread.Sleep(2000);
+            //        HomeToLanguagePage homeToLanguagePageObj = new HomeToLanguagePage();
+            //        homeToLanguagePageObj.NavigateToLanguage();
+            //        Thread.Sleep(1000);
+            //        var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[3]/span[2]/i"));
+            //        for (int i = deleteButtons.Count - 1; i >= 0; i--)
+            //        {
+            //            deleteButtons[i].Click();
+            //            Thread.Sleep(2000);
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Console.WriteLine($"Error during cleanup: {ex.Message}");
+            //    }
+
+            //}
+            //else if (TestContext.CurrentContext.Test.Properties["Category"].Contains("Skill"))
+            //{
+            //    try
+            //    {
+            //        HomeToSkillPage homeToSkillPageObj = new HomeToSkillPage();
+            //        homeToSkillPageObj.NavigateToSkill();
+
+            //        var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td[3]/span[2]/i"));
+            //        for (int i = deleteButtons.Count - 1; i >= 0; i--)
+            //        {
+            //            deleteButtons[i].Click();
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Console.WriteLine($"Error during cleanup: {ex.Message}");
+            //    }
+
+            //}
 
             if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
             {
@@ -71,6 +108,7 @@ namespace AdvanceProjectMars_Task5.BaseClass
             {
                 test.Value.Log(Status.Pass, "Test passed");
             }
+           
 
         }
         private string GetScreenshot()
@@ -92,121 +130,7 @@ namespace AdvanceProjectMars_Task5.BaseClass
         [OneTimeTearDown]
         public void CleanUp()
         {
-            if (TestContext.CurrentContext.Test.Properties["Category"].Contains("Language"))
-            {
-                try
-                {
-                    HomeToLanguagePage homeToLanguagePageObj = new HomeToLanguagePage();
-                    homeToLanguagePageObj.NavigateToLanguage();
-
-                    var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[3]/span[2]"));
-                    for (int i = deleteButtons.Count - 1; i >= 0; i--)
-                    {
-                        deleteButtons[i].Click();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error during cleanup: {ex.Message}");
-                }
-                
-            }
-            else if (TestContext.CurrentContext.Test.Properties["Category"].Contains("Skill"))
-            {
-                try
-                {
-                    HomeToSkillPage homeToSkillPageObj = new HomeToSkillPage();
-                    homeToSkillPageObj.NavigateToSkill();
-
-                    var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td[3]/span[2]/i"));
-                    for (int i = deleteButtons.Count - 1; i >= 0; i--)
-                    {
-                        deleteButtons[i].Click();  
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error during cleanup: {ex.Message}");
-                }
-
-            }
-            else if (TestContext.CurrentContext.Test.Properties["Category"].Contains("Signin"))
-            {
-               
-
-            }
-
-            else if (TestContext.CurrentContext.Test.Properties["Category"].Contains("ShareSkill"))
-            {
-                try
-                {
-                    IWebElement manageListingsTab = driver.FindElement(By.XPath("//a[@href='/Home/ListingManagement']"));
-                    manageListingsTab.Click();
-                    bool hasRecords = true;
-                    while (hasRecords)
-                    {
-                        var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[3]/i"));
-                        if (deleteButtons.Count == 0)
-                        {
-                            hasRecords = false;
-                        }
-                        else
-                        {
-                            for (int i = deleteButtons.Count - 1; i >= 0; i--)
-                            {
-                                deleteButtons[i].Click();
-
-
-                                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(2));
-                                wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(".ui.tiny.modal.transition.visible.active")));
-                                IWebElement yesButton = driver.FindElement(By.XPath("//button[@class='ui icon positive right labeled button']"));
-                                if (yesButton.Displayed && yesButton.Enabled)
-                                {
-                                    yesButton.Click();
-                                    Thread.Sleep(3000);
-                                }
-                                else
-                                {
-                                    // Handle the case where the button is not visible or enabled
-                                }
-
-                            }
-                            var nextPageButton = driver.FindElements(By.XPath("//button[@class='ui button otherPage']"));
-                            if (nextPageButton.Count > 0 && nextPageButton[nextPageButton.Count - 1].Text == "Next")
-                            {
-                                nextPageButton[nextPageButton.Count - 1].Click();
-                                // Wait for the page
-                                Thread.Sleep(2000);
-                            }
-                        }
-                    }
-
-
-                
-                try
-                {
-                    IWebElement messageElement = driver.FindElement(By.XPath("//*[contains(text(), 'You do not have any service listings!')]"));
-                    if (messageElement.Displayed)
-                    {
-                        Console.WriteLine("All records have been deleted successfully.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("An error occurred while deleting records.");
-                    }
-                }
-                catch (NoSuchElementException)
-                {
-                    Console.WriteLine("An error occurred while deleting records.");
-                }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error during cleanup: {ex.Message}");
-                }
-
-            }
-
+         
             extentReport.Flush();
             driver.Quit();
         }
@@ -216,4 +140,5 @@ namespace AdvanceProjectMars_Task5.BaseClass
 
 
 }
+
 }
