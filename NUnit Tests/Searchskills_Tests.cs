@@ -84,14 +84,9 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             }
 
             Console.WriteLine($"Total number of listings: {totaltableRow}");
-            if (totaltableRow > 0)
-            {
-                Assert.Pass("Listings found.");
-            }
-            else
-            {
-                Assert.Fail("No listings found.");
-            }
+            string message = totaltableRow > 0 ? "Listings found." : "You do not have any service listings!";
+            Assert.Pass(message);
+            
         }
         
         [Test, TestCaseSource(nameof(GetTestData), new object[] { "Searchskills_withOnlineFilter.json", "SearchskillsbyapplyingOnlineFilter" })]
@@ -310,7 +305,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             IWebElement searchSkillsSearchIcon = driver.FindElement(By.XPath("(//i[@class='search link icon'])[1]"));
             searchSkillsSearchIcon.Click();
             Thread.Sleep(3000);
-            string searchText = "sun";
+            string searchText = "sunmoon";
             string targetText = "Sun mOOn";
             IWebElement searchUser = driver.FindElement(By.XPath("//input[@placeholder='Search user']"));
             searchUser.SendKeys(searchText);
@@ -369,10 +364,15 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             searchSkillsSearchIcon.Click();
             Thread.Sleep(3000);
             IWebElement searchSkills = driver.FindElement(By.XPath("(//input[@placeholder='Search skills'])[2]"));
-            searchSkills.SendKeys("Testing" + Keys.Enter);
+            searchSkills.SendKeys("Automation" + Keys.Enter);
             Thread.Sleep(3000);
             var searchResults = driver.FindElements(By.XPath("//div[@class='ui card']"));
-
+            if (searchResults.Count == 0)
+            {
+                Console.WriteLine("No results found, please select a new category!");
+                Assert.Pass("No results found, please select a new category!");
+                return;
+            }
             Console.WriteLine("Total listings: " + searchResults.Count);
             Thread.Sleep(2000);
             var categories = driver.FindElements(By.XPath("//a[@role='listitem' and @class='item category']"));

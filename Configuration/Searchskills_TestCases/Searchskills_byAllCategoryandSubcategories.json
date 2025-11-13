@@ -3,152 +3,148 @@
     {
       "Category": "Software Development",
       "Subcategory": "Solution Architecture Design",
-      "Listings": "Building Software"
+      "Listings": ""
     },
-    {
-      "Category": "Software Development",
-      "Subcategory": "Solution Architecture Design",
-      "Listings": "123"
-    },
+   
     {
       "Category": "Software Development",
       "Subcategory": "Programming",
-      "Listings": "Human computer collaboration"
+      "Listings": ""
     },
     {
       "Category": "Software Development",
       "Subcategory": "Front End Development",
-      "Listings": "JavaScript"
+      "Listings": ""
     },
     {
       "Category": "Software Development",
       "Subcategory": "Back End Development",
-      "Listings": "Server Side Logic"
+      "Listings": ""
     },
     {
       "Category": "Software Development",
       "Subcategory": "Design Pattern",
-      "Listings": "Reusable solutions"
+      "Listings": ""
     },
     {
       "Category": "Software Development",
       "Subcategory": "DevOps CI/CD",
-      "Listings": "Continuous Integration and Continuous Delivery"
+      "Listings": ""
     },
     {
       "Category": "Software Development",
       "Subcategory": "Other",
-      "Listings": "Java"
+      "Listings": ""
     },
     {
       "Category": "Data Analysis & Business Intelligence",
       "Subcategory": "Data Cleaning and Standardisation",
-      "Listings": "cleaning and standardization"
+      "Listings": ""
     },
     {
       "Category": "Data Analysis & Business Intelligence",
       "Subcategory": "Data Warehousing",
-      "Listings": "Historical Data"
+      "Listings": ""
     },
     {
       "Category": "Data Analysis & Business Intelligence",
       "Subcategory": "ETL Design",
-      "Listings": "Extract Transform Load"
+      "Listings": ""
     },
     {
       "Category": "Data Analysis & Business Intelligence",
       "Subcategory": "Data Visualisation",
-      "Listings": "Pattern Recognition"
+      "Listings": ""
     },
     {
       "Category": "Data Analysis & Business Intelligence",
       "Subcategory": "PowerBI",
-      "Listings": "Report building"
+      "Listings": ""
     },
     {
       "Category": "Data Analysis & Business Intelligence",
       "Subcategory": "Tableau",
-      "Listings": "BI Tool"
+      "Listings": ""
     },
     {
       "Category": "Data Analysis & Business Intelligence",
       "Subcategory": "Wherescape RED",
-      "Listings": "Automation"
+      "Listings": ""
     },
     {
       "Category": "Data Analysis & Business Intelligence",
       "Subcategory": "Other",
-      "Listings": "Techniques"
+      "Listings": ""
     },
     {
       "Category": "Test Automation",
       "Subcategory": "Selenium",
-      "Listings": "Selenium"
+      "Listings": ""
     },
     {
       "Category": "Test Automation",
       "Subcategory": "Cucumber/Specflow",
-      "Listings": "ReqnRoll"
+      "Listings": ""
     },
     {
       "Category": "Test Automation",
       "Subcategory": "API Testing",
-      "Listings": "Postman"
+      "Listings": ""
     },
     {
       "Category": "Test Automation",
       "Subcategory": "Performance Testing",
-      "Listings": "User Experience"
+      "Listings": ""
     },
     {
       "Category": "Test Automation",
       "Subcategory": "Other",
-      "Listings": "System Testing"
+      "Listings": "Playwright"
     },
     {
       "Category": "Data Science",
       "Subcategory": "Python Programming",
-      "Listings": "Python and Data Science"
+      "Listings": ""
     },
     {
       "Category": "Data Science",
       "Subcategory": "R Studio Programming",
-      "Listings": "IDE"
+      "Listings": ""
     },
     {
       "Category": "Data Science",
       "Subcategory": "Big Data",
-      "Listings": "Statistical analysis"
+      "Listings": ""
     },
     {
       "Category": "Data Science",
       "Subcategory": "Other",
-      "Listings": "Data Engineering"
+      "Listings": ""
     },
     {
       "Category": "Machine Learning",
       "Subcategory": "Supervised Learning1",
-      "Listings": "Labeled data"
+      "Listings": ""
     },
     {
       "Category": "Machine Learning",
       "Subcategory": "Unsupervised Learning",
-      "Listings": "K means"
+      "Listings": ""
     },
     {
       "Category": "Machine Learning",
       "Subcategory": "Reinforcement Learning",
-      "Listings": "Robotics"
+      "Listings": ""
     },
     {
       "Category": "Machine Learning",
       "Subcategory": "Other",
-      "Listings": "Data mining"
+      "Listings": ""
     },
     {
       "Category": "Game Development",
       "Subcategory": "Unity",
-      "Listings": "Game Engine"
+      "Listings": ""
     },
     {
       "Category": "Game Development",
@@ -158,7 +154,7 @@
     {
       "Category": "Game Development",
       "Subcategory": "3D Modeling",
-      "Listings": "Autodesk Maya"
+      "Listings": ""
     },
     {
       "Category": "Game Development",
@@ -173,23 +169,23 @@
     {
       "Category": "Game Development",
       "Subcategory": "Other",
-      "Listings": "Audio Engineer"
+      "Listings": ""
     },
     {
       "Category": "Communication",
       "Subcategory": "Communication at Work",
-      "Listings": "Effective workplace communication"
+      "Listings": ""
     },
     {
       "Category": "Communication",
       "Subcategory": "Job Hunting Advice",
-      "Listings": "Plan Job search"
+      "Listings": ""
     },
 
     {
       "Category": "Communication",
       "Subcategory": "Job Market Advice",
-      "Listings": "Polish your online presence"
+      "Listings": ""
     },
     {
       "Category": "Communication",
@@ -200,17 +196,17 @@
     {
       "Category": "Communication",
       "Subcategory": "Job Analysis Consulting",
-      "Listings": "Improved HR processes"
+      "Listings": ""
     },
     {
       "Category": "Communication",
       "Subcategory": "Other",
-      "Listings": "Public relations"
+      "Listings": ""
     },
     {
       "Category": "Fun & Lifestyle",
       "Subcategory": "Online Lessons",
-      "Listings": "Knitting"
+      "Listings": ""
 
     },
     {
@@ -228,13 +224,13 @@
     {
       "Category": "Fun & Lifestyle",
       "Subcategory": "Health, Nutrition & Fitness",
-      "Listings": "Yoga"
+      "Listings": ""
 
     },
     {
       "Category": "Fun & Lifestyle",
       "Subcategory": "Gaming",
-      "Listings": "Video Games"
+      "Listings": ""
 
     },
     {
@@ -246,13 +242,13 @@
     {
       "Category": "Fun & Lifestyle",
       "Subcategory": "Other",
-      "Listings": "Painting"
+      "Listings": "Art and craft"
 
     },
     {
       "Category": "Recruitment",
       "Subcategory": "Employability",
-      "Listings": "Problem Solving"
+      "Listings": ""
 
     },
     {
@@ -264,13 +260,13 @@
     {
       "Category": "Recruitment",
       "Subcategory": "Interview Advice",
-      "Listings": "STAR method"
+      "Listings": ""
 
     },
     {
       "Category": "Recruitment",
       "Subcategory": "Job Market Insight",
-      "Listings": "Career Paths"
+      "Listings": ""
 
     }
 

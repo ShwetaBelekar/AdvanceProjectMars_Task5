@@ -14,6 +14,7 @@ namespace AdvanceProjectMars_Task5.TestData.Searchskills
     {
         public class SearchskillsData
         {
+            
             public string Filter { get; set; }
             public string Category { get; set; }
             public string Subcategory { get; set; }
