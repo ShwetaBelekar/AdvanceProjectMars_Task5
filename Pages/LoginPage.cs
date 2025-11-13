@@ -33,11 +33,11 @@ namespace AdvanceProjectMars_Task5.Pages
             loginButton.Click();
             Thread.Sleep(5000);
         }
-
+       
         public void VerifyUserInHomePage()
         {
-
-            IWebElement hitony = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/div[1]/div[2]/div/span"));
+            //Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ui secondary menu']//span[@class='item ui dropdown link']", 2);
+            IWebElement hitony = driver.FindElement(By.XPath("//span[contains(@class, 'dropdown') and contains(text(), 'Hi')]"));
 
             if (hitony.Text == "Hi Tony")
             {

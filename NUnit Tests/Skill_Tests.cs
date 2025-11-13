@@ -16,7 +16,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
 {
     [Parallelizable]
     [TestFixture]
-    [Category("Skill")]
+   
     public class Skill_Tests : BaseTest
     {
         [SetUp]
@@ -52,9 +52,15 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             }
 
         }
+        private bool isDataDrivenTest = false;
+        private int dataDrivenTestCount = 0;
+        private int totalTestCases = 0;
         [Test, TestCaseSource(nameof(GetTestData), new object[] { "skill_validskillandlevel.json", "Createvalidskillandlevelrecord" })]
         public void Createvalidskillandlevelrecord(string Skill, string Level)
         {
+            isDataDrivenTest = true;
+            dataDrivenTestCount++;
+            totalTestCases = GetTestData("skill_validskillandlevel.json", "Createvalidskillandlevelrecord").Count();
             SkillPage skillPageObj = new SkillPage();
             skillPageObj.CreateSkillRecord(Skill, Level);
             Console.WriteLine($"Selected {Skill} {Level}");
@@ -79,6 +85,9 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         [Test, TestCaseSource(nameof(GetTestData), new object[] { "skill_invalidskillandlevel.json", "Createinvalidskillandlevelrecord" })]
         public void Createinvalidskillandlevelrecord(string Skill, string Level)
         {
+            isDataDrivenTest = true;
+            dataDrivenTestCount++;
+            totalTestCases = GetTestData("skill_invalidskillandlevel.json", "Createinvalidskillandlevelrecord").Count();
             SkillPage skillPageObj = new SkillPage();
             skillPageObj.CreateSkillRecord(Skill, Level);
             Console.WriteLine($"Selected {Skill} {Level}");
@@ -179,6 +188,9 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         [Test, TestCaseSource(nameof(GetTestData), new object[] { "skill_editexistingskillandlevel.json", "Editexistingskillandlevelrecord" })]
         public void Editexistingskillandlevelrecord(string Skill, string Level, string NewSkill, string NewLevel)
         {
+            isDataDrivenTest = true;
+            dataDrivenTestCount++;
+            totalTestCases = GetTestData("skill_editexistingskillandlevel.json", "Editexistingskillandlevelrecord").Count();
             SkillPage skillPageObj = new SkillPage();
             skillPageObj.CreateSkillRecord(Skill, Level);
             Console.WriteLine($"Selected {Skill} {Level}");
@@ -298,7 +310,56 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 Assert.Fail("Test failed");
             }
         }
+        [TearDown]
+        public new void TearDown()
+        {
+            if (isDataDrivenTest)
+            {
+                if (dataDrivenTestCount == totalTestCases)
+                {
+                    try
+                    {
+                        HomeToSkillPage homeToSkillPageObj = new HomeToSkillPage();
+                        homeToSkillPageObj.NavigateToSkill();
+                        Thread.Sleep(2000);
+                        var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td[3]/span[2]/i"));
+                        for (int i = deleteButtons.Count - 1; i >= 0; i--)
+                        {
+                            deleteButtons[i].Click();
+                            Thread.Sleep(2000);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error during cleanup: {ex.Message}");
+                    }
+                    isDataDrivenTest = false;
+                    dataDrivenTestCount = 0;
+                }
+            }
+            else
+            {
+                try
+                {
+                    HomeToSkillPage homeToSkillPageObj = new HomeToSkillPage();
+                    homeToSkillPageObj.NavigateToSkill();
+                    Thread.Sleep(2000);
+                    var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td[3]/span[2]/i"));
+                    for (int i = deleteButtons.Count - 1; i >= 0; i--)
+                    {
+                        deleteButtons[i].Click();
+                        Thread.Sleep(2000);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error during cleanup: {ex.Message}");
+                }
+            }
+            base.TearDown();
 
+        }
+        
 
     }
 }

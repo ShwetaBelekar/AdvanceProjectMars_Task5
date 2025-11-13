@@ -22,8 +22,6 @@ namespace AdvanceProjectMars_Task5.BaseClass
     {
         
         protected LoginPage loginPageObj;
-        protected HomeToLanguagePage homeToLanguagePageObj;
-        protected HomeToSkillPage homeToSkillPageObj;
         protected static ExtentReports extentReport;
         protected ThreadLocal<ExtentTest> test = new ThreadLocal<ExtentTest>();
         
@@ -58,46 +56,7 @@ namespace AdvanceProjectMars_Task5.BaseClass
         [TearDown]
         public void TearDown()
         {
-            //if (TestContext.CurrentContext.Test.Properties["Category"].Contains("Language"))
-            //{
-            //    try
-            //    {
-            //        Thread.Sleep(2000);
-            //        HomeToLanguagePage homeToLanguagePageObj = new HomeToLanguagePage();
-            //        homeToLanguagePageObj.NavigateToLanguage();
-            //        Thread.Sleep(1000);
-            //        var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[3]/span[2]/i"));
-            //        for (int i = deleteButtons.Count - 1; i >= 0; i--)
-            //        {
-            //            deleteButtons[i].Click();
-            //            Thread.Sleep(2000);
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        Console.WriteLine($"Error during cleanup: {ex.Message}");
-            //    }
-
-            //}
-            //else if (TestContext.CurrentContext.Test.Properties["Category"].Contains("Skill"))
-            //{
-            //    try
-            //    {
-            //        HomeToSkillPage homeToSkillPageObj = new HomeToSkillPage();
-            //        homeToSkillPageObj.NavigateToSkill();
-
-            //        var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td[3]/span[2]/i"));
-            //        for (int i = deleteButtons.Count - 1; i >= 0; i--)
-            //        {
-            //            deleteButtons[i].Click();
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        Console.WriteLine($"Error during cleanup: {ex.Message}");
-            //    }
-
-            //}
+           
 
             if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
             {

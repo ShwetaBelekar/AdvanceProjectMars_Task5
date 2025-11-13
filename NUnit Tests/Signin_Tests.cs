@@ -119,11 +119,15 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 Assert.Fail("User can signin with blankemailandpassword");
             }
         }
+        [TearDown]
+        public void TearDown()
+        {
+            driver.Quit();
+        }
 
 
 
 
 
-
-    }
+        }
 }

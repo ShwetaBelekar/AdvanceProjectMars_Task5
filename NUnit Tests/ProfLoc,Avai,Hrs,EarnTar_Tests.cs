@@ -1,4 +1,5 @@
-﻿using AdvanceProjectMars_Task5.Pages;
+﻿using AdvanceProjectMars_Task5.BaseClass;
+using AdvanceProjectMars_Task5.Pages;
 using AdvanceProjectMars_Task5.Utilities;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
@@ -19,16 +20,16 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
 {
     [Parallelizable]
     [TestFixture]
-    public class ProfLoc_Avai_Hrs_EarnTar_Tests : CommonDriver
+    public class ProfLoc_Avai_Hrs_EarnTar_Tests : BaseTest
     {
         [SetUp]
         public void SetUpSteps()
         {
-            driver = new ChromeDriver();
-            driver.Navigate().GoToUrl("http://localhost:5003/Home");
-            driver.Manage().Window.Maximize();
+            //driver = new ChromeDriver();
+            //driver.Navigate().GoToUrl("http://localhost:5003/Home");
+            //driver.Manage().Window.Maximize();
             LoginPage loginPageObj = new LoginPage();
-            loginPageObj.LoginActions();
+            //loginPageObj.LoginActions();
             loginPageObj.VerifyUserInHomePage();
         }
 
@@ -327,11 +328,6 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             }
 
         }
-        [TearDown]
-        public void TearDown()
-        {
-            driver.Quit();
-        }
-
+        
     }
 }

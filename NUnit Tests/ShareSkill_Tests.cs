@@ -8,8 +8,7 @@ using OpenQA.Selenium.BiDi.Log;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
-
-
+using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -23,7 +22,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
 {
     [Parallelizable]
     [TestFixture]
-    [Category("ShareSkill")]
+    
     public class ShareSkill_Tests : BaseTest
     {
         [SetUp]
@@ -156,11 +155,16 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 }
             }
         }
-
+        private bool isDataDrivenTest = false;
+        private int dataDrivenTestCount = 0;
+        private int totalTestCases = 0;
 
         [Test, TestCaseSource(nameof(GetTestData), new object[] { "shareskill_validshareskillrecord.json", "Createvalidshareskillrecord" })]
         public void Createvalidshareskillrecord(dynamic record)
-        { 
+        {
+            isDataDrivenTest = true;
+            dataDrivenTestCount++;
+            totalTestCases = GetTestData("shareskill_validshareskillrecord.json", "Createvalidshareskillrecord").Count();
             Console.WriteLine($"Running test with data: Title = {record.Title}, Description = {record.Description}");
 
             ShareSkillPage shareSkillPageObj = new ShareSkillPage();
@@ -176,7 +180,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         record.SkillExchange,
         record.Active);
             Console.WriteLine($"Selected {record.Title} {record.Description} {record.Category} {record.SelectSubcategory} {record.Tags} {record.ServiceType} {record.LocationType} {record.SkillTrade} {record.Credit} {record.SkillExchange} {record.Active}");
-            IWebElement newListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody[last()]/tr/td[3]"));
+            IWebElement newListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]"));
             if (newListing.Text == record.Title)
             {
                 Console.WriteLine($"Test passed for data: Title = {record.Title}");
@@ -191,6 +195,9 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         [Test, TestCaseSource(nameof(GetTestData), new object[] { "shareskill_invalidshareskillrecord.json", "Createinvalidshareskillrecord" })]
         public void Createinvalidshareskillrecord(dynamic record)
         {
+            isDataDrivenTest = true;
+            dataDrivenTestCount++;
+            totalTestCases = GetTestData("shareskill_invalidshareskillrecord.json", "Createinvalidshareskillrecord").Count();
             Console.WriteLine($"Running test with data: Title = {record.Title}, Description = {record.Description}");
 
             ShareSkillPage shareSkillPageObj = new ShareSkillPage();
@@ -206,7 +213,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         record.SkillExchange,
         record.Active);
             Console.WriteLine($"Selected {record.Title} {record.Description} {record.Category} {record.SelectSubcategory} {record.Tags} {record.ServiceType} {record.LocationType} {record.SkillTrade} {record.Credit} {record.SkillExchange} {record.Active}");
-            IWebElement newListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody[last()]/tr/td[3]"));
+            IWebElement newListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]"));
             if (newListing.Text == record.Title) //*[@id="listing-management-section"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]
             {
                 Console.WriteLine($"Test passed for data: Title = {record.Title}");
@@ -268,7 +275,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         record.SkillExchange,
         record.Active);
             Console.WriteLine($"Selected {record.Title} {record.Description} {record.Category} {record.SelectSubcategory} {record.Tags} {record.ServiceType} {record.LocationType} {record.SkillTrade} {record.Credit} {record.SkillExchange} {record.Active}");
-            IWebElement newListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody[last()]/tr/td[3]"));
+            IWebElement newListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]"));
             if (newListing.Text == record.Title)
             {
                 //Console.WriteLine($"Test passed for data: Title = {record.Title}");
@@ -292,7 +299,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         record.SkillExchange,
         record.Active);
             Console.WriteLine($"Selected {record.Title} {record.Description} {record.Category} {record.SelectSubcategory} {record.Tags} {record.ServiceType} {record.LocationType} {record.SkillTrade} {record.Credit} {record.SkillExchange} {record.Active}");
-            IWebElement duplicateListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody[last()]/tr/td[3]"));
+            IWebElement duplicateListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]"));
             if (duplicateListing.Text == record.Title)
             {
                 Console.WriteLine($"Test passed for data: Title = {record.Title}");
@@ -323,7 +330,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         record.SkillExchange,
         record.Active);
             Console.WriteLine($"Selected {record.Title} {record.Description} {record.Category} {record.SelectSubcategory} {record.Tags} {record.ServiceType} {record.LocationType} {record.SkillTrade} {record.Credit} {record.SkillExchange} {record.Active}");
-            IWebElement newListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody[last()]/tr/td[3]"));
+            IWebElement newListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]"));
             if (newListing.Text == record.Title)
             {
                 Console.WriteLine($"Test passed for data: Title = {record.Title}");
@@ -347,7 +354,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         record.NewSkillExchange,
         record.NewActive);
             Console.WriteLine($"Selected {record.NewTitle} {record.NewDescription} {record.NewCategory} {record.NewSelectSubcategory} {record.NewTags} {record.NewServiceType} {record.NewLocationType} {record.NewSkillTrade} {record.NewCredit} {record.NewSkillExchange} {record.NewActive}");
-            IWebElement editedListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody[last()]/tr/td[3]"));
+            IWebElement editedListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]"));
             if (editedListing.Text == record.NewTitle)
             {
                 Console.WriteLine($"Test passed for data: Title = {record.NewTitle}");
@@ -377,7 +384,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         record.SkillExchange,
         record.Active);
             Console.WriteLine($"Selected {record.Title} {record.Description} {record.Category} {record.SelectSubcategory} {record.Tags} {record.ServiceType} {record.LocationType} {record.SkillTrade} {record.Credit} {record.SkillExchange} {record.Active}");
-            IWebElement newListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody[last()]/tr/td[3]"));
+            IWebElement newListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]"));
             if (newListing.Text == record.Title)
             {
                 Console.WriteLine($"Test passed for data: Title = {record.Title}");
@@ -468,5 +475,94 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             }
             //CollectionAssert.AreEqual(topCategories, footerCategories, "The categories at the top and footer do not match.");
         }
+        
+            [TearDown]
+            public new void TearDown()
+            {
+                if (isDataDrivenTest)
+                {
+                    if (dataDrivenTestCount == totalTestCases)
+                    {
+                        DeleteShareSkillRecords();
+                        isDataDrivenTest = false;
+                        dataDrivenTestCount = 0;
+                    }
+                }
+                else
+                {
+                    DeleteShareSkillRecords();
+                }
+                base.TearDown();
+            }
+
+          private void DeleteShareSkillRecords()
+          {
+            try
+            {
+                IWebElement manageListingsTab = driver.FindElement(By.XPath("//a[@href='/Home/ListingManagement']"));
+                manageListingsTab.Click();
+                bool hasRecords = true;
+                while (hasRecords)
+                {
+                    var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[3]/i"));
+                    if (deleteButtons.Count == 0)
+                    {
+                        hasRecords = false;
+                    }
+                    else
+                    {
+                        for (int i = deleteButtons.Count - 1; i >= 0; i--)
+                        {
+                            deleteButtons[i].Click();
+
+                            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(2));
+                            wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(".ui.tiny.modal.transition.visible.active")));
+                            IWebElement yesButton = driver.FindElement(By.XPath("//button[@class='ui icon positive right labeled button']"));
+                            if (yesButton.Displayed && yesButton.Enabled)
+                            {
+                                yesButton.Click();
+                                Thread.Sleep(3000);
+                            }
+                            else
+                            {
+                                // Handle the case where the button is not visible or enabled
+                            }
+                        }
+                        var nextPageButton = driver.FindElements(By.XPath("//button[@class='ui button otherPage']"));
+                        if (nextPageButton.Count > 0 && nextPageButton[nextPageButton.Count - 1].Text == "Next")
+                        {
+                            nextPageButton[nextPageButton.Count - 1].Click();
+                            // Wait for the page
+                            Thread.Sleep(2000);
+                        }
+                    }
+                }
+
+                try
+                {
+                    IWebElement messageElement = driver.FindElement(By.XPath("//*[contains(text(), 'You do not have any service listings!')]"));
+                    if (messageElement.Displayed)
+                    {
+                        Console.WriteLine("All ShareSkill records have been deleted successfully.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("An error occurred while deleting ShareSkill records.");
+                    }
+                }
+                catch (NoSuchElementException)
+                {
+                    Console.WriteLine("An error occurred while deleting ShareSkill records.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error during cleanup: {ex.Message}");
+            }
+        }
+
     }
-}
+
+
+    }
+

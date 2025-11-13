@@ -18,7 +18,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
 {
     [Parallelizable]
     [TestFixture]
-    [Category("Language")]
+    
     public class Language_Tests : BaseTest
     {
         [SetUp]
@@ -54,7 +54,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 {
                     yield return new TestCaseData(data.Language, data.Level);
                 }
-                
+
             }
         }
         //public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)
@@ -69,13 +69,17 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         //        .Where(data => data.Language != null && data.Level != null)
         //        .Select(data => new TestCaseData(data.Language, data.Level));
         //}
-        private List<string> languagesAdded = new List<string>();
+        private bool isDataDrivenTest = false;
+        private int dataDrivenTestCount = 0;
+        private int totalTestCases = 0;
         [Test, TestCaseSource(nameof(GetTestData), new object[] { "language_validlanguageandlevel.json", "Createvalidlanguageandlevelrecord" })]
         public void Createvalidlanguageandlevelrecord(string Language, string Level)
         {
+            isDataDrivenTest = true;
+            dataDrivenTestCount++;
+            totalTestCases = GetTestData("language_validlanguage.json", "Createvalidlanguageandlevelrecord").Count();
             LanguagePage languagePageObj = new LanguagePage();
             languagePageObj.CreateLanguageRecord(Language, Level);
-            languagesAdded.Add(Language);
             Console.WriteLine($"Selected {Language} {Level}");
             Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
             IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
@@ -96,6 +100,9 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         [Test, TestCaseSource(nameof(GetTestData), new object[] { "language_invalidlanguage.json", "Createinvalidlanguageandlevelrecord" })]
         public void Createinvalidlanguageandlevelrecord(string Language, string Level)
         {
+            isDataDrivenTest = true;
+            dataDrivenTestCount++;
+            totalTestCases = GetTestData("language_invalidlanguage.json", "Createinvalidlanguageandlevelrecord").Count();
             LanguagePage languagePageObj = new LanguagePage();
             languagePageObj.CreateLanguageRecord(Language, Level);
             Console.WriteLine($"Selected {Language} {Level}");
@@ -119,6 +126,9 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         [Test, TestCaseSource(nameof(GetTestData), new object[] { "language_ifusercanaddmorethanfourlanguage.json", "Ifusercanaddmorethanfourlanguage" })]
         public void Ifusercanaddmorethanfourlanguage(string Language, string Level)
         {
+            isDataDrivenTest = true;
+            dataDrivenTestCount++;
+            totalTestCases = GetTestData("language_ifusercanaddmorethanfourlanguage.json", "Ifusercanaddmorethanfourlanguage").Count();
             LanguagePage languagePageObj = new LanguagePage();
             languagePageObj.Addmorethanfourlanguage(Language, Level);
             Console.WriteLine($"Selected {Language} {Level}");
@@ -149,7 +159,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']"));
             string promptText = popupAlert.Text;
             Console.WriteLine("Alert text: " + promptText);
-            
+
             if (popupAlert.Text == "Please enter language and level")
             {
                 Assert.Pass("Blank language record not accepted");
@@ -201,14 +211,14 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             {
                 Console.WriteLine("record creation unsuccessful");
             }
-            
+
             languagePageObj.CreateDuplicateLanguageRecord(DuplicateLanguage, DuplicateLevel);
             Console.WriteLine($"Selected {DuplicateLanguage} {DuplicateLevel}");
             Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']", 2);
             IWebElement ppopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']"));
             string prromptText = ppopupAlert.Text;
             Console.WriteLine("Alert text: " + prromptText);
-            if(ppopupAlert.Text == "This language is already exist in your language list.")
+            if (ppopupAlert.Text == "This language is already exist in your language list.")
             {
                 Assert.Pass("Duplicate record not accepted");
             }
@@ -258,6 +268,9 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         [Test, TestCaseSource(nameof(GetTestData), new object[] { "language_editexistinglanguagerecord.json", "Editexistinglanguageandlevelrecord" })]
         public void Editexistinglanguageandlevelrecord(string Language, string Level, string NewLanguage, string NewLevel)
         {
+            isDataDrivenTest = true;
+            dataDrivenTestCount++;
+            totalTestCases = GetTestData("language_editexistinglanguagerecord.json", "Editexistinglanguageandlevelrecord").Count();
             LanguagePage languagePageObj = new LanguagePage();
             languagePageObj.CreateLanguageRecord(Language, Level);
             Console.WriteLine($"Selected {Language} {Level}");
@@ -318,7 +331,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             }
             languagePageObj.deleteExistingLanguageRecord();
             Console.WriteLine($"Selected {Language} {Level}");
-            
+
             bool testPassed = false;
             try
             {
@@ -350,49 +363,73 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         [TearDown]
         public new void TearDown()
         {
-            //try
-            //{
-            //    HomeToLanguagePage homeToLanguagePageObj = new HomeToLanguagePage();
-            //    homeToLanguagePageObj.NavigateToLanguage();
-            //    Thread.Sleep(2000);
-            //    var languageRecords = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]"));
-            //    foreach (var record in languageRecords)
-            //    {
-            //        var language = record.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]")).Text;
-            //        if (languagesAdded.Contains(language))
-            //        {
-            //            var deleteButton = record.FindElement(By.XPath("//i[@class='remove icon']"));
-            //            deleteButton.Click();
-            //            Thread.Sleep(2000);
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine($"Error during cleanup: {ex.Message}");
-            //}
-            //languagesAdded.Clear();
-            //base.TearDown();
-            try
+            if (isDataDrivenTest)
             {
-                HomeToLanguagePage homeToLanguagePageObj = new HomeToLanguagePage();
-                homeToLanguagePageObj.NavigateToLanguage();
-                Thread.Sleep(2000);
-                var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[3]/span[2]"));
-                for (int i = deleteButtons.Count - 1; i >= 0; i--)
+                if (dataDrivenTestCount == totalTestCases)
                 {
-                    deleteButtons[i].Click();
-                    Thread.Sleep(2000);
+                    try
+                    {
+                        HomeToLanguagePage homeToLanguagePageObj = new HomeToLanguagePage();
+                        homeToLanguagePageObj.NavigateToLanguage();
+                        Thread.Sleep(2000);
+                        var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[3]/span[2]/i"));
+                        for (int i = deleteButtons.Count - 1; i >= 0; i--)
+                        {
+                            deleteButtons[i].Click(); 
+                            Thread.Sleep(2000);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error during cleanup: {ex.Message}");
+                    }
+                    isDataDrivenTest = false;
+                    dataDrivenTestCount = 0;
                 }
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine($"Error during cleanup: {ex.Message}");
+                try
+                {
+                    HomeToLanguagePage homeToLanguagePageObj = new HomeToLanguagePage();
+                    homeToLanguagePageObj.NavigateToLanguage();
+                    Thread.Sleep(2000);
+                    var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[3]/span[2]/i"));
+                    for (int i = deleteButtons.Count - 1; i >= 0; i--)
+                    {
+                        deleteButtons[i].Click();
+                        Thread.Sleep(2000);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error during cleanup: {ex.Message}");
+                }
             }
             base.TearDown();
 
-
         }
+
+        //try
+        //{
+        //    HomeToLanguagePage homeToLanguagePageObj = new HomeToLanguagePage();
+        //    homeToLanguagePageObj.NavigateToLanguage();
+        //    Thread.Sleep(2000);
+        //    var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[3]/span[2]"));
+        //    for (int i = deleteButtons.Count - 1; i >= 0; i--)
+        //    {
+        //        deleteButtons[i].Click();
+        //        Thread.Sleep(2000);
+        //    }
+        //}
+        //catch (Exception ex)
+        //{
+        //    Console.WriteLine($"Error during cleanup: {ex.Message}");
+        //}
+        //base.TearDown();
+
+
+
 
 
 

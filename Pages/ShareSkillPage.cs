@@ -178,6 +178,7 @@ namespace AdvanceProjectMars_Task5.Pages
             cancelButton.Click();
             Thread.Sleep(8000);
             manageListingsTab.Click();
+            Thread.Sleep(3000);
             //categoryOptions.Click();
             //categoryOptions.SendKeys(Category);
 
