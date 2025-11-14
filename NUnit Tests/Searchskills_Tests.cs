@@ -42,13 +42,17 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 {
                    yield return new TestCaseData(data.Category, data.Subcategory, data.Listings);
                 }
+                else if (data.searchText != null && data.targetText != null && data.NewsearchText != null && data.NewtargetText != null)
+                {
+                    yield return new TestCaseData(data.searchText, data.targetText, data.NewsearchText, data.NewtargetText);
+                }
                 else if (data.Filter != null)
                 {
-                   yield return new TestCaseData(data.Filter);
+                    yield return new TestCaseData(data.Filter);
                 }
             }
         }
-      
+       
         [Test]
         public void CountTotalListings()
         {
@@ -299,17 +303,12 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             
             
         }
-        [Test]
-        public void TestSearchUser()
+        [Test, TestCaseSource(nameof(GetTestData), new object[] { "Searchskills_SearchUser.json", "TestSearchUser" })]
+        public void TestSearchUser(string searchText, string targetText)
         {
-            IWebElement searchSkillsSearchIcon = driver.FindElement(By.XPath("(//i[@class='search link icon'])[1]"));
-            searchSkillsSearchIcon.Click();
-            Thread.Sleep(3000);
-            string searchText = "sunmoon";
-            string targetText = "Sun mOOn";
-            IWebElement searchUser = driver.FindElement(By.XPath("//input[@placeholder='Search user']"));
-            searchUser.SendKeys(searchText);
-            Thread.Sleep(3000);
+
+            SearchskillsPage searchskillsPageObj = new SearchskillsPage();
+            searchskillsPageObj.TestSearchUser(searchText, targetText);
             var suggestions = ((ReadOnlyCollection<IWebElement>)driver.FindElements(By.XPath("//div[@class='result' and @score='0']")));
             bool suggestionFound = false;
 
@@ -328,34 +327,10 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             {
                 Assert.Pass($"Suggestion '{targetText}' not found but system doesn't throw any message result not found.");
             }
-            //string searchText = "ear";
-            //string targetText = "earth";
-            //IWebElement searchUser = driver.FindElement(By.XPath("//input[@placeholder='Search user']"));
-            //searchUser.SendKeys(searchText);
-            //Thread.Sleep(3000);
-            //var suggestions = ((ReadOnlyCollection<IWebElement>)driver.FindElements(By.XPath("//div[@class='result' and @score='0']")));
-
-            //if (suggestions.Count == 0)
-            //{
-            //    Assert.Fail($"No suggestions found for '{targetText}'. User not found.");
-            //}
-            //else
-            //{
-            //    bool suggestionFound = false;
-
-            //    foreach (var suggestion in suggestions)
-            //    {
-            //        if (suggestion.Text.ToLower().Contains(targetText.ToLower()))
-            //        {
-            //            suggestion.Click();
-            //            suggestionFound = true;
-            //            break;
-            //        }
-            //    }
-            //    Assert.That(suggestionFound, Is.True, $"Suggestion '{targetText}' not found.");
-            //    //Assert.True(suggestionFound, $"Suggestion '{targetText}' not found.");
-            //}
+            
             Thread.Sleep(7000);
+            IWebElement searchUserRefresh = driver.FindElement(By.XPath("//i[@class='repeat icon']"));
+            searchUserRefresh.Click();
         }
         [Test]
         public void TestSearchSkills()
