@@ -34,17 +34,7 @@ namespace AdvanceProjectMars_Task5.Pages
             addLanguageTextbox.SendKeys(Language);
             chooseLanguageLevelDropdownButton.SendKeys(Level);
 
-            //IWebElement levelOption = driver.FindElement(By.XPath("//option[@value='Basic']"));
-            //levelOption.Click();
-
-            //IWebElement levelOption = driver.FindElement(By.XPath("//option[@value='Fluent']"));
-            //levelOption.Click();
-
-            //IWebElement levelOption = driver.FindElement(By.XPath("//option[@value='Conversational']"));
-            //levelOption.Click();
-
-            //IWebElement levelOption = driver.FindElement(By.XPath("//option[@value='Native/Bilingual']"));
-            //levelOption.Click();
+          
 
             addButton.Click();
             Thread.Sleep(5000);
@@ -144,17 +134,7 @@ namespace AdvanceProjectMars_Task5.Pages
             addLanguageTextbox.SendKeys(DuplicateLanguage);
             chooseLanguageLevelDropdownButton.SendKeys(DuplicateLevel);
 
-            //IWebElement levelOption = driver.FindElement(By.XPath("//option[@value='Basic']"));
-            //levelOption.Click();
-
-            //IWebElement levelOption = driver.FindElement(By.XPath("//option[@value='Fluent']"));
-            //levelOption.Click();
-
-            //IWebElement levelOption = driver.FindElement(By.XPath("//option[@value='Conversational']"));
-            //levelOption.Click();
-
-            //IWebElement levelOption = driver.FindElement(By.XPath("//option[@value='Native/Bilingual']"));
-            //levelOption.Click();
+            
 
             addButton.Click();
             //cancelButton.Click();

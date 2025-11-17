@@ -57,18 +57,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
 
             }
         }
-        //public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)
-        //{
-        //    var testData = TestDataReader.ReadTestData(fileName);
-        //    if (!testData.ContainsKey(testName))
-        //    {
-        //        throw new ArgumentException($"Test data not found for test name: {testName}");
-        //    }
-
-        //    return testData[testName]
-        //        .Where(data => data.Language != null && data.Level != null)
-        //        .Select(data => new TestCaseData(data.Language, data.Level));
-        //}
+       
         private bool isDataDrivenTest = false;
         private int dataDrivenTestCount = 0;
         private int totalTestCases = 0;
@@ -77,7 +66,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         {
             isDataDrivenTest = true;
             dataDrivenTestCount++;
-            totalTestCases = GetTestData("language_validlanguage.json", "Createvalidlanguageandlevelrecord").Count();
+            totalTestCases = GetTestData("language_validlanguageandlevel.json", "Createvalidlanguageandlevelrecord").Count();
             LanguagePage languagePageObj = new LanguagePage();
             languagePageObj.CreateLanguageRecord(Language, Level);
             Console.WriteLine($"Selected {Language} {Level}");
@@ -410,25 +399,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
 
         }
 
-        //try
-        //{
-        //    HomeToLanguagePage homeToLanguagePageObj = new HomeToLanguagePage();
-        //    homeToLanguagePageObj.NavigateToLanguage();
-        //    Thread.Sleep(2000);
-        //    var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[3]/span[2]"));
-        //    for (int i = deleteButtons.Count - 1; i >= 0; i--)
-        //    {
-        //        deleteButtons[i].Click();
-        //        Thread.Sleep(2000);
-        //    }
-        //}
-        //catch (Exception ex)
-        //{
-        //    Console.WriteLine($"Error during cleanup: {ex.Message}");
-        //}
-        //base.TearDown();
-
-
+       
 
 
 

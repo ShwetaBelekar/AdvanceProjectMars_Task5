@@ -22,11 +22,9 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         [SetUp]
         public void SetUpSteps()
         {
-            //driver = new ChromeDriver();
-            //driver.Navigate().GoToUrl("http://localhost:5003/Home");
-            //driver.Manage().Window.Maximize();
+         
             LoginPage loginPageObj = new LoginPage();
-            //loginPageObj.LoginActions();
+            
             loginPageObj.VerifyUserInHomePage();
             HomeToSkillPage homeToSkillPageObj = new HomeToSkillPage();
             homeToSkillPageObj.NavigateToSkill();

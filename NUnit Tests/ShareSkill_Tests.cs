@@ -28,11 +28,9 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         [SetUp]
         public void SetUpSteps()
         {
-            //driver = new ChromeDriver();
-            //driver.Navigate().GoToUrl("http://localhost:5003/Home");
-            //driver.Manage().Window.Maximize();
+           
             LoginPage loginPageObj = new LoginPage();
-            //loginPageObj.LoginActions();
+            
             loginPageObj.VerifyUserInHomePage();
         }
         
@@ -438,7 +436,6 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             IWebElement descriptionField = driver.FindElement(By.Name("description"));
             string placeholderText = descriptionField.GetAttribute("placeholder");
 
-            // Assert that the tooltip and placeholder text are consistent
             if (tooltipHtml != placeholderText)
             {
                 Console.WriteLine("Tooltip text: " + tooltipHtml);
@@ -458,13 +455,12 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         {
             IWebElement searchSkillsSearchIcon = driver.FindElement(By.XPath("(//i[@class='search link icon'])[1]"));
             searchSkillsSearchIcon.Click();
-            // Get the categories from the top
+            
             var topCategories = driver.FindElements(By.XPath("//div[@role='list']")).Select(e => e.Text).ToList();
 
-            // Get the categories from the footer
             var footerCategories = driver.FindElements(By.XPath("//*[@id=\"service-search-section\"]/section[2]/div/div/div/div[1]/nav")).Select(e => e.Text).ToList();
 
-            // Compare the categories
+           
             if (!topCategories.SequenceEqual(footerCategories))
             {
                 Assert.Pass("The categories at the top and footer do not match.");

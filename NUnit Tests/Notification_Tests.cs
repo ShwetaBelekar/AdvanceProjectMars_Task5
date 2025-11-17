@@ -70,6 +70,12 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             NotificationPage notificationPageObj = new NotificationPage();
             notificationPageObj.MarkAllAsRead(Emailaddress, Password);
         }
+        [Test, TestCaseSource(nameof(GetTestData), new object[] { "Notification_SelectandUnselect.json", "SelectandUnSelectNotification" })]
+        public void SelectandUnSelectNotification(string Emailaddress, string Password)
+        {
+            NotificationPage notificationPageObj = new NotificationPage();
+            notificationPageObj.SelectandUnselect(Emailaddress, Password);
+        }
         [TearDown]
         public void TearDown()
         {

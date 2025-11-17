@@ -27,11 +27,9 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         [SetUp]
         public void SetUpSteps()
         {
-            //driver = new ChromeDriver();
-            //driver.Navigate().GoToUrl("http://localhost:5003/Home");
-            //driver.Manage().Window.Maximize();
+            
             LoginPage loginPageObj = new LoginPage();
-            //loginPageObj.LoginActions();
+            
             loginPageObj.VerifyUserInHomePage();
         }
         public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)
@@ -163,7 +161,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 if (nextPageButton != null)
                 {
                     nextPageButton.Click();
-                    Thread.Sleep(2000); // Wait for the page to load
+                    Thread.Sleep(2000);
                     currentPage++;
                 }
                 else
@@ -206,7 +204,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 if (nextPageButton != null)
                 {
                     nextPageButton.Click();
-                    Thread.Sleep(2000); // Wait for the page to load
+                    Thread.Sleep(2000); 
                     currentPage++;
                 }
                 else
@@ -267,7 +265,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 if (nextPageButton != null)
                 {
                     nextPageButton.Click();
-                    Thread.Sleep(2000); // Wait for the page to load
+                    Thread.Sleep(2000);
                     currentPage++;
                 }
                 else
@@ -400,42 +398,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
 
         }
        
-        [Test]
-        public void CheckNotificationAlerts()
-        {
-            Thread.Sleep(2000);
-            IWebElement notification = driver.FindElement(By.XPath("//div[@class='ui top left pointing dropdown item']"));
-            notification.Click();
-            Thread.Sleep(3000);
-            IWebElement seeAll = driver.FindElement(By.XPath("//a[@href='/Account/Dashboard' and contains(text(), 'See All...')]"));
-            seeAll.Click();
-            Thread.Sleep(3000);
-            IWebElement markAllAsRead = driver.FindElement(By.XPath("//a[contains(text(), 'Mark all as read')]"));
-            markAllAsRead.Click();
-            IWebElement selectAll = driver.FindElement(By.XPath("//i[@class='mouse pointer icon']"));
-            selectAll.Click();
-            IWebElement unSelectAll = driver.FindElement(By.XPath("//i[@class='ban icon']"));
-            unSelectAll.Click();
-            IWebElement markSelectionAsRead = driver.FindElement(By.XPath("//i[@class='check square icon']"));
-            markSelectionAsRead.Click();
-            IWebElement checkBox = driver.FindElement(By.XPath("//input[@type='checkbox' and @value='0']"));
-            checkBox.Click();
-            IWebElement loadMoreButton = driver.FindElement(By.XPath("//a[@class='ui button' and text()='Load More...']"));
-            loadMoreButton.Click();
-            IWebElement showLessButton = driver.FindElement(By.XPath("//a[@class='ui button' and text()='...Show Less']"));
-            showLessButton.Click();
-            //IWebElement deleteSelection = driver.FindElement(By.XPath("//i[@class='trash icon']"));
-            //deleteSelection.Click();
-
-
-
-        }
-        //[TearDown]
-        //public void TearDown()
-        //{
-        //    driver.Quit();
-        //}
-
+        
     }
 
 }

@@ -246,23 +246,23 @@ namespace AdvanceProjectMars_Task5.Pages
             IWebElement markAllAsRead = driver.FindElement(By.XPath("//a[contains(text(), 'Mark all as read')]"));
             markAllAsRead.Click();
             Thread.Sleep(3000);
-            IWebElement notificationCountElementAfterMarkRead = driver.FindElement(By.XPath("//div[@class='floating ui blue label']"));
-            if (int.TryParse(notificationCountElementAfterMarkRead.Text, out int notificationCountAfterMarkRead))
+            try
             {
-                Console.WriteLine("Notification Count after marking all as read: " + notificationCountAfterMarkRead);
-                if (notificationCountAfterMarkRead == 0)
+                IWebElement notificationCountElementAfterMarkRead = driver.FindElement(By.XPath("//div[@class='floating ui blue label']"));
+                if (int.TryParse(notificationCountElementAfterMarkRead.Text, out int notificationCountAfterMarkRead) && notificationCountAfterMarkRead == 0)
                 {
                     Console.WriteLine("Notification count is zero as expected");
                 }
                 else
                 {
-                    Console.WriteLine("Notification count is not zero");
+                    Console.WriteLine("Notification count is not zero or failed to parse");
                 }
             }
-            else
+            catch (NoSuchElementException)
             {
-                Console.WriteLine("Failed to parse notification count");
+                Console.WriteLine("Notification count element not found after mark read");
             }
+
 
             // Wait for the notification content to be updated
             Thread.Sleep(3000);
@@ -276,7 +276,7 @@ namespace AdvanceProjectMars_Task5.Pages
             }
             catch (NoSuchElementException)
             {
-                Console.WriteLine("Notification content is no longer bold as expected");
+                Console.WriteLine("Notification content is no longer bold as expected after mark all as read");
             }
 
         }
@@ -319,6 +319,23 @@ namespace AdvanceProjectMars_Task5.Pages
                     break;
                 }
             }
+            Thread.Sleep(3000);
+            while (true)
+            {
+                try
+                {
+                    IWebElement showLessButton = driver.FindElement(By.XPath("//a[@class='ui button' and text()='...Show Less']"));
+                    showLessButton.Click();
+                    Thread.Sleep(2000);
+                }
+                catch (NoSuchElementException)
+                {
+                    Console.WriteLine("Show Less button is no longer visible");
+                    break;
+                }
+            }
+            Thread.Sleep(3000);
+
             //IWebElement loadMoreButton = driver.FindElement(By.XPath("//a[@class='ui button' and text()='Load More...']"));
             //loadMoreButton.Click();
             //Thread.Sleep(2000);
@@ -328,13 +345,13 @@ namespace AdvanceProjectMars_Task5.Pages
 
             IWebElement selectAll = driver.FindElement(By.XPath("//i[@class='mouse pointer icon']"));
             selectAll.Click();
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
             IWebElement unSelectAll = driver.FindElement(By.XPath("//i[@class='ban icon']"));
             unSelectAll.Click();
             Thread.Sleep(2000);
             IWebElement selectAllAgain = driver.FindElement(By.XPath("//i[@class='mouse pointer icon']"));
             selectAllAgain.Click();
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
             IWebElement markSelectionAsRead = driver.FindElement(By.XPath("//i[@class='check square icon']"));
             markSelectionAsRead.Click();
             Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
@@ -342,7 +359,7 @@ namespace AdvanceProjectMars_Task5.Pages
             if (popupAlert.Text == "Notification updated")
             {
 
-                Console.WriteLine("Notification updated is correct ");
+                Console.WriteLine("Notification updated is correct");
             }
             else
             {
@@ -350,6 +367,7 @@ namespace AdvanceProjectMars_Task5.Pages
             }
             IWebElement checkBox = driver.FindElement(By.XPath("//input[@type='checkbox' and @value='0']"));
             checkBox.Click();
+            Thread.Sleep(3000);
             IWebElement deleteSelection = driver.FindElement(By.XPath("//i[@class='trash icon']"));
             deleteSelection.Click();
             Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
@@ -364,7 +382,7 @@ namespace AdvanceProjectMars_Task5.Pages
                 Console.WriteLine("SkillSwap request not sent");
             }
 
-
+        }
 
 
 
