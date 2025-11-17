@@ -23,6 +23,7 @@ namespace AdvanceProjectMars_Task5.Pages
         private IWebElement filterShowAll => driver.FindElement(By.XPath("//button[text()='ShowAll']"));
 
         private IWebElement searchSkills => driver.FindElement(By.XPath("(//input[@placeholder='Search skills'])[2]"));
+        private IWebElement searchIcon => driver.FindElement(By.XPath("(//i[@class='search link icon'])[2]"));
         private IWebElement searchUser => driver.FindElement(By.XPath("//input[@placeholder='Search user']"));
         private IWebElement searchUserRefresh => driver.FindElement(By.XPath("//i[@class='repeat icon']"));
         private IWebElement category => driver.FindElement(By.XPath("//a[@role='listitem' and @class='item category']"));
@@ -117,32 +118,31 @@ namespace AdvanceProjectMars_Task5.Pages
         }
         public void TestSearchUser(string searchText, string targetText)
         {
-            //IWebElement searchSkillsSearchIcon = driver.FindElement(By.XPath("(//i[@class='search link icon'])[1]"));
+            
             searchSkillsSearchIcon.Click();
             Thread.Sleep(3000);
-            //string searchText = "sunmoon";
-            //string targetText = "Sun mOOn";
-            //IWebElement searchUser = driver.FindElement(By.XPath("//input[@placeholder='Search user']"));
+            
             searchUser.SendKeys(searchText);
             Thread.Sleep(3000);
-            //var suggestions = ((ReadOnlyCollection<IWebElement>)driver.FindElements(By.XPath("//div[@class='result' and @score='0']")));
-            //bool suggestionFound = false;
-
-            //foreach (var suggestion in suggestions)
-            //{
-            //    if (suggestion.Text.ToLower().Contains(targetText.ToLower()))
-            //    {
-            //        suggestion.Click();
-            //        Assert.Pass($"Suggestion '{targetText}' found and clicked.");
-            //        suggestionFound = true;
-            //        break;
-            //    }
-            //}
-
-            //if (!suggestionFound)
-            //{
-            //    Assert.Pass($"Suggestion '{targetText}' not found but system doesn't throw any message result not found.");
-            //}
+            
+        }
+        public void TestNewSearchUser(string NewsearchText, string NewtargetText)
+        {
+            searchUserRefresh.Click();
+            Thread.Sleep(2000);
+            searchUser.SendKeys(NewsearchText);
+            Thread.Sleep(3000);
+        }
+        public void TestSearchSkill(string searchSkill)
+        {
+            
+            searchSkillsSearchIcon.Click();
+            Thread.Sleep(3000);
+           
+            searchSkills.SendKeys(searchSkill);
+            searchIcon.Click();
+            Thread.Sleep(2000);
+            
         }
         public void SearchSkillWithAllCategoryandSubcategory(string Category, string Subcategory, string Listings)
         {

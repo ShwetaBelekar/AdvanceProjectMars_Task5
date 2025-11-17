@@ -23,6 +23,7 @@ namespace AdvanceProjectMars_Task5.TestData.Searchskills
             public string targetText { get; set; }
             public string NewsearchText { get; set; }
             public string NewtargetText { get; set; }
+            public string searchSkill { get; set; }
         }
         public static class TestDataReader
         {

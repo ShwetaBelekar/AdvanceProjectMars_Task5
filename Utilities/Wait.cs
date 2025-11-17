@@ -38,5 +38,10 @@ namespace AdvanceProjectMars_Task5.Utilities
             }
 
         }
+
+        internal static IWebElement Until(object value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
