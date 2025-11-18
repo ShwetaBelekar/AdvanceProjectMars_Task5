@@ -10,8 +10,8 @@ namespace AdvanceProjectMars_Task5.Pages
 {
     public class HomeToLanguagePage : CommonDriver
     {
-        private IWebElement profileTab => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[1]/div/a[2]"));
-        private IWebElement languageOption => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[1]"));
+        private IWebElement profileTab => driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[1]/div/a[2]"));
+        private IWebElement languageOption => driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[1]"));
         public void NavigateToLanguage()
         {
             Thread.Sleep(2000);

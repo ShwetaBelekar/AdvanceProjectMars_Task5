@@ -71,8 +71,8 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             ProfLoc_Avai_Hrs_EarnTarPage profLoc_Avai_Hrs_EarnTarPageObj = new ProfLoc_Avai_Hrs_EarnTarPage();
             profLoc_Avai_Hrs_EarnTarPageObj.SelectAvailabilityAction(AvailabilityType);
             Console.WriteLine($"Selected {AvailabilityType}");
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement popupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
 
             if (popupAlert.Text == "Availability updated")
             {
@@ -101,8 +101,8 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 Console.WriteLine($"Expected Full Time but got {AvailabilityType}");
             }
 
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement selectpopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement selectpopupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             string promptText = selectpopupAlert.Text;
             Console.WriteLine("Alert text: " + promptText);
             if (selectpopupAlert.Text == "Availability updated")
@@ -124,8 +124,8 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             {
                 Console.WriteLine($"Expected Part Time but got {NewAvailabilityType}");
             }
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement popupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             string changepromptText = popupAlert.Text;
             Console.WriteLine("Alert text: " + promptText);
             if (popupAlert.Text == "Availability updated")
@@ -148,8 +148,8 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             Console.WriteLine($"Selected {HoursType}");
             
 
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement poopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement poopupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             string promptText = poopupAlert.Text;
             Console.WriteLine("Alert text: " + promptText);
 
@@ -169,8 +169,8 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             ProfLoc_Avai_Hrs_EarnTarPage profLoc_Avai_Hrs_EarnTarPageObj = new ProfLoc_Avai_Hrs_EarnTarPage();
             profLoc_Avai_Hrs_EarnTarPageObj.SelectHoursAction(HoursType);
             Console.WriteLine($"Selected {HoursType}");
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement poopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement poopupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             string promptText = poopupAlert.Text;
             Console.WriteLine("Alert text: " + promptText);
 
@@ -184,8 +184,8 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             }
             profLoc_Avai_Hrs_EarnTarPageObj.EditHoursAction(EditHoursType);
             Console.WriteLine($"Selected {EditHoursType}");
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement popupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             string proomptText = popupAlert.Text;
             Console.WriteLine("Alert text: " + proomptText);
 
@@ -199,8 +199,8 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             }
             profLoc_Avai_Hrs_EarnTarPageObj.ChangeHoursAction(ChangeHoursType);
             Console.WriteLine($"Selected {ChangeHoursType}");
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement ppopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement ppopupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             string prooomptText = ppopupAlert.Text;
             Console.WriteLine("Alert text: " + prooomptText);
 
@@ -220,8 +220,8 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             profLoc_Avai_Hrs_EarnTarPageObj.SelectEarnTargetAction(EarnTargetType);
             Console.WriteLine($"Selected {EarnTargetType}");
 
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement ppopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement ppopupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             string promptText = ppopupAlert.Text;
             Console.WriteLine("Alert text: " + promptText);
             if (ppopupAlert.Text == "Availability updated")
@@ -240,8 +240,8 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             ProfLoc_Avai_Hrs_EarnTarPage profLoc_Avai_Hrs_EarnTarPageObj = new ProfLoc_Avai_Hrs_EarnTarPage();
             profLoc_Avai_Hrs_EarnTarPageObj.SelectEarnTargetAction(EarnTargetType);
             Console.WriteLine($"Selected {EarnTargetType}");
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement poopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement poopupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             string promptText = poopupAlert.Text;
             Console.WriteLine("Alert text: " + promptText);
 
@@ -255,8 +255,8 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             }
             profLoc_Avai_Hrs_EarnTarPageObj.EditEarnTargetAction(EditEarnTargetType);
             Console.WriteLine($"Selected {EditEarnTargetType}");
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement popupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             string proomptText = popupAlert.Text;
             Console.WriteLine("Alert text: " + proomptText);
 
@@ -270,8 +270,8 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             }
             profLoc_Avai_Hrs_EarnTarPageObj.ChangeEarnTargetAction(ChangeEarnTargetType);
             Console.WriteLine($"Selected {ChangeEarnTargetType}");
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement ppopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement ppopupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             string prooomptText = ppopupAlert.Text;
             Console.WriteLine("Alert text: " + prooomptText);
 
@@ -288,10 +288,10 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         public void LocationFeature_IsNotInteractable()
         {
            
-            IWebElement location = driver.FindElement(By.CssSelector("#account-profile-section > div > section:nth-child(3) > div > div > div > div.four.wide.column > div > div > div > div > div > div.extra.content > div > div:nth-child(1) > span > strong"));
+            IWebElement location = driver.Value.FindElement(By.CssSelector("#account-profile-section > div > section:nth-child(3) > div > div > div > div.four.wide.column > div > div > div > div > div > div.extra.content > div > div:nth-child(1) > span > strong"));
 
             
-            Actions actions = new Actions(driver);
+            Actions actions = new Actions(driver.Value);
             actions.DoubleClick(location).Perform();
 
             var initialText = location.Text;

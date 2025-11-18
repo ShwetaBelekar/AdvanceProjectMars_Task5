@@ -13,17 +13,17 @@ namespace AdvanceProjectMars_Task5.Pages
 {
     public class LanguagePage : CommonDriver
     {
-        private IWebElement addNewButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/thead/tr/th[3]/div"));
-        private IWebElement addLanguageTextbox => driver.FindElement(By.XPath("//input[@placeholder='Add Language']"));
-        private IWebElement chooseLanguageLevelDropdownButton => driver.FindElement(By.XPath("//select[@name='level']"));
+        private IWebElement addNewButton => driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/thead/tr/th[3]/div"));
+        private IWebElement addLanguageTextbox => driver.Value.FindElement(By.XPath("//input[@placeholder='Add Language']"));
+        private IWebElement chooseLanguageLevelDropdownButton => driver.Value.FindElement(By.XPath("//select[@name='level']"));
 
-        private IWebElement addButton => driver.FindElement(By.XPath("//input[@value='Add']"));
-        private IWebElement cancelButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[3]/input[2]"));
-        private IWebElement editButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[3]/span[1]/i"));
+        private IWebElement addButton => driver.Value.FindElement(By.XPath("//input[@value='Add']"));
+        private IWebElement cancelButton => driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[3]/input[2]"));
+        private IWebElement editButton => driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[3]/span[1]/i"));
         
-        private IWebElement updateButton => driver.FindElement(By.XPath("//input[@value='Update']"));
-        private IWebElement editCancelButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td/div/span/input[2]"));
-        private IWebElement deleteButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[3]/span[2]"));
+        private IWebElement updateButton => driver.Value.FindElement(By.XPath("//input[@value='Update']"));
+        private IWebElement editCancelButton => driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td/div/span/input[2]"));
+        private IWebElement deleteButton => driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[3]/span[2]"));
        
         public void CreateLanguageRecord(string Language, string Level)
         {
@@ -64,7 +64,7 @@ namespace AdvanceProjectMars_Task5.Pages
             editCancelButton.Click();
 
             Thread.Sleep(2000);
-            IWebElement Language = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
+            IWebElement Language = driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
             if (Language.Text == "German")
             {
                 Console.WriteLine("Edit operation is cancelled and original language German is visible");
@@ -77,7 +77,7 @@ namespace AdvanceProjectMars_Task5.Pages
             Thread.Sleep(2000);
             updateButton.Click();
             Thread.Sleep(2000);
-            IWebElement newLanguage = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
+            IWebElement newLanguage = driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
             if (newLanguage.Text == "English")
             {
                 Console.WriteLine("Edit operation was cancelled so the data should be discarded and original language German should be visible but no the system is saving unnecessary data at the back");
@@ -98,7 +98,7 @@ namespace AdvanceProjectMars_Task5.Pages
             Thread.Sleep(5000);
             try
             {
-                IWebElement addNewButton = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/thead/tr/th[3]/div"));
+                IWebElement addNewButton = driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/thead/tr/th[3]/div"));
                 if (addNewButton.Displayed)
                 {
                     addNewButton.Click();

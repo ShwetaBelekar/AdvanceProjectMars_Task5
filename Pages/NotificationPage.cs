@@ -14,37 +14,37 @@ namespace AdvanceProjectMars_Task5.Pages
 {
     public class NotificationPage : CommonDriver
     {
-        private IWebElement signInButton => driver.FindElement(By.XPath("//*[@id=\"home\"]/div/div/div[1]/div/a"));
+        private IWebElement signInButton => driver.Value.FindElement(By.XPath("//*[@id=\"home\"]/div/div/div[1]/div/a"));
 
-        private IWebElement emailAddressTextbox => driver.FindElement(By.XPath("//input[@placeholder='Email address']"));
+        private IWebElement emailAddressTextbox => driver.Value.FindElement(By.XPath("//input[@placeholder='Email address']"));
 
-        private IWebElement passwordTextbox => driver.FindElement(By.XPath("//input[@placeholder='Password']"));
+        private IWebElement passwordTextbox => driver.Value.FindElement(By.XPath("//input[@placeholder='Password']"));
 
-        private IWebElement loginButton => driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
+        private IWebElement loginButton => driver.Value.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
 
         public void SendSkillSwapRequest(string searchSkill, string selectSeller, string selectSkill, string messageToSeller, string Emailaddress, string Password, string Sender)
         {
-            IWebElement searchSkillsSearchIcon = driver.FindElement(By.XPath("(//i[@class='search link icon'])[1]"));
+            IWebElement searchSkillsSearchIcon = driver.Value.FindElement(By.XPath("(//i[@class='search link icon'])[1]"));
             searchSkillsSearchIcon.Click();
             Thread.Sleep(2000);
-            IWebElement searchSkills = driver.FindElement(By.XPath("(//input[@placeholder='Search skills'])[2]"));
+            IWebElement searchSkills = driver.Value.FindElement(By.XPath("(//input[@placeholder='Search skills'])[2]"));
             searchSkills.SendKeys(searchSkill + Keys.Enter);
             Thread.Sleep(2000);
-            IWebElement selectListing = driver.FindElement(By.XPath("//*[@id=\"service-search-section\"]/div[2]/div/section/div/div[2]/div/div[2]/div/div/div/div[1]/a[2]"));
+            IWebElement selectListing = driver.Value.FindElement(By.XPath("//*[@id=\"service-search-section\"]/div[2]/div/section/div/div[2]/div/div[2]/div/div/div/div[1]/a[2]"));
             Console.WriteLine($"Selected {selectListing.Text}");
             selectListing.Click();
-            IWebElement messageToSellerTextbox = driver.FindElement(By.XPath("//*[@id=\"service-detail-section\"]/div[2]/div/div[2]/div[2]/div[2]/div/div[2]/div/div[1]/textarea"));
+            IWebElement messageToSellerTextbox = driver.Value.FindElement(By.XPath("//*[@id=\"service-detail-section\"]/div[2]/div/div[2]/div[2]/div[2]/div/div[2]/div/div[1]/textarea"));
             messageToSellerTextbox.SendKeys(messageToSeller);
             Thread.Sleep(3000);
             string sentDate = DateTime.Now.ToString("dd MMM, yyyy");
-            IWebElement requestButton = driver.FindElement(By.XPath("//div[@class='ui teal  button']"));
+            IWebElement requestButton = driver.Value.FindElement(By.XPath("//div[@class='ui teal  button']"));
             requestButton.Click();
             Thread.Sleep(2000);
-            IWebElement yesButton = driver.FindElement(By.XPath("//button[@class='ui button ui teal button' and text()='Yes']"));
+            IWebElement yesButton = driver.Value.FindElement(By.XPath("//button[@class='ui button ui teal button' and text()='Yes']"));
             yesButton.Click();
           
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement popupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             if (popupAlert.Text == "Request sent")
             {
               
@@ -54,13 +54,13 @@ namespace AdvanceProjectMars_Task5.Pages
             {
                 Console.WriteLine("SkillSwap request not sent");
             }
-            IWebElement manageRequest = driver.FindElement(By.XPath("//div[@class='ui dropdown link item' and @tabindex='0']"));
+            IWebElement manageRequest = driver.Value.FindElement(By.XPath("//div[@class='ui dropdown link item' and @tabindex='0']"));
             manageRequest.Click();
             Thread.Sleep(2000);
-            IWebElement sentRequests = driver.FindElement(By.XPath("//a[@class='item' and @href='/Home/SentRequest']"));
+            IWebElement sentRequests = driver.Value.FindElement(By.XPath("//a[@class='item' and @href='/Home/SentRequest']"));
             sentRequests.Click();
             Thread.Sleep(2000);
-            IWebElement skillswaprequestsent = driver.FindElement(By.XPath("//*[@id=\"sent-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[2]/a"));
+            IWebElement skillswaprequestsent = driver.Value.FindElement(By.XPath("//*[@id=\"sent-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[2]/a"));
             //skillswaprequestsent.Click(); 
             if (skillswaprequestsent.Text.Contains (selectSkill))
             {
@@ -72,8 +72,8 @@ namespace AdvanceProjectMars_Task5.Pages
             }
             Thread.Sleep(3000);
             
-            IWebElement recipient = driver.FindElement(By.XPath("//*[@id=\"sent-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[4]/a"));
-            IWebElement date = driver.FindElement(By.XPath("//*[@id=\"sent-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[7]"));
+            IWebElement recipient = driver.Value.FindElement(By.XPath("//*[@id=\"sent-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[4]/a"));
+            IWebElement date = driver.Value.FindElement(By.XPath("//*[@id=\"sent-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[7]"));
            
             if (recipient.Text == selectSeller && date.Text == sentDate)
             {
@@ -84,23 +84,23 @@ namespace AdvanceProjectMars_Task5.Pages
                 Console.WriteLine("Recipient name should be full name because if there are two seller with same first name then it can be confusing and date are correct");
             }
 
-            IWebElement signOutButton = driver.FindElement(By.XPath("//button[@class='ui green basic button' and text()='Sign Out']"));
+            IWebElement signOutButton = driver.Value.FindElement(By.XPath("//button[@class='ui green basic button' and text()='Sign Out']"));
             signOutButton.Click();
             Thread.Sleep(2000);
-            IWebElement signinButton = driver.FindElement(By.XPath("//*[@id=\"home\"]/div/div/div[1]/div/a"));
+            IWebElement signinButton = driver.Value.FindElement(By.XPath("//*[@id=\"home\"]/div/div/div[1]/div/a"));
             signinButton.Click();
             Thread.Sleep(2000);
 
-            IWebElement emailAddressTextbox = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[1]/input"));
+            IWebElement emailAddressTextbox = driver.Value.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[1]/input"));
             emailAddressTextbox.SendKeys(Emailaddress);
 
-            IWebElement passwordTextbox = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[2]/input"));
+            IWebElement passwordTextbox = driver.Value.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[2]/input"));
             passwordTextbox.SendKeys(Password);
 
-            IWebElement loginButton = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
+            IWebElement loginButton = driver.Value.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
             loginButton.Click();
             Thread.Sleep(5000);
-            IWebElement hilock = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/div[1]/div[2]/div/span"));
+            IWebElement hilock = driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/div[1]/div[2]/div/span"));
 
             if (hilock.Text == "Hi Lock")
             {
@@ -111,13 +111,13 @@ namespace AdvanceProjectMars_Task5.Pages
                 Console.WriteLine("User has not logged in. Test Failed!");
             }
             Thread.Sleep(2000);
-            IWebElement manageRequests = driver.FindElement(By.XPath("//div[@class='ui dropdown link item' and @tabindex='0']"));
+            IWebElement manageRequests = driver.Value.FindElement(By.XPath("//div[@class='ui dropdown link item' and @tabindex='0']"));
             manageRequests.Click();
             Thread.Sleep(2000);
-            IWebElement receivedRequests = driver.FindElement(By.XPath("//a[@class='item' and @href='/Home/ReceivedRequest']"));
+            IWebElement receivedRequests = driver.Value.FindElement(By.XPath("//a[@class='item' and @href='/Home/ReceivedRequest']"));
             receivedRequests.Click();
             Thread.Sleep(2000);
-            IWebElement sentrequest = driver.FindElement(By.XPath("//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[4]/a"));
+            IWebElement sentrequest = driver.Value.FindElement(By.XPath("//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[4]/a"));
             if (sentrequest.Text.Contains(Sender))
             {
                 Assert.Pass("Request received from Tony");
@@ -138,7 +138,7 @@ namespace AdvanceProjectMars_Task5.Pages
             passwordTextbox.SendKeys(Password);
             loginButton.Click();
             Thread.Sleep(5000);
-            IWebElement hilock = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/div[1]/div[2]/div/span"));
+            IWebElement hilock = driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/div[1]/div[2]/div/span"));
 
             if (hilock.Text == "Hi Lock")
             {
@@ -149,14 +149,14 @@ namespace AdvanceProjectMars_Task5.Pages
                 Console.WriteLine("User has not logged in. Test Failed!");
             }
             Thread.Sleep(3000);
-            IWebElement dashboardTab = driver.FindElement(By.XPath("//a[@class='item' and @href='/Account/Dashboard']"));
+            IWebElement dashboardTab = driver.Value.FindElement(By.XPath("//a[@class='item' and @href='/Account/Dashboard']"));
             dashboardTab.Click();
             Thread.Sleep(2000);
-            IWebElement notificationList = driver.FindElement(By.XPath("//*[@id=\"notification-section\"]/div[2]/div/div/div[3]/div[2]/span/span/div"));
+            IWebElement notificationList = driver.Value.FindElement(By.XPath("//*[@id=\"notification-section\"]/div[2]/div/div/div[3]/div[2]/span/span/div"));
             int initialNotificationCount = notificationList.FindElements(By.XPath("//div[@class='item link']")).Count;
             Console.WriteLine("Initial notification count: " + initialNotificationCount);
 
-            IWebElement loadMoreButton = driver.FindElement(By.XPath("//a[@class='ui button' and text()='Load More...']"));
+            IWebElement loadMoreButton = driver.Value.FindElement(By.XPath("//a[@class='ui button' and text()='Load More...']"));
             loadMoreButton.Click();
 
             // Wait for the new notifications to load
@@ -179,7 +179,7 @@ namespace AdvanceProjectMars_Task5.Pages
                 Console.WriteLine("Test Failed: Notification count did not increase by 5");
             }
             
-            IWebElement showLessButton = driver.FindElement(By.XPath("//a[@class='ui button' and text()='...Show Less']"));
+            IWebElement showLessButton = driver.Value.FindElement(By.XPath("//a[@class='ui button' and text()='...Show Less']"));
             showLessButton.Click();
 
             // Wait for the notifications to collapse
@@ -202,7 +202,7 @@ namespace AdvanceProjectMars_Task5.Pages
             passwordTextbox.SendKeys(Password);
             loginButton.Click();
             Thread.Sleep(5000);
-            IWebElement hilock = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/div[1]/div[2]/div/span"));
+            IWebElement hilock = driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/div[1]/div[2]/div/span"));
 
             if (hilock.Text == "Hi Lock")
             {
@@ -215,7 +215,7 @@ namespace AdvanceProjectMars_Task5.Pages
             Thread.Sleep(3000);
             try
             {
-                IWebElement notificationCountElement = driver.FindElement(By.XPath("//div[@class='floating ui blue label']"));
+                IWebElement notificationCountElement = driver.Value.FindElement(By.XPath("//div[@class='floating ui blue label']"));
                 if (int.TryParse(notificationCountElement.Text, out int notificationCount))
                 {
                     Console.WriteLine("Notification Count: " + notificationCount);
@@ -230,12 +230,12 @@ namespace AdvanceProjectMars_Task5.Pages
                 Console.WriteLine("Notification count element not found");
             }
 
-            IWebElement notification = driver.FindElement(By.XPath("//div[@class='ui top left pointing dropdown item']"));
+            IWebElement notification = driver.Value.FindElement(By.XPath("//div[@class='ui top left pointing dropdown item']"));
             notification.Click();
             Thread.Sleep(3000);
             try
             {
-                IWebElement notificationContent = driver.FindElement(By.XPath("//div[@class='content' and contains(@style, 'font-weight: bold')]"));
+                IWebElement notificationContent = driver.Value.FindElement(By.XPath("//div[@class='content' and contains(@style, 'font-weight: bold')]"));
             }
             catch (NoSuchElementException)
             {
@@ -243,12 +243,12 @@ namespace AdvanceProjectMars_Task5.Pages
             }
 
 
-            IWebElement markAllAsRead = driver.FindElement(By.XPath("//a[contains(text(), 'Mark all as read')]"));
+            IWebElement markAllAsRead = driver.Value.FindElement(By.XPath("//a[contains(text(), 'Mark all as read')]"));
             markAllAsRead.Click();
             Thread.Sleep(3000);
             try
             {
-                IWebElement notificationCountElementAfterMarkRead = driver.FindElement(By.XPath("//div[@class='floating ui blue label']"));
+                IWebElement notificationCountElementAfterMarkRead = driver.Value.FindElement(By.XPath("//div[@class='floating ui blue label']"));
                 if (int.TryParse(notificationCountElementAfterMarkRead.Text, out int notificationCountAfterMarkRead) && notificationCountAfterMarkRead == 0)
                 {
                     Console.WriteLine("Notification count is zero as expected");
@@ -269,9 +269,9 @@ namespace AdvanceProjectMars_Task5.Pages
 
             try
             {
-                IWebElement Notification = driver.FindElement(By.XPath("//div[@class='ui top left pointing dropdown item']"));
+                IWebElement Notification = driver.Value.FindElement(By.XPath("//div[@class='ui top left pointing dropdown item']"));
                 Notification.Click();
-                IWebElement notificationContentAfterMarkRead = driver.FindElement(By.XPath("//div[@class='content' and contains(@style, 'font-weight: bold')]"));
+                IWebElement notificationContentAfterMarkRead = driver.Value.FindElement(By.XPath("//div[@class='content' and contains(@style, 'font-weight: bold')]"));
                 Console.WriteLine("Notification content is still bold");
             }
             catch (NoSuchElementException)
@@ -288,7 +288,7 @@ namespace AdvanceProjectMars_Task5.Pages
             passwordTextbox.SendKeys(Password);
             loginButton.Click();
             Thread.Sleep(5000);
-            IWebElement hilock = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/div[1]/div[2]/div/span"));
+            IWebElement hilock = driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/div[1]/div[2]/div/span"));
 
             if (hilock.Text == "Hi Lock")
             {
@@ -299,17 +299,17 @@ namespace AdvanceProjectMars_Task5.Pages
                 Console.WriteLine("User has not logged in. Test Failed!");
             }
             Thread.Sleep(3000);
-            IWebElement notification = driver.FindElement(By.XPath("//div[@class='ui top left pointing dropdown item']"));
+            IWebElement notification = driver.Value.FindElement(By.XPath("//div[@class='ui top left pointing dropdown item']"));
             notification.Click();
             Thread.Sleep(3000);
-            IWebElement seeAll = driver.FindElement(By.XPath("//a[@href='/Account/Dashboard' and contains(text(), 'See All...')]"));
+            IWebElement seeAll = driver.Value.FindElement(By.XPath("//a[@href='/Account/Dashboard' and contains(text(), 'See All...')]"));
             seeAll.Click();
             Thread.Sleep(3000);
             while (true)
             {
                 try
                 {
-                    IWebElement loadMoreButton = driver.FindElement(By.XPath("//a[@class='ui button' and text()='Load More...']"));
+                    IWebElement loadMoreButton = driver.Value.FindElement(By.XPath("//a[@class='ui button' and text()='Load More...']"));
                     loadMoreButton.Click();
                     Thread.Sleep(2000);
                 }
@@ -324,7 +324,7 @@ namespace AdvanceProjectMars_Task5.Pages
             {
                 try
                 {
-                    IWebElement showLessButton = driver.FindElement(By.XPath("//a[@class='ui button' and text()='...Show Less']"));
+                    IWebElement showLessButton = driver.Value.FindElement(By.XPath("//a[@class='ui button' and text()='...Show Less']"));
                     showLessButton.Click();
                     Thread.Sleep(2000);
                 }
@@ -343,19 +343,19 @@ namespace AdvanceProjectMars_Task5.Pages
             //AgainloadMoreButton.Click();
             //Thread.Sleep(2000);
 
-            IWebElement selectAll = driver.FindElement(By.XPath("//i[@class='mouse pointer icon']"));
+            IWebElement selectAll = driver.Value.FindElement(By.XPath("//i[@class='mouse pointer icon']"));
             selectAll.Click();
             Thread.Sleep(3000);
-            IWebElement unSelectAll = driver.FindElement(By.XPath("//i[@class='ban icon']"));
+            IWebElement unSelectAll = driver.Value.FindElement(By.XPath("//i[@class='ban icon']"));
             unSelectAll.Click();
             Thread.Sleep(2000);
-            IWebElement selectAllAgain = driver.FindElement(By.XPath("//i[@class='mouse pointer icon']"));
+            IWebElement selectAllAgain = driver.Value.FindElement(By.XPath("//i[@class='mouse pointer icon']"));
             selectAllAgain.Click();
             Thread.Sleep(3000);
-            IWebElement markSelectionAsRead = driver.FindElement(By.XPath("//i[@class='check square icon']"));
+            IWebElement markSelectionAsRead = driver.Value.FindElement(By.XPath("//i[@class='check square icon']"));
             markSelectionAsRead.Click();
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement popupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             if (popupAlert.Text == "Notification updated")
             {
 
@@ -365,13 +365,13 @@ namespace AdvanceProjectMars_Task5.Pages
             {
                 Console.WriteLine("SkillSwap request not sent");
             }
-            IWebElement checkBox = driver.FindElement(By.XPath("//input[@type='checkbox' and @value='0']"));
+            IWebElement checkBox = driver.Value.FindElement(By.XPath("//input[@type='checkbox' and @value='0']"));
             checkBox.Click();
             Thread.Sleep(3000);
-            IWebElement deleteSelection = driver.FindElement(By.XPath("//i[@class='trash icon']"));
+            IWebElement deleteSelection = driver.Value.FindElement(By.XPath("//i[@class='trash icon']"));
             deleteSelection.Click();
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement poopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement poopupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             if (poopupAlert.Text == "Notification updated")
             {
 

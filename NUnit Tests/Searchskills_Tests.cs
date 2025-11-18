@@ -60,7 +60,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         [Test]
         public void CountTotalListings()
         {
-            IWebElement manageListingsTab = driver.FindElement(By.XPath("//a[@href='/Home/ListingManagement']"));
+            IWebElement manageListingsTab = driver.Value.FindElement(By.XPath("//a[@href='/Home/ListingManagement']"));
             manageListingsTab.Click();
             Thread.Sleep(3000);
 
@@ -71,12 +71,12 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
 
             while (hasNextPage)
             {
-                var tableRow = driver.FindElements(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr"));
+                var tableRow = driver.Value.FindElements(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr"));
                 int tableRowOnPage = tableRow.Count;
                 Console.WriteLine($"Number of tableRow on page {currentPage}: {tableRowOnPage}");
                 totaltableRow += tableRowOnPage;
 
-                var pageButtons = driver.FindElements(By.XPath("//button[@class='ui button otherPage']"));
+                var pageButtons = driver.Value.FindElements(By.XPath("//button[@class='ui button otherPage']"));
                 var nextPageButton = pageButtons.Where(b => b.Text == (currentPage + 1).ToString()).FirstOrDefault();
 
                 if (nextPageButton != null)
@@ -108,12 +108,12 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             Thread.Sleep(4000);
             while (hasNextPage)
             {
-                var listings = driver.FindElements(By.XPath("//div[@class='ui card']"));
+                var listings = driver.Value.FindElements(By.XPath("//div[@class='ui card']"));
                 int listingsOnPage = listings.Count;
                 Console.WriteLine($"Number of listings on page {currentPage}: {listingsOnPage}");
                 totalOnlineListings += listingsOnPage;
 
-                var pageButtons = driver.FindElements(By.XPath("//button[@class='ui button otherPage']"));
+                var pageButtons = driver.Value.FindElements(By.XPath("//button[@class='ui button otherPage']"));
                 var nextPageButton = pageButtons.Where(b => b.Text == (currentPage + 1).ToString()).FirstOrDefault();
 
                 if (nextPageButton != null)
@@ -150,12 +150,12 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             Thread.Sleep(4000);
             while (hasNextPage)
             {
-                var listings = driver.FindElements(By.XPath("//div[@class='ui card']"));
+                var listings = driver.Value.FindElements(By.XPath("//div[@class='ui card']"));
                 int listingsOnPage = listings.Count;
                 Console.WriteLine($"Number of listings on page {currentPage}: {listingsOnPage}");
                 totalOnsiteListings += listingsOnPage;
 
-                var pageButtons = driver.FindElements(By.XPath("//button[@class='ui button otherPage']"));
+                var pageButtons = driver.Value.FindElements(By.XPath("//button[@class='ui button otherPage']"));
                 var nextPageButton = pageButtons.Where(b => b.Text == (currentPage + 1).ToString()).FirstOrDefault();
 
                 if (nextPageButton != null)
@@ -195,11 +195,11 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             Thread.Sleep(4000);
             while (hasNextPage)
             {
-                var listings = driver.FindElements(By.XPath("//div[@class='ui card']"));
+                var listings = driver.Value.FindElements(By.XPath("//div[@class='ui card']"));
                 int listingsOnPage = listings.Count;
                 Console.WriteLine($"Number of listings on page {currentPage}: {listingsOnPage}");
                 totalShowAllListings += listingsOnPage;
-                var pageButtons = driver.FindElements(By.XPath("//button[@class='ui button otherPage']"));
+                var pageButtons = driver.Value.FindElements(By.XPath("//button[@class='ui button otherPage']"));
                 var nextPageButton = pageButtons.Where(b => b.Text == (currentPage + 1).ToString()).FirstOrDefault();
                 if (nextPageButton != null)
                 {
@@ -227,7 +227,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         [Test]
         public void ShowAllContent()
         {
-            IWebElement searchSkillsSearchIcon = driver.FindElement(By.XPath("(//i[@class='search link icon'])[1]"));
+            IWebElement searchSkillsSearchIcon = driver.Value.FindElement(By.XPath("(//i[@class='search link icon'])[1]"));
             searchSkillsSearchIcon.Click();
             Thread.Sleep(3000);
             int totalShowAllContent = 0;
@@ -238,7 +238,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
 
             while (hasNextPage)
             {
-                var Content = driver.FindElements(By.XPath("//*[@id=\"service-search-section\"]/div[2]/div/section/div/div[2]/div/div[2]/div/div/div/div[1]"));
+                var Content = driver.Value.FindElements(By.XPath("//*[@id=\"service-search-section\"]/div[2]/div/section/div/div[2]/div/div[2]/div/div/div/div[1]"));
                 int ContentOnPage = Content.Count;
                 Console.WriteLine($"Number of listings on page {currentPage + 1}: {ContentOnPage}");
                 foreach (var item in Content)
@@ -259,7 +259,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                 }
                 totalShowAllContent += ContentOnPage;
 
-                var pageButtons = driver.FindElements(By.XPath("//button[@class='ui button otherPage']"));
+                var pageButtons = driver.Value.FindElements(By.XPath("//button[@class='ui button otherPage']"));
                 var nextPageButton = pageButtons.Where(b => b.Text == (currentPage + 2).ToString()).FirstOrDefault();
 
                 if (nextPageButton != null)
@@ -293,7 +293,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             searchskillsPageObj.SearchSkillWithAllCategoryandSubcategory(Category, Subcategory, Listings);
             Thread.Sleep(2000);
                
-                if (driver.FindElement(By.XPath("//h3[text()='No results found, please select a new category!']")).Displayed)
+                if (driver.Value.FindElement(By.XPath("//h3[text()='No results found, please select a new category!']")).Displayed)
                 {
 
                     Assert.Pass("User clicked on subcategory so it should take user back to subcategory but instead it threw user out completely and displayed a message. No results found, please select a new category!");
@@ -313,7 +313,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
 
             SearchskillsPage searchskillsPageObj = new SearchskillsPage();
             searchskillsPageObj.TestSearchUser(searchText, targetText);
-            var suggestions = ((ReadOnlyCollection<IWebElement>)driver.FindElements(By.XPath("//div[@class='result' and @score='0']")));
+            var suggestions = ((ReadOnlyCollection<IWebElement>)driver.Value.FindElements(By.XPath("//div[@class='result' and @score='0']")));
             bool suggestionFound = false;
 
             foreach (var suggestion in suggestions)
@@ -334,7 +334,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             
             Thread.Sleep(7000);
             searchskillsPageObj.TestNewSearchUser(NewsearchText, NewtargetText);
-            var newsuggestions = ((ReadOnlyCollection<IWebElement>)driver.FindElements(By.XPath("//div[@class='result' and @score='0']")));
+            var newsuggestions = ((ReadOnlyCollection<IWebElement>)driver.Value.FindElements(By.XPath("//div[@class='result' and @score='0']")));
             bool newsuggestionFound = false;
 
             foreach (var newsuggestion in newsuggestions)
@@ -359,7 +359,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         {
             SearchskillsPage searchskillsPageObj = new SearchskillsPage();
             searchskillsPageObj.TestSearchSkill(searchSkill);
-            var searchResults = driver.FindElements(By.XPath("//div[@class='ui card']"));
+            var searchResults = driver.Value.FindElements(By.XPath("//div[@class='ui card']"));
             if (searchResults.Count == 0)
             {
                 Console.WriteLine("No results found, please select a new category!");
@@ -368,7 +368,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             }
             Console.WriteLine("Total listings: " + searchResults.Count);
             Thread.Sleep(2000);
-            var categories = driver.FindElements(By.XPath("//a[@role='listitem' and @class='item category']"));
+            var categories = driver.Value.FindElements(By.XPath("//a[@role='listitem' and @class='item category']"));
             Thread.Sleep(4000);
             foreach (var category in categories)
             {
@@ -381,7 +381,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                     category.Click();
                     Thread.Sleep(2000);
                     // Get subcategories
-                    var subcategories = driver.FindElements(By.XPath("//a[@role='listitem' and @class='item subcategory']"));
+                    var subcategories = driver.Value.FindElements(By.XPath("//a[@role='listitem' and @class='item subcategory']"));
                     Thread.Sleep(4000);
                     foreach (var subcategory in subcategories)
                     {

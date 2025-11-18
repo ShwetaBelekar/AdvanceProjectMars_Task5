@@ -11,34 +11,34 @@ namespace AdvanceProjectMars_Task5.Pages
 {
     public class ProfLoc_Avai_Hrs_EarnTarPage : CommonDriver
     {
-        private IWebElement profileTab => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[1]/div/a[2]"));
+        private IWebElement profileTab => driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[1]/div/a[2]"));
 
-        private IWebElement locationButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[1]/div"));
+        private IWebElement locationButton => driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[1]/div"));
 
-        private IWebElement availabilityEditButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[2]/div/span/i"));
+        private IWebElement availabilityEditButton => driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[2]/div/span/i"));
 
-        private IWebElement availabilityDropdownButton => driver.FindElement(By.XPath("//select[@name='availabiltyType']"));
+        private IWebElement availabilityDropdownButton => driver.Value.FindElement(By.XPath("//select[@name='availabiltyType']"));
 
-        private IWebElement availabilityTypeOption0 => driver.FindElement(By.XPath("//option[contains(text(), 'Part Time') and @value='0']"));
+        private IWebElement availabilityTypeOption0 => driver.Value.FindElement(By.XPath("//option[contains(text(), 'Part Time') and @value='0']"));
 
-        private IWebElement availabilityTypeOption1 => driver.FindElement(By.XPath("//option[contains(text(), 'Full Time') and @value='1']"));
+        private IWebElement availabilityTypeOption1 => driver.Value.FindElement(By.XPath("//option[contains(text(), 'Full Time') and @value='1']"));
 
-        private IWebElement hoursEditButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[3]/div/span/i"));
+        private IWebElement hoursEditButton => driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[3]/div/span/i"));
 
-        private IWebElement hoursDropdownButton => driver.FindElement(By.XPath("//select[@name='availabiltyHour']"));
+        private IWebElement hoursDropdownButton => driver.Value.FindElement(By.XPath("//select[@name='availabiltyHour']"));
 
-        private IWebElement hoursTypeOption0 => driver.FindElement(By.XPath("//option[contains(text(), 'Less than 30hours a week') and @value='0']"));
+        private IWebElement hoursTypeOption0 => driver.Value.FindElement(By.XPath("//option[contains(text(), 'Less than 30hours a week') and @value='0']"));
 
-        private IWebElement hoursTypeOption1 => driver.FindElement(By.XPath("//option[contains(text(), 'More than 30hours a week') and @value='1']"));
+        private IWebElement hoursTypeOption1 => driver.Value.FindElement(By.XPath("//option[contains(text(), 'More than 30hours a week') and @value='1']"));
 
-        private IWebElement hoursTypeOption2 => driver.FindElement(By.XPath("//option[contains(text(), 'As needed') and @value='2']"));
+        private IWebElement hoursTypeOption2 => driver.Value.FindElement(By.XPath("//option[contains(text(), 'As needed') and @value='2']"));
 
-        private IWebElement earnTargetEditButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[4]/div/span/i"));
-        private IWebElement earnTargetDropdownButton => driver.FindElement(By.XPath("//select[@name='availabiltyTarget']"));
-        private IWebElement earnTargetTypeOption0 => driver.FindElement(By.XPath("//option[contains(text(), 'Less than $500 per month') and @value='0']"));
-        private IWebElement earnTargetTypeOption1 => driver.FindElement(By.XPath("//option[contains(text(), 'Between $500 and $1000 per month') and @value='1']"));
+        private IWebElement earnTargetEditButton => driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[4]/div/span/i"));
+        private IWebElement earnTargetDropdownButton => driver.Value.FindElement(By.XPath("//select[@name='availabiltyTarget']"));
+        private IWebElement earnTargetTypeOption0 => driver.Value.FindElement(By.XPath("//option[contains(text(), 'Less than $500 per month') and @value='0']"));
+        private IWebElement earnTargetTypeOption1 => driver.Value.FindElement(By.XPath("//option[contains(text(), 'Between $500 and $1000 per month') and @value='1']"));
 
-        private IWebElement earnTargetTypeOption2 => driver.FindElement(By.XPath("//option[contains(text(), 'More than $1000 per month') and @value='2']"));
+        private IWebElement earnTargetTypeOption2 => driver.Value.FindElement(By.XPath("//option[contains(text(), 'More than $1000 per month') and @value='2']"));
 
         public void LocationAction()
         {

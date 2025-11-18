@@ -18,45 +18,45 @@ namespace AdvanceProjectMars_Task5.Pages
     public class ShareSkillPage : CommonDriver
     {
       
-        private IWebElement ShareSkillButton => driver.FindElement(By.XPath("//a[@href='/Home/ServiceListing']"));
+        private IWebElement ShareSkillButton => driver.Value.FindElement(By.XPath("//a[@href='/Home/ServiceListing']"));
         
-        private IWebElement titleTextbox => driver.FindElement(By.XPath("//input[@name='title']"));
+        private IWebElement titleTextbox => driver.Value.FindElement(By.XPath("//input[@name='title']"));
 
-        private IWebElement descriptionTextbox => driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[2]/div/div[2]/div[1]/textarea"));
-        private IWebElement categoryDropdownButton => driver.FindElement(By.XPath("//select[@name='categoryId']"));
+        private IWebElement descriptionTextbox => driver.Value.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[2]/div/div[2]/div[1]/textarea"));
+        private IWebElement categoryDropdownButton => driver.Value.FindElement(By.XPath("//select[@name='categoryId']"));
 
-        private IWebElement categoryOptions => driver.FindElement(By.XPath("//option[contains(text(), 'Software Development') and @value='1']"));
+        private IWebElement categoryOptions => driver.Value.FindElement(By.XPath("//option[contains(text(), 'Software Development') and @value='1']"));
 
-        private IWebElement selectsubcategoryDropdownButton => driver.FindElement(By.XPath("//select[@name='subcategoryId']"));
+        private IWebElement selectsubcategoryDropdownButton => driver.Value.FindElement(By.XPath("//select[@name='subcategoryId']"));
 
-        private IWebElement selectsubcategoryOptions => driver.FindElement(By.XPath("//option[contains(text(), 'Solution Architecture Design') and @value='1']"));
+        private IWebElement selectsubcategoryOptions => driver.Value.FindElement(By.XPath("//option[contains(text(), 'Solution Architecture Design') and @value='1']"));
 
-        private IWebElement tagTextbox => driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[4]/div[2]/div/div/div/div/input"));
+        private IWebElement tagTextbox => driver.Value.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[4]/div[2]/div/div/div/div/input"));
 
-        private IWebElement hourlyBasisServiceButton => driver.FindElement(By.XPath("//input[@name='serviceType' and @value='0']"));
+        private IWebElement hourlyBasisServiceButton => driver.Value.FindElement(By.XPath("//input[@name='serviceType' and @value='0']"));
 
-        private IWebElement oneoffServiceButton => driver.FindElement(By.XPath("//input[@name='serviceType' and @value='1']"));
+        private IWebElement oneoffServiceButton => driver.Value.FindElement(By.XPath("//input[@name='serviceType' and @value='1']"));
 
-        private IWebElement onSiteLocationButton => driver.FindElement(By.XPath("//input[@name='locationType' and @value='0']"));
+        private IWebElement onSiteLocationButton => driver.Value.FindElement(By.XPath("//input[@name='locationType' and @value='0']"));
 
-        private IWebElement onlineLocationButton => driver.FindElement(By.XPath("//input[@name='locationType' and @value='1']"));
+        private IWebElement onlineLocationButton => driver.Value.FindElement(By.XPath("//input[@name='locationType' and @value='1']"));
 
-        private IWebElement skillExchangeButton => driver.FindElement(By.XPath("//input[@name='skillTrades' and @value='true']"));
-        private IWebElement creditRadioButton => driver.FindElement(By.XPath("//input[@name='skillTrades' and @value='false']"));
-        private IWebElement skillExchangeTagTextbox => driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[8]/div[4]/div/div/div/div/div/input"));
-        private IWebElement CreditButton => driver.FindElement(By.XPath("//input[@name='charge']"));
-        private IWebElement uploadWorkSamplesButton => driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[9]/div/div[2]/section/div/label/div/span/i"));
-        private IWebElement activeRadioButton => driver.FindElement(By.XPath("//input[@name='isActive' and @value='true']"));
+        private IWebElement skillExchangeButton => driver.Value.FindElement(By.XPath("//input[@name='skillTrades' and @value='true']"));
+        private IWebElement creditRadioButton => driver.Value.FindElement(By.XPath("//input[@name='skillTrades' and @value='false']"));
+        private IWebElement skillExchangeTagTextbox => driver.Value.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[8]/div[4]/div/div/div/div/div/input"));
+        private IWebElement CreditButton => driver.Value.FindElement(By.XPath("//input[@name='charge']"));
+        private IWebElement uploadWorkSamplesButton => driver.Value.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[9]/div/div[2]/section/div/label/div/span/i"));
+        private IWebElement activeRadioButton => driver.Value.FindElement(By.XPath("//input[@name='isActive' and @value='true']"));
 
-        private IWebElement hiddenRadioButton => driver.FindElement(By.XPath("//input[@name='isActive' and @value='false']"));
-        private IWebElement saveButton => driver.FindElement(By.XPath("//input[@value='Save']"));
+        private IWebElement hiddenRadioButton => driver.Value.FindElement(By.XPath("//input[@name='isActive' and @value='false']"));
+        private IWebElement saveButton => driver.Value.FindElement(By.XPath("//input[@value='Save']"));
         
-        private IWebElement cancelButton => driver.FindElement(By.XPath("//input[@value='Cancel']"));
-        private IWebElement manageListingsTab => driver.FindElement(By.XPath("//a[@href='/Home/ListingManagement']"));
+        private IWebElement cancelButton => driver.Value.FindElement(By.XPath("//input[@value='Cancel']"));
+        private IWebElement manageListingsTab => driver.Value.FindElement(By.XPath("//a[@href='/Home/ListingManagement']"));
         
-        private IWebElement viewButton => driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[1]/i"));
-        private IWebElement editButton => driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[2]/i"));
-        private IWebElement deleteButton => driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[3]/i"));
+        private IWebElement viewButton => driver.Value.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[1]/i"));
+        private IWebElement editButton => driver.Value.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[2]/i"));
+        private IWebElement deleteButton => driver.Value.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[3]/i"));
         public void CreateShareSkillRecord(string Title, string Description, string Category, string SelectSubcategory, string Tags, string ServiceType, string LocationType, string SkillTrade, string Credit, string SkillExchange, string Active)
 
         {
@@ -130,7 +130,7 @@ namespace AdvanceProjectMars_Task5.Pages
          
             Thread.Sleep(3000);
             
-            driver.FindElement(By.XPath("//input[@type='file']")).SendKeys(filePath);
+            driver.Value.FindElement(By.XPath("//input[@type='file']")).SendKeys(filePath);
             var simulator = new InputSimulator();
             simulator.Keyboard.KeyPress(VirtualKeyCode.ESCAPE);
            
@@ -149,8 +149,8 @@ namespace AdvanceProjectMars_Task5.Pages
 
             saveButton.Click();
 
-            Wait.WaitToBeVisible(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement recordcreatedpopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            Wait.WaitToBeVisible(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement recordcreatedpopupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             string promptText = recordcreatedpopupAlert.Text;
             Console.WriteLine("Alert text: " + promptText);
             if (recordcreatedpopupAlert.Text == "Service Listing Added successfully") 
@@ -162,8 +162,8 @@ namespace AdvanceProjectMars_Task5.Pages
                 Console.WriteLine("Record creation unsuccessful");
             }
                 
-            Wait.WaitToBeVisible(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']", 2);
-            IWebElement worksamplepopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']"));
+            Wait.WaitToBeVisible(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']", 2);
+            IWebElement worksamplepopupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']"));
             string proomptText = worksamplepopupAlert.Text;
             Console.WriteLine("Alert text: " + proomptText);
             if (worksamplepopupAlert.Text == "There is an error when updating Work Samples - undefined") 
@@ -429,7 +429,7 @@ namespace AdvanceProjectMars_Task5.Pages
 
             Thread.Sleep(3000);
 
-            driver.FindElement(By.XPath("//input[@type='file']")).SendKeys(filePath);
+            driver.Value.FindElement(By.XPath("//input[@type='file']")).SendKeys(filePath);
             var simulator = new InputSimulator();
             simulator.Keyboard.KeyPress(VirtualKeyCode.ESCAPE);
 
@@ -525,7 +525,7 @@ namespace AdvanceProjectMars_Task5.Pages
 
             Thread.Sleep(3000);
 
-            driver.FindElement(By.XPath("//input[@type='file']")).SendKeys(filePath);
+            driver.Value.FindElement(By.XPath("//input[@type='file']")).SendKeys(filePath);
             var simulator = new InputSimulator();
             simulator.Keyboard.KeyPress(VirtualKeyCode.ESCAPE);
 
@@ -544,8 +544,8 @@ namespace AdvanceProjectMars_Task5.Pages
 
             saveButton.Click();
 
-            Wait.WaitToBeVisible(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement recordcreatedpopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            Wait.WaitToBeVisible(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement recordcreatedpopupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             string promptText = recordcreatedpopupAlert.Text;
             Console.WriteLine("Alert text: " + promptText);
             if (recordcreatedpopupAlert.Text == "Service Listing Updated successfully")
@@ -557,8 +557,8 @@ namespace AdvanceProjectMars_Task5.Pages
                 Console.WriteLine("Record edited unsuccessful");
             }
 
-            Wait.WaitToBeVisible(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']", 2);
-            IWebElement worksamplepopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']"));
+            Wait.WaitToBeVisible(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']", 2);
+            IWebElement worksamplepopupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']"));
             string proomptText = worksamplepopupAlert.Text;
             Console.WriteLine("Alert text: " + proomptText);
             if (worksamplepopupAlert.Text == "There is an error when updating Work Samples - undefined")
@@ -581,9 +581,9 @@ namespace AdvanceProjectMars_Task5.Pages
         {
             
             deleteButton.Click();
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(2));
+            WebDriverWait wait = new WebDriverWait(driver.Value, TimeSpan.FromSeconds(2));
             wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(".ui.tiny.modal.transition.visible.active")));
-            IWebElement yesButton = driver.FindElement(By.XPath("//button[@class='ui icon positive right labeled button']"));
+            IWebElement yesButton = driver.Value.FindElement(By.XPath("//button[@class='ui icon positive right labeled button']"));
             if (yesButton.Displayed && yesButton.Enabled)
             {
                 yesButton.Click();

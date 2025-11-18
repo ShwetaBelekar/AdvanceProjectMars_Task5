@@ -19,9 +19,9 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         [SetUp]
         public void SetUpSteps()
         {
-            driver = new ChromeDriver();
-            driver.Navigate().GoToUrl("http://localhost:5003/Home");
-            driver.Manage().Window.Maximize();
+            driver.Value = new ChromeDriver();
+            driver.Value.Navigate().GoToUrl("http://localhost:5003/Home");
+            driver.Value.Manage().Window.Maximize();
             
             
         }
@@ -79,7 +79,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         [TearDown]
         public void TearDown()
         {
-            driver.Quit();
+            driver.Value.Quit();
         }
     }
 }

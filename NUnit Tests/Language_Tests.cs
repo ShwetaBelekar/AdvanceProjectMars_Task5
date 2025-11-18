@@ -70,12 +70,12 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             LanguagePage languagePageObj = new LanguagePage();
             languagePageObj.CreateLanguageRecord(Language, Level);
             Console.WriteLine($"Selected {Language} {Level}");
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement popupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             string promptText = popupAlert.Text;
             Console.WriteLine("Alert text: " + promptText);
-            IWebElement newLanguage = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
-            IWebElement newLevel = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
+            IWebElement newLanguage = driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
+            IWebElement newLevel = driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
 
             if (newLanguage.Text == Language && newLevel.Text == Level)
             {
@@ -95,13 +95,13 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             LanguagePage languagePageObj = new LanguagePage();
             languagePageObj.CreateLanguageRecord(Language, Level);
             Console.WriteLine($"Selected {Language} {Level}");
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement popupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             string promptText = popupAlert.Text;
             Console.WriteLine("Alert text: " + promptText);
             Thread.Sleep(6000);
-            IWebElement newLanguage = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
-            IWebElement newLevel = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
+            IWebElement newLanguage = driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
+            IWebElement newLevel = driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
 
             if (newLanguage.Text == Language && newLevel.Text == Level)
             {
@@ -121,13 +121,13 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             LanguagePage languagePageObj = new LanguagePage();
             languagePageObj.Addmorethanfourlanguage(Language, Level);
             Console.WriteLine($"Selected {Language} {Level}");
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement popupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             string promptText = popupAlert.Text;
             Console.WriteLine("Alert text: " + promptText);
             Thread.Sleep(6000);
-            IWebElement newLanguage = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
-            IWebElement newLevel = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
+            IWebElement newLanguage = driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
+            IWebElement newLevel = driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
 
             if (newLanguage.Text == Language && newLevel.Text == Level)
             {
@@ -144,8 +144,8 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             LanguagePage languagePageObj = new LanguagePage();
             languagePageObj.CreateLanguageRecord(Language, Level);
             Console.WriteLine($"Selected {Language} {Level}");
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']", 2);
-            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']", 2);
+            IWebElement popupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']"));
             string promptText = popupAlert.Text;
             Console.WriteLine("Alert text: " + promptText);
 
@@ -164,8 +164,8 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             LanguagePage languagePageObj = new LanguagePage();
             languagePageObj.CreateLanguageRecord(Language, Level);
             Console.WriteLine($"Selected {Language} {Level}");
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']", 2);
-            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']", 2);
+            IWebElement popupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']"));
             string promptText = popupAlert.Text;
             Console.WriteLine("Alert text: " + promptText);
 
@@ -184,13 +184,13 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             LanguagePage languagePageObj = new LanguagePage();
             languagePageObj.CreateLanguageRecord(Language, Level);
             Console.WriteLine($"Selected {Language} {Level}");
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement popupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             string promptText = popupAlert.Text;
             Console.WriteLine("Alert text: " + promptText);
             Thread.Sleep(6000);
-            IWebElement newLanguage = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
-            IWebElement newLevel = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
+            IWebElement newLanguage = driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
+            IWebElement newLevel = driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
 
             if (newLanguage.Text == Language && newLevel.Text == Level)
             {
@@ -203,8 +203,8 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
 
             languagePageObj.CreateDuplicateLanguageRecord(DuplicateLanguage, DuplicateLevel);
             Console.WriteLine($"Selected {DuplicateLanguage} {DuplicateLevel}");
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']", 2);
-            IWebElement ppopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']", 2);
+            IWebElement ppopupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']"));
             string prromptText = ppopupAlert.Text;
             Console.WriteLine("Alert text: " + prromptText);
             if (ppopupAlert.Text == "This language is already exist in your language list.")
@@ -222,13 +222,13 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             LanguagePage languagePageObj = new LanguagePage();
             languagePageObj.CreateLanguageRecord(Language, Level);
             Console.WriteLine($"Selected {Language} {Level}");
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement popupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             string promptText = popupAlert.Text;
             Console.WriteLine("Alert text: " + promptText);
             Thread.Sleep(6000);
-            IWebElement newLanguage = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
-            IWebElement newLevel = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
+            IWebElement newLanguage = driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
+            IWebElement newLevel = driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
 
             if (newLanguage.Text == Language && newLevel.Text == Level)
             {
@@ -241,8 +241,8 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
 
             languagePageObj.CancellingEditOperation(EditLanguage);
             Console.WriteLine($"Selected {EditLanguage}");
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement ppopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement ppopupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             string prromptText = ppopupAlert.Text;
             Console.WriteLine("Alert text: " + prromptText);
             if (ppopupAlert.Text == "English has been updated to your languages")
@@ -263,12 +263,12 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             LanguagePage languagePageObj = new LanguagePage();
             languagePageObj.CreateLanguageRecord(Language, Level);
             Console.WriteLine($"Selected {Language} {Level}");
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement popupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             string promptText = popupAlert.Text;
             Console.WriteLine("Alert text: " + promptText);
-            IWebElement createLanguage = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
-            IWebElement createLevel = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
+            IWebElement createLanguage = driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
+            IWebElement createLevel = driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
 
             if (createLanguage.Text == Language && createLevel.Text == Level)
             {
@@ -280,13 +280,13 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             }
             languagePageObj.editExistingLanguageRecord(NewLanguage, NewLevel);
             Console.WriteLine($"Selected {NewLanguage} {NewLevel}");
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement poopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement poopupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             string proomptText = poopupAlert.Text;
             Console.WriteLine("Alert text: " + proomptText);
-            Wait.WaitToBeClickable(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]", 2);
-            IWebElement editLanguage = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
-            IWebElement editLevel = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]", 2);
+            IWebElement editLanguage = driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
+            IWebElement editLevel = driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
 
             if (editLanguage.Text == NewLanguage && editLevel.Text == NewLevel)
             {
@@ -303,12 +303,12 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             LanguagePage languagePageObj = new LanguagePage();
             languagePageObj.CreateLanguageRecord(Language, Level);
             Console.WriteLine($"Selected {Language} {Level}");
-            Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+            Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+            IWebElement popupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
             string promptText = popupAlert.Text;
             Console.WriteLine("Alert text: " + promptText);
-            IWebElement createLanguage = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
-            IWebElement createLevel = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
+            IWebElement createLanguage = driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
+            IWebElement createLevel = driver.Value.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
 
             if (createLanguage.Text == Language && createLevel.Text == Level)
             {
@@ -324,8 +324,8 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             bool testPassed = false;
             try
             {
-                Wait.WaitToBeVisible(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 4);
-                IWebElement poopupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+                Wait.WaitToBeVisible(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 4);
+                IWebElement poopupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
                 string proomptText = poopupAlert.Text;
                 Console.WriteLine("Alert text: " + proomptText);
                 testPassed = true;
@@ -361,7 +361,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                         HomeToLanguagePage homeToLanguagePageObj = new HomeToLanguagePage();
                         homeToLanguagePageObj.NavigateToLanguage();
                         Thread.Sleep(2000);
-                        var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[3]/span[2]/i"));
+                        var deleteButtons = driver.Value.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[3]/span[2]/i"));
                         for (int i = deleteButtons.Count - 1; i >= 0; i--)
                         {
                             deleteButtons[i].Click(); 
@@ -383,7 +383,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                     HomeToLanguagePage homeToLanguagePageObj = new HomeToLanguagePage();
                     homeToLanguagePageObj.NavigateToLanguage();
                     Thread.Sleep(2000);
-                    var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[3]/span[2]/i"));
+                    var deleteButtons = driver.Value.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[3]/span[2]/i"));
                     for (int i = deleteButtons.Count - 1; i >= 0; i--)
                     {
                         deleteButtons[i].Click();

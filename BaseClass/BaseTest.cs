@@ -20,11 +20,12 @@ namespace AdvanceProjectMars_Task5.BaseClass
  
     public class BaseTest : CommonDriver
     {
-        
+       
         protected LoginPage loginPageObj;
         protected static ExtentReports extentReport;
         protected ThreadLocal<ExtentTest> test = new ThreadLocal<ExtentTest>();
-        
+      
+
         [OneTimeSetUp]
         public void Open()
         {
@@ -38,9 +39,10 @@ namespace AdvanceProjectMars_Task5.BaseClass
             extentReport = new ExtentReports();
             var spark = new ExtentSparkReporter(reportPath);
             extentReport.AttachReporter(spark);
-            
-            driver = new ChromeDriver();
-            LoginPage loginPageObj = new LoginPage();
+
+            driver.Value = new ChromeDriver();
+            loginPageObj = new LoginPage();
+            //LoginPage loginPageObj = new LoginPage();
             loginPageObj.LoginActions();
         }
         
@@ -91,7 +93,14 @@ namespace AdvanceProjectMars_Task5.BaseClass
         {
          
             extentReport.Flush();
-            driver.Quit();
+            if (CommonDriver.driver.Value != null)
+            {
+                CommonDriver.driver.Value.Quit();
+                CommonDriver.driver.Value.Dispose();
+            }
+            //driver.Quit();
+
+
         }
        
         

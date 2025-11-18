@@ -23,9 +23,9 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
 
         public void SetUpSteps()
         {
-            driver = new ChromeDriver();
-            driver.Navigate().GoToUrl("http://localhost:5003/Home");
-            driver.Manage().Window.Maximize();
+            driver.Value = new ChromeDriver();
+            driver.Value.Navigate().GoToUrl("http://localhost:5003/Home");
+            driver.Value.Manage().Window.Maximize();
         }
 
         public static IEnumerable<TestCaseData> GetTestData(string fileName, string testName)
@@ -54,7 +54,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         {
             SigninPage signinPageObj = new SigninPage();
             signinPageObj.SigninActions(emailaddress, password);
-            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']"));
+            IWebElement popupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']"));
             if (popupAlert.Text == "Confirm your email")
             {
                 Assert.Pass("User can't signin with the invalid credentials");
@@ -69,7 +69,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         {
             SigninPage signinPageObj = new SigninPage();
             signinPageObj.SigninActions(emailaddress, password);
-            IWebElement redPrompt = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[1]/div"));
+            IWebElement redPrompt = driver.Value.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[1]/div"));
             string promptText = redPrompt.Text;
             Console.WriteLine("Alert text: " + promptText);
             if (redPrompt.Text == "Please enter a valid email address")
@@ -87,7 +87,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         {
             SigninPage signinPageObj = new SigninPage();
             signinPageObj.SigninActions(emailaddress, password);
-            IWebElement redPrompt = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[2]/div"));
+            IWebElement redPrompt = driver.Value.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[2]/div"));
             string promptText = redPrompt.Text;
             Console.WriteLine("Alert text: " + promptText);
             if (redPrompt.Text == "Password must be at least 6 characters")
@@ -105,8 +105,8 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         {
             SigninPage signinPageObj = new SigninPage();
             signinPageObj.SigninActions(emailaddress, password);
-            IWebElement redPrompt1 = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[1]/div"));
-            IWebElement redPrompt2 = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[2]/div"));
+            IWebElement redPrompt1 = driver.Value.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[1]/div"));
+            IWebElement redPrompt2 = driver.Value.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[2]/div"));
             string promptText1 = redPrompt1.Text;
             string promptText2 = redPrompt2.Text;
             Console.WriteLine($"Alert text: {promptText1} {promptText2}");
@@ -122,7 +122,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         [TearDown]
         public void TearDown()
         {
-            driver.Quit();
+            driver.Value.Quit();
         }
 
 

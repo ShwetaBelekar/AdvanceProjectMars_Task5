@@ -178,7 +178,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         record.SkillExchange,
         record.Active);
             Console.WriteLine($"Selected {record.Title} {record.Description} {record.Category} {record.SelectSubcategory} {record.Tags} {record.ServiceType} {record.LocationType} {record.SkillTrade} {record.Credit} {record.SkillExchange} {record.Active}");
-            IWebElement newListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]"));
+            IWebElement newListing = driver.Value.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]"));
             if (newListing.Text == record.Title)
             {
                 Console.WriteLine($"Test passed for data: Title = {record.Title}");
@@ -211,7 +211,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         record.SkillExchange,
         record.Active);
             Console.WriteLine($"Selected {record.Title} {record.Description} {record.Category} {record.SelectSubcategory} {record.Tags} {record.ServiceType} {record.LocationType} {record.SkillTrade} {record.Credit} {record.SkillExchange} {record.Active}");
-            IWebElement newListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]"));
+            IWebElement newListing = driver.Value.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]"));
             if (newListing.Text == record.Title) //*[@id="listing-management-section"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]
             {
                 Console.WriteLine($"Test passed for data: Title = {record.Title}");
@@ -241,8 +241,8 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         record.SkillExchange,
         record.Active);
             Console.WriteLine($"Selected {record.Title} {record.Description} {record.Category} {record.SelectSubcategory} {record.Tags} {record.ServiceType} {record.LocationType} {record.SkillTrade} {record.Credit} {record.SkillExchange} {record.Active}");
-            Wait.WaitToBeVisible(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']", 2);
-            IWebElement popupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']"));
+            Wait.WaitToBeVisible(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']", 2);
+            IWebElement popupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-error ns-show']"));
             string promptText = popupAlert.Text;
             Console.WriteLine("Alert text: " + promptText);
             if (popupAlert.Text == "Please complete the form correctly.")
@@ -273,7 +273,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         record.SkillExchange,
         record.Active);
             Console.WriteLine($"Selected {record.Title} {record.Description} {record.Category} {record.SelectSubcategory} {record.Tags} {record.ServiceType} {record.LocationType} {record.SkillTrade} {record.Credit} {record.SkillExchange} {record.Active}");
-            IWebElement newListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]"));
+            IWebElement newListing = driver.Value.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]"));
             if (newListing.Text == record.Title)
             {
                 //Console.WriteLine($"Test passed for data: Title = {record.Title}");
@@ -297,7 +297,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         record.SkillExchange,
         record.Active);
             Console.WriteLine($"Selected {record.Title} {record.Description} {record.Category} {record.SelectSubcategory} {record.Tags} {record.ServiceType} {record.LocationType} {record.SkillTrade} {record.Credit} {record.SkillExchange} {record.Active}");
-            IWebElement duplicateListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]"));
+            IWebElement duplicateListing = driver.Value.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]"));
             if (duplicateListing.Text == record.Title)
             {
                 Console.WriteLine($"Test passed for data: Title = {record.Title}");
@@ -328,7 +328,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         record.SkillExchange,
         record.Active);
             Console.WriteLine($"Selected {record.Title} {record.Description} {record.Category} {record.SelectSubcategory} {record.Tags} {record.ServiceType} {record.LocationType} {record.SkillTrade} {record.Credit} {record.SkillExchange} {record.Active}");
-            IWebElement newListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]"));
+            IWebElement newListing = driver.Value.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]"));
             if (newListing.Text == record.Title)
             {
                 Console.WriteLine($"Test passed for data: Title = {record.Title}");
@@ -352,7 +352,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         record.NewSkillExchange,
         record.NewActive);
             Console.WriteLine($"Selected {record.NewTitle} {record.NewDescription} {record.NewCategory} {record.NewSelectSubcategory} {record.NewTags} {record.NewServiceType} {record.NewLocationType} {record.NewSkillTrade} {record.NewCredit} {record.NewSkillExchange} {record.NewActive}");
-            IWebElement editedListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]"));
+            IWebElement editedListing = driver.Value.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]"));
             if (editedListing.Text == record.NewTitle)
             {
                 Console.WriteLine($"Test passed for data: Title = {record.NewTitle}");
@@ -382,7 +382,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         record.SkillExchange,
         record.Active);
             Console.WriteLine($"Selected {record.Title} {record.Description} {record.Category} {record.SelectSubcategory} {record.Tags} {record.ServiceType} {record.LocationType} {record.SkillTrade} {record.Credit} {record.SkillExchange} {record.Active}");
-            IWebElement newListing = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]"));
+            IWebElement newListing = driver.Value.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[3]"));
             if (newListing.Text == record.Title)
             {
                 Console.WriteLine($"Test passed for data: Title = {record.Title}");
@@ -398,8 +398,8 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
             bool testPassed = false;
             try
             {
-                Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
-                IWebElement poppupAlert = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
+                Wait.WaitToBeClickable(driver.Value, "XPath", "//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']", 2);
+                IWebElement poppupAlert = driver.Value.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
                 string promptText = poppupAlert.Text;
                 Console.WriteLine("Alert text: " + promptText);
                 testPassed = true;
@@ -427,13 +427,13 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
 
             //IWebElement descriptionFielderror = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[2]/div/div[2]/div[1]/textarea"));
             // Get the tooltip text
-            IWebElement ShareSkillButton = driver.FindElement(By.XPath("//a[@href='/Home/ServiceListing']"));
+            IWebElement ShareSkillButton = driver.Value.FindElement(By.XPath("//a[@href='/Home/ServiceListing']"));
             ShareSkillButton.Click();
             Thread.Sleep(3000);
-            string tooltipHtml = driver.FindElement(By.XPath("(//div[@class='tooltip'])[2]")).GetAttribute("innerHTML");
+            string tooltipHtml = driver.Value.FindElement(By.XPath("(//div[@class='tooltip'])[2]")).GetAttribute("innerHTML");
             Console.WriteLine("Actual Tooltip HTML: " + tooltipHtml);
 
-            IWebElement descriptionField = driver.FindElement(By.Name("description"));
+            IWebElement descriptionField = driver.Value.FindElement(By.Name("description"));
             string placeholderText = descriptionField.GetAttribute("placeholder");
 
             if (tooltipHtml != placeholderText)
@@ -453,12 +453,12 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
         [Test]
         public void TestCategoryMatching()
         {
-            IWebElement searchSkillsSearchIcon = driver.FindElement(By.XPath("(//i[@class='search link icon'])[1]"));
+            IWebElement searchSkillsSearchIcon = driver.Value.FindElement(By.XPath("(//i[@class='search link icon'])[1]"));
             searchSkillsSearchIcon.Click();
             
-            var topCategories = driver.FindElements(By.XPath("//div[@role='list']")).Select(e => e.Text).ToList();
+            var topCategories = driver.Value.FindElements(By.XPath("//div[@role='list']")).Select(e => e.Text).ToList();
 
-            var footerCategories = driver.FindElements(By.XPath("//*[@id=\"service-search-section\"]/section[2]/div/div/div/div[1]/nav")).Select(e => e.Text).ToList();
+            var footerCategories = driver.Value.FindElements(By.XPath("//*[@id=\"service-search-section\"]/section[2]/div/div/div/div[1]/nav")).Select(e => e.Text).ToList();
 
            
             if (!topCategories.SequenceEqual(footerCategories))
@@ -495,12 +495,12 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
           {
             try
             {
-                IWebElement manageListingsTab = driver.FindElement(By.XPath("//a[@href='/Home/ListingManagement']"));
+                IWebElement manageListingsTab = driver.Value.FindElement(By.XPath("//a[@href='/Home/ListingManagement']"));
                 manageListingsTab.Click();
                 bool hasRecords = true;
                 while (hasRecords)
                 {
-                    var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[3]/i"));
+                    var deleteButtons = driver.Value.FindElements(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[3]/i"));
                     if (deleteButtons.Count == 0)
                     {
                         hasRecords = false;
@@ -511,9 +511,9 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                         {
                             deleteButtons[i].Click();
 
-                            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(2));
+                            WebDriverWait wait = new WebDriverWait(driver.Value, TimeSpan.FromSeconds(2));
                             wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(".ui.tiny.modal.transition.visible.active")));
-                            IWebElement yesButton = driver.FindElement(By.XPath("//button[@class='ui icon positive right labeled button']"));
+                            IWebElement yesButton = driver.Value.FindElement(By.XPath("//button[@class='ui icon positive right labeled button']"));
                             if (yesButton.Displayed && yesButton.Enabled)
                             {
                                 yesButton.Click();
@@ -524,7 +524,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
                                 // Handle the case where the button is not visible or enabled
                             }
                         }
-                        var nextPageButton = driver.FindElements(By.XPath("//button[@class='ui button otherPage']"));
+                        var nextPageButton = driver.Value.FindElements(By.XPath("//button[@class='ui button otherPage']"));
                         if (nextPageButton.Count > 0 && nextPageButton[nextPageButton.Count - 1].Text == "Next")
                         {
                             nextPageButton[nextPageButton.Count - 1].Click();
@@ -536,7 +536,7 @@ namespace AdvanceProjectMars_Task5.NUnit_Tests
 
                 try
                 {
-                    IWebElement messageElement = driver.FindElement(By.XPath("//*[contains(text(), 'You do not have any service listings!')]"));
+                    IWebElement messageElement = driver.Value.FindElement(By.XPath("//*[contains(text(), 'You do not have any service listings!')]"));
                     if (messageElement.Displayed)
                     {
                         Console.WriteLine("All ShareSkill records have been deleted successfully.");

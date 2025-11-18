@@ -15,21 +15,22 @@ namespace AdvanceProjectMars_Task5.Pages
         {
 
             //driver = new ChromeDriver();
-            driver.Navigate().GoToUrl("http://localhost:5003/Home");
-            driver.Manage().Window.Maximize();
+            driver.Value.Navigate().GoToUrl("http://localhost:5003/Home");
+            Thread.Sleep(3000);
+            driver.Value.Manage().Window.Maximize();
             Thread.Sleep(3000);
 
-            IWebElement signinButton = driver.FindElement(By.XPath("//*[@id=\"home\"]/div/div/div[1]/div/a"));
+            IWebElement signinButton = driver.Value.FindElement(By.XPath("//*[@id=\"home\"]/div/div/div[1]/div/a"));
             signinButton.Click();
             Thread.Sleep(2000);
 
-            IWebElement emailAddressTextbox = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[1]/input"));
+            IWebElement emailAddressTextbox = driver.Value.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[1]/input"));
             emailAddressTextbox.SendKeys("moneytony@ymail.com");
 
-            IWebElement passwordTextbox = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[2]/input"));
+            IWebElement passwordTextbox = driver.Value.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[2]/input"));
             passwordTextbox.SendKeys("Tonymoney@2025");
 
-            IWebElement loginButton = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
+            IWebElement loginButton = driver.Value.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
             loginButton.Click();
             Thread.Sleep(5000);
         }
@@ -37,7 +38,7 @@ namespace AdvanceProjectMars_Task5.Pages
         public void VerifyUserInHomePage()
         {
             //Wait.WaitToBeClickable(driver, "XPath", "//div[@class='ui secondary menu']//span[@class='item ui dropdown link']", 2);
-            IWebElement hitony = driver.FindElement(By.XPath("//span[contains(@class, 'dropdown') and contains(text(), 'Hi')]"));
+            IWebElement hitony = driver.Value.FindElement(By.XPath("//span[contains(@class, 'dropdown') and contains(text(), 'Hi')]"));
 
             if (hitony.Text == "Hi Tony")
             {
