@@ -1,0 +1,10 @@
+{
+  "EarnTargetchangetype": [
+    {
+      "EarnTargetType": "Less than $500 per month",
+      "EditEarnTargetType": "Between $500 and $1000 per month",
+      "ChangeEarnTargetType": "More than $1000 per month"
+    }
+
+  ]
+}

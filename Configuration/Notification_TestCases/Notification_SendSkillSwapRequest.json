@@ -1,0 +1,13 @@
+{
+  "SendSkillSwapRequest": [
+    {
+      "searchSkill": "Automation",
+      "selectSeller": "Lock Key",
+      "selectSkill": "Playwright",
+      "messageToSeller": "I am interested in your Skill",
+      "Emailaddress": "lockkey@gmail.com",
+      "Password": "Lock@123",
+        "Sender": "Tony"
+    }
+  ]
+}

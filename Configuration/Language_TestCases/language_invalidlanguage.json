@@ -1,0 +1,22 @@
+{
+  "Createinvalidlanguageandlevelrecord": [
+    {
+      "Language": "123@abc",
+      "Level": "Fluent"
+    },
+    {
+      "Language": "Englih",
+      "Level": "Basic"
+    },
+
+    {
+      "Language": "12345678",
+      "Level": "Conversational"
+    },
+    {
+      "Language": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "Level": "Fluent"
+    }
+
+  ]
+}

@@ -1,0 +1,284 @@
+{
+  "SearchskillsbyallCategoryandSubcategories": [
+    {
+      "Category": "Software Development",
+      "Subcategory": "Solution Architecture Design",
+      "Listings": ""
+    },
+   
+    {
+      "Category": "Software Development",
+      "Subcategory": "Programming",
+      "Listings": ""
+    },
+    {
+      "Category": "Software Development",
+      "Subcategory": "Front End Development",
+      "Listings": ""
+    },
+    {
+      "Category": "Software Development",
+      "Subcategory": "Back End Development",
+      "Listings": ""
+    },
+    {
+      "Category": "Software Development",
+      "Subcategory": "Design Pattern",
+      "Listings": ""
+    },
+    {
+      "Category": "Software Development",
+      "Subcategory": "DevOps CI/CD",
+      "Listings": ""
+    },
+    {
+      "Category": "Software Development",
+      "Subcategory": "Other",
+      "Listings": ""
+    },
+    {
+      "Category": "Data Analysis & Business Intelligence",
+      "Subcategory": "Data Cleaning and Standardisation",
+      "Listings": ""
+    },
+    {
+      "Category": "Data Analysis & Business Intelligence",
+      "Subcategory": "Data Warehousing",
+      "Listings": ""
+    },
+    {
+      "Category": "Data Analysis & Business Intelligence",
+      "Subcategory": "ETL Design",
+      "Listings": ""
+    },
+    {
+      "Category": "Data Analysis & Business Intelligence",
+      "Subcategory": "Data Visualisation",
+      "Listings": ""
+    },
+    {
+      "Category": "Data Analysis & Business Intelligence",
+      "Subcategory": "PowerBI",
+      "Listings": ""
+    },
+    {
+      "Category": "Data Analysis & Business Intelligence",
+      "Subcategory": "Tableau",
+      "Listings": ""
+    },
+    {
+      "Category": "Data Analysis & Business Intelligence",
+      "Subcategory": "Wherescape RED",
+      "Listings": ""
+    },
+    {
+      "Category": "Data Analysis & Business Intelligence",
+      "Subcategory": "Other",
+      "Listings": ""
+    },
+    {
+      "Category": "Test Automation",
+      "Subcategory": "Selenium",
+      "Listings": ""
+    },
+    {
+      "Category": "Test Automation",
+      "Subcategory": "Cucumber/Specflow",
+      "Listings": ""
+    },
+    {
+      "Category": "Test Automation",
+      "Subcategory": "API Testing",
+      "Listings": ""
+    },
+    {
+      "Category": "Test Automation",
+      "Subcategory": "Performance Testing",
+      "Listings": ""
+    },
+    {
+      "Category": "Test Automation",
+      "Subcategory": "Other",
+      "Listings": "Playwright"
+    },
+    {
+      "Category": "Data Science",
+      "Subcategory": "Python Programming",
+      "Listings": ""
+    },
+    {
+      "Category": "Data Science",
+      "Subcategory": "R Studio Programming",
+      "Listings": ""
+    },
+    {
+      "Category": "Data Science",
+      "Subcategory": "Big Data",
+      "Listings": ""
+    },
+    {
+      "Category": "Data Science",
+      "Subcategory": "Other",
+      "Listings": ""
+    },
+    {
+      "Category": "Machine Learning",
+      "Subcategory": "Supervised Learning1",
+      "Listings": ""
+    },
+    {
+      "Category": "Machine Learning",
+      "Subcategory": "Unsupervised Learning",
+      "Listings": ""
+    },
+    {
+      "Category": "Machine Learning",
+      "Subcategory": "Reinforcement Learning",
+      "Listings": ""
+    },
+    {
+      "Category": "Machine Learning",
+      "Subcategory": "Other",
+      "Listings": ""
+    },
+    {
+      "Category": "Game Development",
+      "Subcategory": "Unity",
+      "Listings": ""
+    },
+    {
+      "Category": "Game Development",
+      "Subcategory": "Unreal",
+      "Listings": ""
+    },
+    {
+      "Category": "Game Development",
+      "Subcategory": "3D Modeling",
+      "Listings": ""
+    },
+    {
+      "Category": "Game Development",
+      "Subcategory": "Game Design",
+      "Listings": ""
+    },
+    {
+      "Category": "Game Development",
+      "Subcategory": "HTML5",
+      "Listings": ""
+    },
+    {
+      "Category": "Game Development",
+      "Subcategory": "Other",
+      "Listings": ""
+    },
+    {
+      "Category": "Communication",
+      "Subcategory": "Communication at Work",
+      "Listings": ""
+    },
+    {
+      "Category": "Communication",
+      "Subcategory": "Job Hunting Advice",
+      "Listings": ""
+    },
+
+    {
+      "Category": "Communication",
+      "Subcategory": "Job Market Advice",
+      "Listings": ""
+    },
+    {
+      "Category": "Communication",
+      "Subcategory": "Interview Advice",
+      "Listings": ""
+    },
+
+    {
+      "Category": "Communication",
+      "Subcategory": "Job Analysis Consulting",
+      "Listings": ""
+    },
+    {
+      "Category": "Communication",
+      "Subcategory": "Other",
+      "Listings": ""
+    },
+    {
+      "Category": "Fun & Lifestyle",
+      "Subcategory": "Online Lessons",
+      "Listings": ""
+
+    },
+    {
+      "Category": "Fun & Lifestyle",
+      "Subcategory": "Relationship Advice",
+      "Listings": ""
+
+    },
+    {
+      "Category": "Fun & Lifestyle",
+      "Subcategory": "Astrology",
+      "Listings": ""
+
+    },
+    {
+      "Category": "Fun & Lifestyle",
+      "Subcategory": "Health, Nutrition & Fitness",
+      "Listings": ""
+
+    },
+    {
+      "Category": "Fun & Lifestyle",
+      "Subcategory": "Gaming",
+      "Listings": ""
+
+    },
+    {
+      "Category": "Fun & Lifestyle",
+      "Subcategory": "Other",
+      "Listings": "Learn Cooking"
+
+    },
+    {
+      "Category": "Fun & Lifestyle",
+      "Subcategory": "Other",
+      "Listings": "Art and craft"
+
+    },
+    {
+      "Category": "Recruitment",
+      "Subcategory": "Employability",
+      "Listings": ""
+
+    },
+    {
+      "Category": "Recruitment",
+      "Subcategory": "CV Advices",
+      "Listings": ""
+
+    },
+    {
+      "Category": "Recruitment",
+      "Subcategory": "Interview Advice",
+      "Listings": ""
+
+    },
+    {
+      "Category": "Recruitment",
+      "Subcategory": "Job Market Insight",
+      "Listings": ""
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+  ]
+}

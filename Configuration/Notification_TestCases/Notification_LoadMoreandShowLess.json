@@ -1,0 +1,11 @@
+{
+  "LoadMoreandShowLessNotification": [
+    {
+      "Emailaddress": "lockkey@gmail.com",
+      "Password": "Lock@123",
+      "Notification": "Load More...",
+      "NewNotification": "...Show Less"
+    }
+
+  ]
+}

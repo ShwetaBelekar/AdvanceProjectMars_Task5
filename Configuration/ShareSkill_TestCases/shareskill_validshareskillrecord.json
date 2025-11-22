@@ -1,0 +1,59 @@
+{
+  "Createvalidshareskillrecord": [
+    {
+      "Title": "Selenium",
+      "Description": "Software Testing Automation Tool",
+      "Category": "Test Automation",
+      "SelectSubcategory": "Selenium",
+      "Tags": "Software",
+      "ServiceType": "One-off service",
+      "LocationType": "On site",
+      "SkillTrade": "Skill-exchange",
+      "Credit": null,
+      "SkillExchange": "ManualTesting, Software, Technology",
+      "Active": "Active"
+    },
+    {
+      "Title": "Building Software",
+      "Description": "Software Development lifecycle",
+      "Category": "Software Development",
+      "SelectSubcategory": "Solution Architecture Design",
+      "Tags": "building compliance",
+      "ServiceType": "One-off service",
+      "LocationType": "Online",
+      "SkillTrade": "Credit",
+      "Credit": "10",
+      "SkillExchange": null,
+      "Active": "Active"
+    },
+    
+    {
+      "Title": "Historical Data",
+      "Description": "Unlike operational databases that focus on real time transactions, data warehouses store both current and historical data, providing a comprehensive view of trends and performance over time.",
+      "Category": "Data Analysis & Business Intelligence",
+      "SelectSubcategory": "Data Warehousing",
+      "Tags": "Graphed Data",
+      "ServiceType": "One-off service",
+      "LocationType": "On site",
+      "SkillTrade": "Skill-exchange",
+      "Credit": null,
+      "SkillExchange": "ManualTesting, Software, Technology",
+      "Active": "Active"
+    },
+   
+    {
+      "Title": "Plan Job search",
+      "Description": "Effective job searching involves defining your goals, tailoring your applications, networking actively, and preparing thoroughly for interviews.",
+      "Category": "Communication",
+      "SelectSubcategory": "Job Hunting Advice",
+      "Tags": "Job search skills",
+      "ServiceType": "One-off service",
+      "LocationType": "On site",
+      "SkillTrade": "Skill-exchange",
+      "Credit": null,
+      "SkillExchange": "Customise Resume",
+      "Active": "Active"
+    }
+    
+  ]
+  }

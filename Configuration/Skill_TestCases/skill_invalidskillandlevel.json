@@ -1,0 +1,22 @@
+{
+  "Createinvalidskillandlevelrecord": [
+    {
+      "Skill": "SLEEping",
+      "Level": "Beginner"
+    },
+    {
+      "Skill": "ABC@1234",
+      "Level": "Intermediate"
+    },
+
+    {
+      "Skill": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+      "Level": "Expert"
+    },
+    {
+      "Skill": "1234567891011213",
+      "Level": "Beginner"
+    }
+
+  ]
+}

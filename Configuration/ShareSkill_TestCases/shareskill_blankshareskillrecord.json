@@ -1,0 +1,17 @@
+{
+  "Createblankshareskillrecord": [
+    {
+      "Title": "",
+      "Description": "",
+      "Category": "",
+      "SelectSubcategory": "",
+      "Tags": "",
+      "ServiceType": "One-off service",
+      "LocationType": "On site",
+      "SkillTrade": "Credit",
+      "Credit": "",
+      "SkillExchange": null,
+      "Active": "Hidden"
+    }
+  ]
+}

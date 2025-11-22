@@ -1,0 +1,30 @@
+{
+  "Createinvalidshareskillrecord": [
+    {
+      "Title": "xyz",
+      "Description": "abcdefghijklmnop",
+      "Category": "Test Automation",
+      "SelectSubcategory": "Selenium",
+      "Tags": "1111111111111111111111111111111111111111111111111111111111",
+      "ServiceType": "One-off service",
+      "LocationType": "On site",
+      "SkillTrade": "Skill-exchange",
+      "Credit": null,
+      "SkillExchange": "123@ENGlish",
+      "Active": "Active"
+    },
+    {
+      "Title": "sdgaddgaggag",
+      "Description": "1234567891011121314151617181920",
+      "Category": "Fun & Lifestyle",
+      "SelectSubcategory": "Health, Nutrition & Fitness",
+      "Tags": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      "ServiceType": "Hourly basis service",
+      "LocationType": "Online",
+      "SkillTrade": "Credit",
+      "Credit": "10",
+      "SkillExchange": null,
+      "Active": "Hidden"
+    }
+  ]
+}

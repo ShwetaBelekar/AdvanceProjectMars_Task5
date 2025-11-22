@@ -1,0 +1,29 @@
+{
+  "Editexistingshareskillrecord": [
+    {
+      "Title": "Selenium",
+      "Description": "Software Testing Automation Tool",
+      "Category": "Test Automation",
+      "SelectSubcategory": "Selenium",
+      "Tags": "Software",
+      "ServiceType": "One-off service",
+      "LocationType": "On site",
+      "SkillTrade": "Skill-exchange",
+      "Credit": null,
+      "SkillExchange": "ManualTesting, Software, Technology",
+      "Active": "Active",
+      "NewTitle": "Playwright",
+      "NewDescription": "Playwright provides the ability to automate browser tasks",
+      "NewCategory": "Test Automation",
+      "NewSelectSubcategory": "Other",
+      "NewTags": "Automation, Testing",
+      "NewServiceType": "Hourly basis service",
+      "NewLocationType": "Online",
+      "NewSkillTrade": "Credit",
+      "NewCredit": "10",
+      "NewSkillExchange": null,
+      "NewActive": "Active"
+    }
+
+  ]
+}

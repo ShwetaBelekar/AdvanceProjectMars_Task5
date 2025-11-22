@@ -1,0 +1,22 @@
+{
+  "Deleteexistingskillandlevelrecord": [
+    {
+      "Skill": "Drawing",
+      "Level": "Beginner"
+    },
+    {
+      "Skill": "Dancing",
+      "Level": "Intermediate"
+    },
+
+    {
+      "Skill": "Singing",
+      "Level": "Expert"
+    },
+    {
+      "Skill": "Acting",
+      "Level": "Beginner"
+    }
+
+  ]
+}

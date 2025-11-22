@@ -1,0 +1,22 @@
+{
+  "Createvalidlanguageandlevelrecord": [
+    {
+      "Language": "German",
+      "Level": "Native/Bilingual"
+    },
+    {
+      "Language": "Java",
+      "Level": "Basic"
+    },
+
+    {
+      "Language": "C#",
+      "Level": "Fluent"
+    },
+    {
+      "Language": "English",
+      "Level": "Conversational"
+    }
+
+  ]
+}
